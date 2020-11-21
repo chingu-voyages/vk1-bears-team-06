@@ -1,9 +1,11 @@
 import React from 'react'
+import PopularResortList from '../components/PopularResortsList'
 
 const HomeScreen = () => {
     return (
-        <div>
+        <div className="container">
             <h1>Home Screen</h1>
+            <PopularResortList />
         </div>
     )
 }
