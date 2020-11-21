@@ -16,6 +16,7 @@ const resorts = [
     amenities: ["Pool", "Breakfast", "Parking", "Beach access"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "2",
     name: "Bluewater Maribago Beach Resort",
@@ -33,6 +34,7 @@ const resorts = [
     amenities: ["Pool", "Spa", "Parking", "Wi-Fi"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "3",
     name: "Camayan Beach Resort",
@@ -50,6 +52,7 @@ const resorts = [
     amenities: ["Pool", "Spa", "Parking", "Breakfast"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "4",
     name: "Sabang Inn Beach Resort",
@@ -67,6 +70,7 @@ const resorts = [
     amenities: ["Pool", "Parking", "Beach access", "Air conditioning"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "5",
     name: "Playa Tropical Resort Hotel",
@@ -84,6 +88,7 @@ const resorts = [
     amenities: ["Pool", "Spa", "Parking", "Breakfast"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "6",
     name: "Utopia Resort & Spa",
@@ -101,6 +106,7 @@ const resorts = [
     amenities: ["Pool", "Breakfast", "Wi-Fi", "Parking"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "7",
     name: "Duli Beach Resort",
@@ -118,6 +124,7 @@ const resorts = [
     amenities: ["Parking", "Beach access", "Air conditioning", "Restaurant"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "8",
     name: "Whispering Palms Island Resort",
@@ -135,6 +142,7 @@ const resorts = [
     amenities: ["Pool", "Parking", "Beach access", "Air conditioning"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "9",
     name: "Hoyohoy Villas",
@@ -152,6 +160,7 @@ const resorts = [
     amenities: ["Pool", "Parking", "Breakfast", "Wi-Fi"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "10",
     name: "Blue Ribbon Dive Resort",
@@ -169,6 +178,7 @@ const resorts = [
     amenities: ["Pool", "Breakfast", "Wi-Fi", "Parking"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "11",
     name: "Blue Ribbon Dive Resort",
@@ -186,6 +196,7 @@ const resorts = [
     amenities: ["Pool", "Breakfast", "Wi-Fi", "Parking"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "12",
     name: "Henann Regency Resort and Spa",
@@ -203,6 +214,7 @@ const resorts = [
     amenities: ["Pool", "Spa", "Breakfast", "Wi-Fi"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "13",
     name: "Bohol Sunside Resort",
@@ -220,6 +232,7 @@ const resorts = [
     amenities: ["Pool", "Breakfast", "Wi-Fi", "Parking"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "14",
     name: "Kawili Resort",
@@ -237,6 +250,7 @@ const resorts = [
     amenities: ["Pool", "Parking", "Breakfast", "Wi-Fi"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "15",
     name: "Blanco Beach Resort",
@@ -254,6 +268,7 @@ const resorts = [
     amenities: ["Breakfast", "Wi-Fi", "Beach access", "Air conditioning"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "16",
     name: "Vista Mar Beach Resort & Country Club",
@@ -271,6 +286,7 @@ const resorts = [
     amenities: ["Pool", "Parking", "Breakfast", "Wi-fi"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "17",
     name: "Puerto Del Sol Beach Resort and Hotel Club",
@@ -288,6 +304,7 @@ const resorts = [
     amenities: ["Pool", "Breakfast", "Wi-Fi", "Parking"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "18",
     name: "Alta Cebu - resort and convention centre",
@@ -305,6 +322,7 @@ const resorts = [
     amenities: ["Pool", "Spa", "Parking", "Breakfast"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "18",
     name: "Alta Cebu - resort and convention centre",
@@ -322,6 +340,7 @@ const resorts = [
     amenities: ["Pool", "Spa", "Parking", "Breakfast"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "19",
     name: "Buceo Anilao Beach & Dive Resort",
@@ -339,6 +358,7 @@ const resorts = [
     amenities: ["Pool", "Beach access", "Spa", "Air conditioning"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
   },
+
   {
     _id: "20",
     name: "Dakak Park and Beach Resort",
@@ -355,7 +375,7 @@ const resorts = [
     website: "http://dakakresort.com/",
     amenities: ["Pool", "Spa", "Parking", "Breakfast"],
     image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
-  }
+  },
 ];
 
 export default resorts

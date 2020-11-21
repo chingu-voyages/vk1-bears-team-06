@@ -11,11 +11,11 @@ const App = () => {
        <Header />
           <main>
              <Route path='/' component={HomeScreen} exact />
-             <Route path='/resort' component={ResortDetail} />
+             <Route path='/resorts/:id' component={ResortDetail} />
           </main>
        <Footer />
     </Router>
   )
 }
 
-export default App
+export default 
