@@ -14,9 +14,11 @@ const resorts = [
     contact_number: "(034) 213 6354",
     website: null,
     amenities: ["Pool", "Breakfast", "Parking", "Beach access"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1512356181113-853a150f1aa7",
+    rating: 4.5,
+    reviews: 11,
   },
-
   {
     _id: "2",
     name: "Bluewater Maribago Beach Resort",
@@ -32,9 +34,11 @@ const resorts = [
     contact_number: "(032) 402 4100",
     website: "http://www.bluewater.com.ph/",
     amenities: ["Pool", "Spa", "Parking", "Wi-Fi"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
+    rating: 3.5,
+    reviews: 35,
   },
-
   {
     _id: "3",
     name: "Camayan Beach Resort",
@@ -50,9 +54,11 @@ const resorts = [
     contact_number: "(047) 252 8000",
     website: "https://www.camayanbeachresort.ph/",
     amenities: ["Pool", "Spa", "Parking", "Breakfast"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1602023728463-6a7079817054",
+    rating: 2,
+    reviews: 32,
   },
-
   {
     _id: "4",
     name: "Sabang Inn Beach Resort",
@@ -68,9 +74,11 @@ const resorts = [
     contact_number: "(043) 287 3198",
     website: "http://www.sabanginn.com/",
     amenities: ["Pool", "Parking", "Beach access", "Air conditioning"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1599968252292-3847bb4d73de",
+    rating: 2.5,
+    reviews: 22,
   },
-
   {
     _id: "5",
     name: "Playa Tropical Resort Hotel",
@@ -86,9 +94,11 @@ const resorts = [
     contact_number: "(077) 670 1211",
     website: "https://playatropical.ph/",
     amenities: ["Pool", "Spa", "Parking", "Breakfast"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1587313632739-c894cda186c0",
+    rating: 4.5,
+    reviews: 78,
   },
-
   {
     _id: "6",
     name: "Utopia Resort & Spa",
@@ -104,9 +114,11 @@ const resorts = [
     contact_number: "(043) 287 3681",
     website: "https://utopiaresort.ph/",
     amenities: ["Pool", "Breakfast", "Wi-Fi", "Parking"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1599968252292-3847bb4d73de",
+    rating: 3,
+    reviews: 65,
   },
-
   {
     _id: "7",
     name: "Duli Beach Resort",
@@ -122,9 +134,11 @@ const resorts = [
     contact_number: null,
     website: "https://www.dulibeach.com/",
     amenities: ["Parking", "Beach access", "Air conditioning", "Restaurant"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1603251483977-e626c7208b62",
+    rating: 1.5,
+    reviews: 78,
   },
-
   {
     _id: "8",
     name: "Whispering Palms Island Resort",
@@ -140,9 +154,11 @@ const resorts = [
     contact_number: "0917 310 6246",
     website: "https://whispering-palms.com/",
     amenities: ["Pool", "Parking", "Beach access", "Air conditioning"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1580967615704-2755a58e33d2",
+    rating: 4.5,
+    reviews: 53,
   },
-
   {
     _id: "9",
     name: "Hoyohoy Villas",
@@ -158,9 +174,11 @@ const resorts = [
     contact_number: "(032) 438 9021",
     website: "http://hoyohoy-villas.com/",
     amenities: ["Pool", "Parking", "Breakfast", "Wi-Fi"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1548780772-e21fa3f2cfd7",
+    rating: 5,
+    reviews: 80,
   },
-
   {
     _id: "10",
     name: "Blue Ribbon Dive Resort",
@@ -176,9 +194,11 @@ const resorts = [
     contact_number: "0917 893 2719",
     website: "https://blueribbondivers.com/",
     amenities: ["Pool", "Breakfast", "Wi-Fi", "Parking"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1544142720-9b1054c3ab1e",
+    rating: 4.5,
+    reviews: 103,
   },
-
   {
     _id: "11",
     name: "Blue Ribbon Dive Resort",
@@ -194,9 +214,11 @@ const resorts = [
     contact_number: "0917 893 2719",
     website: "https://blueribbondivers.com/",
     amenities: ["Pool", "Breakfast", "Wi-Fi", "Parking"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1561519407-13f9a2218210",
+    rating: 3,
+    reviews: 12,
   },
-
   {
     _id: "12",
     name: "Henann Regency Resort and Spa",
@@ -212,9 +234,11 @@ const resorts = [
     contact_number: "(036) 288 6111",
     website: "https://www.henann.com/boracay/henannregency/",
     amenities: ["Pool", "Spa", "Breakfast", "Wi-Fi"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1592813790187-9dff13dbfab4",
+    rating: 4,
+    reviews: 1118,
   },
-
   {
     _id: "13",
     name: "Bohol Sunside Resort",
@@ -230,9 +254,11 @@ const resorts = [
     contact_number: "(038) 502 4001",
     website: "https://bohol-sunside-resort.com/",
     amenities: ["Pool", "Breakfast", "Wi-Fi", "Parking"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1579625197446-3b8c000acfac",
+    rating: 5,
+    reviews: 66,
   },
-
   {
     _id: "14",
     name: "Kawili Resort",
@@ -248,9 +274,11 @@ const resorts = [
     contact_number: "0947 475 9922",
     website: "http://siargaophilippines.com/",
     amenities: ["Pool", "Parking", "Breakfast", "Wi-Fi"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1590077983181-7cb31a76ed7f",
+    rating: 4.5,
+    reviews: 93,
   },
-
   {
     _id: "15",
     name: "Blanco Beach Resort",
@@ -266,9 +294,11 @@ const resorts = [
     contact_number: "0947 475 9922",
     website: "http://blancobeachresort.com/",
     amenities: ["Breakfast", "Wi-Fi", "Beach access", "Air conditioning"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1548780772-e21fa3f2cfd7",
+    rating: 3.5,
+    reviews: 79,
   },
-
   {
     _id: "16",
     name: "Vista Mar Beach Resort & Country Club",
@@ -284,9 +314,11 @@ const resorts = [
     contact_number: "(032) 236 0197",
     website: "http://www.mactanvistamarbeachresort.com/",
     amenities: ["Pool", "Parking", "Breakfast", "Wi-fi"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1573808479782-7c84a7707492",
+    rating: 4.5,
+    reviews: 44,
   },
-
   {
     _id: "17",
     name: "Puerto Del Sol Beach Resort and Hotel Club",
@@ -302,9 +334,11 @@ const resorts = [
     contact_number: "(075) 696 0530",
     website: "http://www.puertodelsol.com.ph/",
     amenities: ["Pool", "Breakfast", "Wi-Fi", "Parking"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21",
+    rating: 5,
+    reviews: 388,
   },
-
   {
     _id: "18",
     name: "Alta Cebu - resort and convention centre",
@@ -320,27 +354,11 @@ const resorts = [
     contact_number: "(032) 496 7399",
     website: null,
     amenities: ["Pool", "Spa", "Parking", "Breakfast"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1578721730435-453c4055edef",
+    rating: 3,
+    reviews: 23,
   },
-
-  {
-    _id: "18",
-    name: "Alta Cebu - resort and convention centre",
-    price_per_night: 1412,
-    description:
-      "This low-key resort, set in gardens beside a river, lies 3 km from scenic beaches and diving at Matcan Reef Flat and 12 km from the 17th-century, Spanish Fort San Pedro.",
-    address: "Narra street",
-    city: "Cordova",
-    province: "Cebu",
-    zip_code: "6017",
-    latitude: 10.267329,
-    longitude: 123.943393,
-    contact_number: "(032) 496 7399",
-    website: null,
-    amenities: ["Pool", "Spa", "Parking", "Breakfast"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
-  },
-
   {
     _id: "19",
     name: "Buceo Anilao Beach & Dive Resort",
@@ -356,9 +374,11 @@ const resorts = [
     contact_number: "0917 579 7333",
     website: "https://buceoanilao.business.site/",
     amenities: ["Pool", "Beach access", "Spa", "Air conditioning"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
+    image:
+      "https://images.unsplash.com/photo-1598090842581-c94b8e1e4bfb",
+    rating: 5,
+    reviews: 108,
   },
-
   {
     _id: "20",
     name: "Dakak Park and Beach Resort",
@@ -374,8 +394,11 @@ const resorts = [
     contact_number: "(065) 213 6813",
     website: "http://dakakresort.com/",
     amenities: ["Pool", "Spa", "Parking", "Breakfast"],
-    image: "https://images.unsplash.com/photo-1540541338287-41700207dee6",
-  },
+    image:
+      "https://images.unsplash.com/photo-1585673103161-2ddf1521b8f6",
+    rating: 4.5,
+    reviews: 20,
+  }
 ];
 
-export default resorts
+export default resorts;
