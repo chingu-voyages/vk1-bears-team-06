@@ -4,6 +4,7 @@ import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 
 
 const Rating = ({ rating, reviews }) => {
+
     return (
         <div className="star-rating">
             {rating >=1 ? 

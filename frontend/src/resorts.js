@@ -11,9 +11,21 @@ const resorts = [
     zip_code: "6121",
     latitude: 11.045411,
     longitude: 123.201465,
-    contact_number: "(034) 213 6354",
-    website: null,
-    amenities: ["Pool", "Breakfast", "Parking", "Beach access"],
+    phone: "(034) 213 6354",
+    email: "info@example.com",
+    website: 'www.lakawonislandresort.com',
+    amenities: 
+      {
+        tv: false,
+        reservation: false,
+        moderate_noise: true,
+        free_wifi: true,
+        trendy: true,
+        credit_card: true,
+        bar: true,
+        animals: true,
+        kids: true
+    },
     image:
       "https://images.unsplash.com/photo-1512356181113-853a150f1aa7",
     rating: 4.5,
@@ -31,13 +43,25 @@ const resorts = [
     zip_code: "6015",
     latitude: 10.290899,
     longitude: 124.000822,
-    contact_number: "(032) 402 4100",
+    phone: "(032) 402 4100",
+    email: "info@example.com",
     website: "http://www.bluewater.com.ph/",
-    amenities: ["Pool", "Spa", "Parking", "Wi-Fi"],
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
     rating: 3.5,
     reviews: 35,
+    amenities: 
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: false,
+        free_wifi: false,
+        trendy: false,
+        credit_card: false,
+        bar: true,
+        animals: true,
+        kids: true
+    }
   },
   {
     _id: "3",
@@ -51,13 +75,25 @@ const resorts = [
     zip_code: "2222",
     latitude: 14.7647213,
     longitude: 120.250671,
-    contact_number: "(047) 252 8000",
+    phone: "(047) 252 8000",
+    email: "info@example.com",
     website: "https://www.camayanbeachresort.ph/",
-    amenities: ["Pool", "Spa", "Parking", "Breakfast"],
     image:
       "https://images.unsplash.com/photo-1602023728463-6a7079817054",
     rating: 2,
     reviews: 32,
+    amenities: 
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: false,
+        free_wifi: false,
+        trendy: false,
+        credit_card: false,
+        bar: true,
+        animals: true,
+        kids: true
+    }
   },
   {
     _id: "4",
@@ -71,13 +107,25 @@ const resorts = [
     zip_code: "5203",
     latitude: 13.522548,
     longitude: 120.977825,
-    contact_number: "(043) 287 3198",
+    phone: "(043) 287 3198",
+    email: "info@example.com",
     website: "http://www.sabanginn.com/",
-    amenities: ["Pool", "Parking", "Beach access", "Air conditioning"],
     image:
       "https://images.unsplash.com/photo-1599968252292-3847bb4d73de",
     rating: 2.5,
     reviews: 22,
+    amenities: 
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: true,
+        free_wifi: true,
+        trendy: true,
+        credit_card: true,
+        bar: true,
+        animals: true,
+        kids: true
+    }
   },
   {
     _id: "5",
@@ -91,13 +139,25 @@ const resorts = [
     zip_code: "2900",
     latitude: 17.997242,
     longitude: 120.498991,
-    contact_number: "(077) 670 1211",
+    phone: "(077) 670 1211",
+    email: "info@example.com",
     website: "https://playatropical.ph/",
-    amenities: ["Pool", "Spa", "Parking", "Breakfast"],
     image:
       "https://images.unsplash.com/photo-1587313632739-c894cda186c0",
     rating: 4.5,
     reviews: 78,
+    amenities: 
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: false,
+        free_wifi: false,
+        trendy: false,
+        credit_card: false,
+        bar: true,
+        animals: true,
+        kids: true
+    }
   },
   {
     _id: "6",
@@ -111,13 +171,26 @@ const resorts = [
     zip_code: "5203",
     latitude: 13.503291,
     longitude: 120.962143,
-    contact_number: "(043) 287 3681",
+    phone: "(043) 287 3681",
+    email: "info@example.com",
     website: "https://utopiaresort.ph/",
-    amenities: ["Pool", "Breakfast", "Wi-Fi", "Parking"],
     image:
       "https://images.unsplash.com/photo-1599968252292-3847bb4d73de",
     rating: 3,
     reviews: 65,
+    amenities: 
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: false,
+        free_wifi: false,
+        trendy: false,
+        credit_card: false,
+        bar: true,
+        animals: true,
+        kids: true
+    }
+
   },
   {
     _id: "7",
@@ -131,13 +204,25 @@ const resorts = [
     zip_code: "5313",
     latitude: 11.348115,
     longitude: 119.456259,
-    contact_number: null,
+    phone: null,
+    email: "info@example.com",
     website: "https://www.dulibeach.com/",
-    amenities: ["Parking", "Beach access", "Air conditioning", "Restaurant"],
     image:
       "https://images.unsplash.com/photo-1603251483977-e626c7208b62",
     rating: 1.5,
     reviews: 78,
+    amenities: 
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: false,
+        free_wifi: false,
+        trendy: false,
+        credit_card: false,
+        bar: true,
+        animals: true,
+        kids: true
+    }
   },
   {
     _id: "8",
@@ -151,13 +236,24 @@ const resorts = [
     zip_code: "6127",
     latitude: 10.472718,
     longitude: 123.449032,
-    contact_number: "0917 310 6246",
+    phone: "0917 310 6246",
     website: "https://whispering-palms.com/",
-    amenities: ["Pool", "Parking", "Beach access", "Air conditioning"],
     image:
       "https://images.unsplash.com/photo-1580967615704-2755a58e33d2",
     rating: 4.5,
     reviews: 53,
+    amenities: 
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: false,
+        free_wifi: false,
+        trendy: false,
+        credit_card: false,
+        bar: true,
+        animals: true,
+        kids: true
+    }
   },
   {
     _id: "9",
@@ -171,13 +267,25 @@ const resorts = [
     zip_code: "6047",
     latitude: 11.162276,
     longitude: 123.804958,
-    contact_number: "(032) 438 9021",
+    phone: "(032) 438 9021",
+    email: "info@example.com",
     website: "http://hoyohoy-villas.com/",
-    amenities: ["Pool", "Parking", "Breakfast", "Wi-Fi"],
     image:
       "https://images.unsplash.com/photo-1548780772-e21fa3f2cfd7",
     rating: 5,
     reviews: 80,
+    amenities: 
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: true,
+        free_wifi: false,
+        trendy: false,
+        credit_card: true,
+        bar: true,
+        animals: true,
+        kids: true
+    }
   },
   {
     _id: "10",
@@ -191,13 +299,25 @@ const resorts = [
     zip_code: "4202",
     latitude: 13.734684,
     longitude: 120.889449,
-    contact_number: "0917 893 2719",
+    phone: "0917 893 2719",
+    email: "info@example.com",
     website: "https://blueribbondivers.com/",
-    amenities: ["Pool", "Breakfast", "Wi-Fi", "Parking"],
     image:
       "https://images.unsplash.com/photo-1544142720-9b1054c3ab1e",
     rating: 4.5,
     reviews: 103,
+    amenities: 
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: false,
+        free_wifi: false,
+        trendy: false,
+        credit_card: false,
+        bar: true,
+        animals: true,
+        kids: true
+    }
   },
   {
     _id: "11",
@@ -211,13 +331,26 @@ const resorts = [
     zip_code: "5608",
     latitude: 13.734684,
     longitude: 120.889449,
-    contact_number: "0917 893 2719",
+    phone: "0917 893 2719",
+    email: "info@example.com",
     website: "https://blueribbondivers.com/",
-    amenities: ["Pool", "Breakfast", "Wi-Fi", "Parking"],
     image:
       "https://images.unsplash.com/photo-1561519407-13f9a2218210",
     rating: 3,
     reviews: 12,
+    amenities: 
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: false,
+        free_wifi: false,
+        trendy: false,
+        credit_card: false,
+        bar: true,
+        animals: true,
+        kids: true
+    }
+
   },
   {
     _id: "12",
@@ -231,13 +364,26 @@ const resorts = [
     zip_code: "5608",
     latitude: 11.959321,
     longitude: 121.92709,
-    contact_number: "(036) 288 6111",
+    phone: "(036) 288 6111",
+    email: "info@example.com",
     website: "https://www.henann.com/boracay/henannregency/",
-    amenities: ["Pool", "Spa", "Breakfast", "Wi-Fi"],
     image:
       "https://images.unsplash.com/photo-1592813790187-9dff13dbfab4",
     rating: 4,
     reviews: 1118,
+    amenities: 
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: false,
+        free_wifi: false,
+        trendy: false,
+        credit_card: false,
+        bar: true,
+        animals: true,
+        kids: true
+    }
+ 
   },
   {
     _id: "13",
@@ -251,13 +397,26 @@ const resorts = [
     zip_code: "6340",
     latitude: 9.564796,
     longitude: 123.778302,
-    contact_number: "(038) 502 4001",
+    phone: "(038) 502 4001",
+    email: "info@example.com",
     website: "https://bohol-sunside-resort.com/",
-    amenities: ["Pool", "Breakfast", "Wi-Fi", "Parking"],
     image:
       "https://images.unsplash.com/photo-1579625197446-3b8c000acfac",
     rating: 5,
     reviews: 66,
+    amenities: 
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: false,
+        free_wifi: false,
+        trendy: false,
+        credit_card: false,
+        bar: true,
+        animals: true,
+        kids: true
+    }
+
   },
   {
     _id: "14",
@@ -271,13 +430,26 @@ const resorts = [
     zip_code: "8419",
     latitude: 9.790992,
     longitude: 126.162347,
-    contact_number: "0947 475 9922",
+    phone: "0947 475 9922",
+    email: "info@example.com",
     website: "http://siargaophilippines.com/",
-    amenities: ["Pool", "Parking", "Breakfast", "Wi-Fi"],
     image:
       "https://images.unsplash.com/photo-1590077983181-7cb31a76ed7f",
     rating: 4.5,
     reviews: 93,
+    amenities: 
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: false,
+        free_wifi: false,
+        trendy: false,
+        credit_card: false,
+        bar: true,
+        animals: true,
+        kids: true
+    }
+ 
   },
   {
     _id: "15",
@@ -291,13 +463,26 @@ const resorts = [
     zip_code: "6013",
     latitude: 11.327871,
     longitude: 124.112997,
-    contact_number: "0947 475 9922",
+    phone: "0947 475 9922",
+    email: "info@example.com",
     website: "http://blancobeachresort.com/",
-    amenities: ["Breakfast", "Wi-Fi", "Beach access", "Air conditioning"],
     image:
       "https://images.unsplash.com/photo-1548780772-e21fa3f2cfd7",
     rating: 3.5,
     reviews: 79,
+    amenities:
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: false,
+        free_wifi: false,
+        trendy: false,
+        credit_card: false,
+        bar: true,
+        animals: true,
+        kids: true
+    }
+
   },
   {
     _id: "16",
@@ -311,13 +496,26 @@ const resorts = [
     zip_code: "6015",
     latitude: 10.300143,
     longitude: 124.016386,
-    contact_number: "(032) 236 0197",
+    phone: "(032) 236 0197",
+    email: "info@example.com",
     website: "http://www.mactanvistamarbeachresort.com/",
-    amenities: ["Pool", "Parking", "Breakfast", "Wi-fi"],
     image:
       "https://images.unsplash.com/photo-1573808479782-7c84a7707492",
     rating: 4.5,
     reviews: 44,
+    amenities: 
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: false,
+        free_wifi: false,
+        trendy: false,
+        credit_card: false,
+        bar: true,
+        animals: true,
+        kids: true
+    }
+
   },
   {
     _id: "17",
@@ -331,7 +529,8 @@ const resorts = [
     zip_code: "2406",
     latitude: 16.356063,
     longitude: 119.813188,
-    contact_number: "(075) 696 0530",
+    phone: "(075) 696 0530",
+    email: "info@example.com",
     website: "http://www.puertodelsol.com.ph/",
     amenities: ["Pool", "Breakfast", "Wi-Fi", "Parking"],
     image:
@@ -351,13 +550,26 @@ const resorts = [
     zip_code: "6017",
     latitude: 10.267329,
     longitude: 123.943393,
-    contact_number: "(032) 496 7399",
+    phone: "(032) 496 7399",
+    email: "info@example.com",
     website: null,
-    amenities: ["Pool", "Spa", "Parking", "Breakfast"],
     image:
       "https://images.unsplash.com/photo-1578721730435-453c4055edef",
     rating: 3,
     reviews: 23,
+    amenities: 
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: false,
+        free_wifi: false,
+        trendy: false,
+        credit_card: false,
+        bar: true,
+        animals: true,
+        kids: true
+    }
+
   },
   {
     _id: "19",
@@ -371,13 +583,25 @@ const resorts = [
     zip_code: "4202",
     latitude: 13.68655,
     longitude: 120.892174,
-    contact_number: "0917 579 7333",
+    phone: "0917 579 7333",
+    email: "info@example.com",
     website: "https://buceoanilao.business.site/",
-    amenities: ["Pool", "Beach access", "Spa", "Air conditioning"],
     image:
       "https://images.unsplash.com/photo-1598090842581-c94b8e1e4bfb",
     rating: 5,
     reviews: 108,
+    amenities: 
+      {
+        tv: true,
+        reservation: true,
+        moderate_noise: false,
+        free_wifi: false,
+        trendy: false,
+        credit_card: false,
+        bar: true,
+        animals: true,
+        kids: true
+    }
   },
   {
     _id: "20",
@@ -391,13 +615,24 @@ const resorts = [
     zip_code: "7101",
     latitude: 8.695339,
     longitude: 123.393373,
-    contact_number: "(065) 213 6813",
+    phone: "(065) 213 6813",
+    email: "info@example.com",
     website: "http://dakakresort.com/",
-    amenities: ["Pool", "Spa", "Parking", "Breakfast"],
     image:
       "https://images.unsplash.com/photo-1585673103161-2ddf1521b8f6",
     rating: 4.5,
     reviews: 20,
+    amenities: {
+        tv: true,
+        reservation: true,
+        moderate_noise: false,
+        free_wifi: false,
+        trendy: false,
+        credit_card: false,
+        bar: true,
+        animals: true,
+        kids: true
+  }
   }
 ];
 
