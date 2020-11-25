@@ -1,0 +1,19 @@
+{
+  "name": "iko-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chingu-voyages/vk1-bears-team-06.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chingu-voyages/vk1-bears-team-06/issues"
+  },
+  "homepage": "https://github.com/chingu-voyages/vk1-bears-team-06#readme"
+}
