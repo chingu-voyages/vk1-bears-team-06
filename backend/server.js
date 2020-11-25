@@ -4,6 +4,10 @@ const resorts = require('./data/resorts')
 const app = express()
 
 app.get('/', (req, res) => {
+    res.send('Api is running')
+})
+
+app.get('/api/resorts', (req, res) => {
     res.json(resorts)
 })
 
@@ -13,4 +17,4 @@ app.get('/api/resorts/:id', (req, res) => {
 })
 
 
-app.listen(5000, console.log('Server running on port 5000'))
+app.listen(5000, console.log('Server running on port 5000')) 
