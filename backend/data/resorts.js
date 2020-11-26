@@ -636,7 +636,8 @@ const resorts = [
   }
 ];
 
-module.exports = resorts
+export default resorts
+
 
 
 

@@ -1,6 +1,6 @@
-const express = require('express')
-const dotenv = require('dotenv')
-const resorts = require('./data/resorts')
+import express from 'express'
+import dotenv from 'dotenv'
+import resorts from './data/resorts.js'
 
 dotenv.config()
 
