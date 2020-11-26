@@ -42,7 +42,7 @@ const Rating = ({ rating, reviews }) => {
                 : <BsStar /> 
             } 
             
-           <span className="ml-2">({reviews && reviews})</span>
+           <span className="ml-2">{reviews ? `(${reviews})` : ''}</span>
         </div>
     )
 }

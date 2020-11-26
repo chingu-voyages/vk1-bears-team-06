@@ -637,3 +637,7 @@ const resorts = [
 ];
 
 module.exports = resorts
+
+
+
+

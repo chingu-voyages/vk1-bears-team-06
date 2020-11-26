@@ -1,16 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
+import Rating from '../components/Rating'
 import { FaMapMarkerAlt  } from 'react-icons/fa'
 import { BiLinkAlt  } from "react-icons/bi"
 import { MdLocalPhone  } from "react-icons/md"
 import { AiOutlineMail  } from "react-icons/ai"
 
-import resorts from '../resorts'
-
 const ResortDetail = ({ match }) => {
      
-    const resortsList = resorts.find((resort) => resort._id === match.params.id)
+     const [resort, setResort] = useState({})
 
-    const { name, address, city, province, zip_code, image, description, amenities, website, phone, email } = resortsList
+     useEffect(() => {
+        const fetchResort = async () => {
+            const { data } = await axios.get(`/api/resorts/${match.params.id}`)
+            setResort(data)
+        }
+ 
+        fetchResort()
+     }, [match])
+    
+    const { name, address, city, province, zip_code, image, description, amenities, website, phone, email, rating, reviews } = resort
 
     return (
         <div className="row mt-5">
@@ -24,23 +33,41 @@ const ResortDetail = ({ match }) => {
             <h4>Amenities:</h4>
   <div>
   { 
-                  Object.entries(amenities).map(
-                    ([key, value]) => {
-                        if(value){
-                            return <p>{key}</p>
-                        }
-                       return null
-                    }
-                )
-               }
+  amenities && Object.entries(amenities).filter(([key,value]) =>  value === true).map(
+    ([key]) => {
+        switch(key){
+            case 'tv':
+                return <p><FaMapMarkerAlt />  {key}</p>;
+            case 'reservation':
+                return <p><FaMapMarkerAlt />  {key}</p>;
+            case 'moderate_noise':
+                return <p><FaMapMarkerAlt />  {key}</p>;
+            case 'free_wifi':
+                return <p><FaMapMarkerAlt />  {key}</p>;
+            case 'trendy':
+                return <p><FaMapMarkerAlt />  {key}</p>;
+            case 'credit_card':
+                return <p><FaMapMarkerAlt />  {key}</p>;
+            case 'bar':
+                return <p><FaMapMarkerAlt />  {key}</p>;
+            case 'animals':
+                return <p><FaMapMarkerAlt />  {key}</p>;
+            case 'kids':
+                return <p><FaMapMarkerAlt />  {key}</p>;
+            default:
+                return null;
+        }
+    })
+}
+
             </div> 
         </div>
 
         <div className="col-lg-4">
         <div className="card">
             <ul className="list-group list-group-flush">
-                <li className="list-group-item">Cras justo odio</li>
-                <li className="list-group-item"><BiLinkAlt /> <a href={ website ? website : ''}>{ website ? website : 'No website provided'}</a> </li>
+                 <li className="list-group-item"><span>{reviews} Reviews</span> <Rating rating={rating} /> <span>{rating}/5.0</span></li>
+                <li className="list-group-item"><BiLinkAlt /> <a href={ website ?  `${website}` : ''}>{ website ? website : 'No website provided'}</a> </li>
                 <li className="list-group-item"><MdLocalPhone /> { phone ? phone : 'No phone number' }</li>
                 <li className="list-group-item"><AiOutlineMail /> <a href={`mailto:${email}`}>{ email ? email : 'No email provided' }</a> </li>
             </ul>
