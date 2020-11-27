@@ -29,7 +29,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1512356181113-853a150f1aa7",
     rating: 4.5,
-    reviews: 11,
+    totalReviews: 11,
   },
   {
     _id: "2",
@@ -49,7 +49,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
     rating: 3.5,
-    reviews: 35,
+    totalReviews: 35,
     amenities: 
       {
         tv: true,
@@ -81,7 +81,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1602023728463-6a7079817054",
     rating: 2,
-    reviews: 32,
+    totalReviews: 32,
     amenities: 
       {
         tv: true,
@@ -113,7 +113,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1599968252292-3847bb4d73de",
     rating: 2.5,
-    reviews: 22,
+    totalReviews: 22,
     amenities: 
       {
         tv: true,
@@ -145,7 +145,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1587313632739-c894cda186c0",
     rating: 4.5,
-    reviews: 78,
+    totalReviews: 78,
     amenities: 
       {
         tv: true,
@@ -177,7 +177,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1599968252292-3847bb4d73de",
     rating: 3,
-    reviews: 65,
+    totalReviews: 65,
     amenities: 
       {
         tv: true,
@@ -210,7 +210,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1603251483977-e626c7208b62",
     rating: 1.5,
-    reviews: 78,
+    totalReviews: 78,
     amenities: 
       {
         tv: true,
@@ -241,7 +241,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1580967615704-2755a58e33d2",
     rating: 4.5,
-    reviews: 53,
+    totalReviews: 53,
     amenities: 
       {
         tv: true,
@@ -273,7 +273,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1548780772-e21fa3f2cfd7",
     rating: 5,
-    reviews: 80,
+    totalReviews: 80,
     amenities: 
       {
         tv: true,
@@ -305,7 +305,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1544142720-9b1054c3ab1e",
     rating: 4.5,
-    reviews: 103,
+    totalReviews: 103,
     amenities: 
       {
         tv: true,
@@ -337,7 +337,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1561519407-13f9a2218210",
     rating: 3,
-    reviews: 12,
+    totalReviews: 12,
     amenities: 
       {
         tv: true,
@@ -370,7 +370,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1592813790187-9dff13dbfab4",
     rating: 4,
-    reviews: 1118,
+    totalReviews: 1118,
     amenities: 
       {
         tv: true,
@@ -403,7 +403,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1579625197446-3b8c000acfac",
     rating: 5,
-    reviews: 66,
+    totalReviews: 66,
     amenities: 
       {
         tv: true,
@@ -436,7 +436,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1590077983181-7cb31a76ed7f",
     rating: 4.5,
-    reviews: 93,
+    totalReviews: 93,
     amenities: 
       {
         tv: true,
@@ -469,7 +469,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1548780772-e21fa3f2cfd7",
     rating: 3.5,
-    reviews: 79,
+    totalReviews: 79,
     amenities:
       {
         tv: true,
@@ -502,7 +502,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1573808479782-7c84a7707492",
     rating: 4.5,
-    reviews: 44,
+    totalReviews: 44,
     amenities: 
       {
         tv: true,
@@ -536,7 +536,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1500375592092-40eb2168fd21",
     rating: 5,
-    reviews: 388,
+    totalReviews: 388,
   },
   {
     _id: "18",
@@ -556,7 +556,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1578721730435-453c4055edef",
     rating: 3,
-    reviews: 23,
+    totalReviews: 23,
     amenities: 
       {
         tv: true,
@@ -589,7 +589,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1598090842581-c94b8e1e4bfb",
     rating: 5,
-    reviews: 108,
+    totalReviews: 108,
     amenities: 
       {
         tv: true,
@@ -621,7 +621,7 @@ const resorts = [
     image:
       "https://images.unsplash.com/photo-1585673103161-2ddf1521b8f6",
     rating: 4.5,
-    reviews: 20,
+    totalReviews: 20,
     amenities: {
         tv: true,
         reservation: true,

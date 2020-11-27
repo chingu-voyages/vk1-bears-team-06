@@ -12,14 +12,14 @@ const ResortDetail = ({ match }) => {
 
      useEffect(() => {
         const fetchResort = async () => {
-            const { data } = await axios.get(`/api/resorts/${match.params.id}`)
+            const { data } = await axios.get(`/api/resorts/${match.params.id}`) 
             setResort(data)
         }
  
         fetchResort()
      }, [match])
     
-    const { name, address, city, province, zip_code, image, description, amenities, website, phone, email, rating, reviews } = resort
+    const { name, address, city, province, zip_code, image, description, amenities, website, phone, email, rating, totalReviews } = resort
 
     return (
         <div className="row mt-5">
@@ -66,7 +66,7 @@ const ResortDetail = ({ match }) => {
         <div className="col-lg-4">
         <div className="card">
             <ul className="list-group list-group-flush">
-                 <li className="list-group-item"><span>{reviews} Reviews</span> <Rating rating={rating} /> <span>{rating}/5.0</span></li>
+                 <li className="list-group-item"><span>{totalReviews} Reviews</span> <Rating rating={rating} /> <span>{rating}/5.0</span></li>
                 <li className="list-group-item"><BiLinkAlt /> <a href={ website ?  `${website}` : ''}>{ website ? website : 'No website provided'}</a> </li>
                 <li className="list-group-item"><MdLocalPhone /> { phone ? phone : 'No phone number' }</li>
                 <li className="list-group-item"><AiOutlineMail /> <a href={`mailto:${email}`}>{ email ? email : 'No email provided' }</a> </li>

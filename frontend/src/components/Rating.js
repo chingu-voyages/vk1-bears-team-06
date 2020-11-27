@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 
 
-const Rating = ({ rating, reviews }) => {
+const Rating = ({ rating, totalReviews }) => {
 
     return (
         <div className="star-rating">
@@ -42,14 +42,14 @@ const Rating = ({ rating, reviews }) => {
                 : <BsStar /> 
             } 
             
-           <span className="ml-2">{reviews ? `(${reviews})` : ''}</span>
+           <span className="ml-2">{totalReviews ? `(${totalReviews})` : ''}</span>
         </div>
     )
 }
 
 Rating.propTypes = {
     rating: PropTypes.number.isRequired,
-    reviews: PropTypes.string.isRequired
+    totalReviews: PropTypes.string.isRequired
 }
 
 export default Rating

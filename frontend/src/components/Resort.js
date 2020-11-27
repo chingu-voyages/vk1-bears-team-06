@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom'
 import { FaMapMarkerAlt  } from 'react-icons/fa'
 import Rating from './Rating'
 
-
 const Resort = ({ resort }) => {
 
-    const { _id, name, image, city, province, rating, reviews } = resort 
+    const { _id, name, image, city, province, rating, totalReviews } = resort 
 
     return (
         <>
@@ -20,7 +19,7 @@ const Resort = ({ resort }) => {
                </div>
                <div className="card-header">
                    <p><FaMapMarkerAlt /> {`${city}, ${province}`}</p>
-                   <Rating rating={rating} reviews={reviews} />
+                   <Rating rating={rating} totalReviews={totalReviews} />
                 </div>
                 </Link>
                </div>
