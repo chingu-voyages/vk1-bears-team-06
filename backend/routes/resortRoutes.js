@@ -23,7 +23,8 @@ router.get('/:id', expressAsyncHandler (async (req, res) => {
     if(resort){
         res.json(resort) 
     } else {
-        res.status(404).json({ message: 'Resort not found'})
+        res.status(404)
+        throw new Error('Resort not found')
     }
 }))
 
