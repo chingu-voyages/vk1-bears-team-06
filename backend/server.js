@@ -2,7 +2,8 @@ import express from 'express'
 import dotenv from 'dotenv'
 import colors from 'colors'
 import connectDB from './config/db.js'
-import resorts from './data/resorts.js'
+
+import resortRoutes from './routes/resortRoutes.js'
 
 dotenv.config()
 
@@ -14,14 +15,7 @@ app.get('/', (req, res) => {
     res.send('Api is running')
 })
 
-app.get('/api/resorts', (req, res) => {
-    res.json(resorts)
-})
-
-app.get('/api/resorts/:id', (req, res) => {
-    const resort = resorts.find(resort => resort._id === req.params.id)
-    res.json(resort) 
-})
+app.use('/api/resorts', resortRoutes)
 
 
 const PORT = process.env.PORT || 5000
