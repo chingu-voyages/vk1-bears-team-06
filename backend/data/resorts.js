@@ -1,6 +1,5 @@
 const resorts = [
   {
-    _id: "1",
     name: "Lakawon Island Resort",
     price_per_night: 2804.0,
     description:
@@ -12,7 +11,6 @@ const resorts = [
     latitude: 11.045411,
     longitude: 123.201465,
     phone: "(034) 213 6354",
-    email: "info@example.com",
     website: 'www.lakawonislandresort.com',
     amenities: 
       {
@@ -27,12 +25,11 @@ const resorts = [
         kids: true
     },
     image:
-      "https://images.unsplash.com/photo-1512356181113-853a150f1aa7",
+      "https://images.unsplash.com/photo-1591017403286-fd8493524e1e",
     rating: 4.5,
     totalReviews: 11,
   },
   {
-    _id: "2",
     name: "Bluewater Maribago Beach Resort",
     price_per_night: 4156,
     description:
@@ -44,7 +41,6 @@ const resorts = [
     latitude: 10.290899,
     longitude: 124.000822,
     phone: "(032) 402 4100",
-    email: "info@example.com",
     website: "http://www.bluewater.com.ph/",
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
@@ -64,7 +60,6 @@ const resorts = [
     }
   },
   {
-    _id: "3",
     name: "Camayan Beach Resort",
     price_per_night: 9316,
     description:
@@ -76,10 +71,9 @@ const resorts = [
     latitude: 14.7647213,
     longitude: 120.250671,
     phone: "(047) 252 8000",
-    email: "info@example.com",
     website: "https://www.camayanbeachresort.ph/",
     image:
-      "https://images.unsplash.com/photo-1602023728463-6a7079817054",
+      "https://images.unsplash.com/photo-1519046904884-53103b34b206",
     rating: 2,
     totalReviews: 32,
     amenities: 
@@ -96,7 +90,6 @@ const resorts = [
     }
   },
   {
-    _id: "4",
     name: "Sabang Inn Beach Resort",
     price_per_night: 1195,
     description:
@@ -108,10 +101,9 @@ const resorts = [
     latitude: 13.522548,
     longitude: 120.977825,
     phone: "(043) 287 3198",
-    email: "info@example.com",
     website: "http://www.sabanginn.com/",
     image:
-      "https://images.unsplash.com/photo-1599968252292-3847bb4d73de",
+      "https://images.unsplash.com/photo-1495954484750-af469f2f9be5",
     rating: 2.5,
     totalReviews: 22,
     amenities: 
@@ -128,7 +120,6 @@ const resorts = [
     }
   },
   {
-    _id: "5",
     name: "Playa Tropical Resort Hotel",
     price_per_night: 2479,
     description:
@@ -140,10 +131,9 @@ const resorts = [
     latitude: 17.997242,
     longitude: 120.498991,
     phone: "(077) 670 1211",
-    email: "info@example.com",
     website: "https://playatropical.ph/",
     image:
-      "https://images.unsplash.com/photo-1587313632739-c894cda186c0",
+      "https://images.unsplash.com/photo-1476673160081-cf065607f449",
     rating: 4.5,
     totalReviews: 78,
     amenities: 
@@ -160,7 +150,6 @@ const resorts = [
     }
   },
   {
-    _id: "6",
     name: "Utopia Resort & Spa",
     price_per_night: 2799,
     description:
@@ -172,10 +161,10 @@ const resorts = [
     latitude: 13.503291,
     longitude: 120.962143,
     phone: "(043) 287 3681",
-    email: "info@example.com",
+    email: "info@utopiaresort.ph",
     website: "https://utopiaresort.ph/",
     image:
-      "https://images.unsplash.com/photo-1599968252292-3847bb4d73de",
+      "https://images.unsplash.com/photo-1437719417032-8595fd9e9dc6",
     rating: 3,
     totalReviews: 65,
     amenities: 
@@ -193,7 +182,6 @@ const resorts = [
 
   },
   {
-    _id: "7",
     name: "Duli Beach Resort",
     price_per_night: 1635,
     description:
@@ -204,11 +192,11 @@ const resorts = [
     zip_code: "5313",
     latitude: 11.348115,
     longitude: 119.456259,
-    phone: null,
-    email: "info@example.com",
+    phone: "(043) 287 3681",
+    email: "info@dulibeach.com",
     website: "https://www.dulibeach.com/",
     image:
-      "https://images.unsplash.com/photo-1603251483977-e626c7208b62",
+      "https://images.unsplash.com/photo-1452784444945-3f422708fe5e",
     rating: 1.5,
     totalReviews: 78,
     amenities: 
@@ -225,7 +213,6 @@ const resorts = [
     }
   },
   {
-    _id: "8",
     name: "Whispering Palms Island Resort",
     price_per_night: 1494,
     description:
@@ -239,7 +226,7 @@ const resorts = [
     phone: "0917 310 6246",
     website: "https://whispering-palms.com/",
     image:
-      "https://images.unsplash.com/photo-1580967615704-2755a58e33d2",
+      "https://images.unsplash.com/photo-1504814532849-cff240bbc503",
     rating: 4.5,
     totalReviews: 53,
     amenities: 
@@ -256,7 +243,6 @@ const resorts = [
     }
   },
   {
-    _id: "9",
     name: "Hoyohoy Villas",
     price_per_night: 2176,
     description:
@@ -268,10 +254,10 @@ const resorts = [
     latitude: 11.162276,
     longitude: 123.804958,
     phone: "(032) 438 9021",
-    email: "info@example.com",
+    email: "info@hoyohoy-villas.com",
     website: "http://hoyohoy-villas.com/",
     image:
-      "https://images.unsplash.com/photo-1548780772-e21fa3f2cfd7",
+      "https://images.unsplash.com/photo-1424581342241-2b1aba4d3462",
     rating: 5,
     totalReviews: 80,
     amenities: 
@@ -288,7 +274,6 @@ const resorts = [
     }
   },
   {
-    _id: "10",
     name: "Blue Ribbon Dive Resort",
     price_per_night: 3105,
     description:
@@ -300,10 +285,9 @@ const resorts = [
     latitude: 13.734684,
     longitude: 120.889449,
     phone: "0917 893 2719",
-    email: "info@example.com",
     website: "https://blueribbondivers.com/",
     image:
-      "https://images.unsplash.com/photo-1544142720-9b1054c3ab1e",
+      "https://images.unsplash.com/photo-1484821582734-6c6c9f99a672",
     rating: 4.5,
     totalReviews: 103,
     amenities: 
@@ -320,7 +304,6 @@ const resorts = [
     }
   },
   {
-    _id: "11",
     name: "Blue Ribbon Dive Resort",
     price_per_night: 2689,
     description:
@@ -332,10 +315,10 @@ const resorts = [
     latitude: 13.734684,
     longitude: 120.889449,
     phone: "0917 893 2719",
-    email: "info@example.com",
+    email: "info@blueribbondivers.com",
     website: "https://blueribbondivers.com/",
     image:
-      "https://images.unsplash.com/photo-1561519407-13f9a2218210",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
     rating: 3,
     totalReviews: 12,
     amenities: 
@@ -353,7 +336,6 @@ const resorts = [
 
   },
   {
-    _id: "12",
     name: "Henann Regency Resort and Spa",
     price_per_night: 2689,
     description:
@@ -365,10 +347,9 @@ const resorts = [
     latitude: 11.959321,
     longitude: 121.92709,
     phone: "(036) 288 6111",
-    email: "info@example.com",
     website: "https://www.henann.com/boracay/henannregency/",
     image:
-      "https://images.unsplash.com/photo-1592813790187-9dff13dbfab4",
+      "https://images.unsplash.com/photo-1591017403286-fd8493524e1e",
     rating: 4,
     totalReviews: 1118,
     amenities: 
@@ -386,7 +367,6 @@ const resorts = [
  
   },
   {
-    _id: "13",
     name: "Bohol Sunside Resort",
     price_per_night: 1439,
     description:
@@ -398,7 +378,7 @@ const resorts = [
     latitude: 9.564796,
     longitude: 123.778302,
     phone: "(038) 502 4001",
-    email: "info@example.com",
+    email: "info@bohol-sunside-resort.com",
     website: "https://bohol-sunside-resort.com/",
     image:
       "https://images.unsplash.com/photo-1579625197446-3b8c000acfac",
@@ -419,7 +399,6 @@ const resorts = [
 
   },
   {
-    _id: "14",
     name: "Kawili Resort",
     price_per_night: 1098,
     description:
@@ -431,7 +410,6 @@ const resorts = [
     latitude: 9.790992,
     longitude: 126.162347,
     phone: "0947 475 9922",
-    email: "info@example.com",
     website: "http://siargaophilippines.com/",
     image:
       "https://images.unsplash.com/photo-1590077983181-7cb31a76ed7f",
@@ -452,7 +430,6 @@ const resorts = [
  
   },
   {
-    _id: "15",
     name: "Blanco Beach Resort",
     price_per_night: 1098,
     description:
@@ -464,7 +441,6 @@ const resorts = [
     latitude: 11.327871,
     longitude: 124.112997,
     phone: "0947 475 9922",
-    email: "info@example.com",
     website: "http://blancobeachresort.com/",
     image:
       "https://images.unsplash.com/photo-1548780772-e21fa3f2cfd7",
@@ -485,7 +461,6 @@ const resorts = [
 
   },
   {
-    _id: "16",
     name: "Vista Mar Beach Resort & Country Club",
     price_per_night: 2929,
     description:
@@ -497,7 +472,7 @@ const resorts = [
     latitude: 10.300143,
     longitude: 124.016386,
     phone: "(032) 236 0197",
-    email: "info@example.com",
+    email: "info@mactanvistamarbeachresort.com",
     website: "http://www.mactanvistamarbeachresort.com/",
     image:
       "https://images.unsplash.com/photo-1573808479782-7c84a7707492",
@@ -518,7 +493,6 @@ const resorts = [
 
   },
   {
-    _id: "17",
     name: "Puerto Del Sol Beach Resort and Hotel Club",
     price_per_night: 3601,
     description:
@@ -530,16 +504,26 @@ const resorts = [
     latitude: 16.356063,
     longitude: 119.813188,
     phone: "(075) 696 0530",
-    email: "info@example.com",
+    email: "info@puertodelsol.com.ph",
     website: "http://www.puertodelsol.com.ph/",
-    amenities: ["Pool", "Breakfast", "Wi-Fi", "Parking"],
+    amenities: 
+    {
+      tv: true,
+      reservation: true,
+      moderate_noise: false,
+      free_wifi: false,
+      trendy: false,
+      credit_card: false,
+      bar: true,
+      animals: true,
+      kids: true
+  },
     image:
       "https://images.unsplash.com/photo-1500375592092-40eb2168fd21",
     rating: 5,
     totalReviews: 388,
   },
   {
-    _id: "18",
     name: "Alta Cebu - resort and convention centre",
     price_per_night: 1412,
     description:
@@ -551,7 +535,6 @@ const resorts = [
     latitude: 10.267329,
     longitude: 123.943393,
     phone: "(032) 496 7399",
-    email: "info@example.com",
     website: null,
     image:
       "https://images.unsplash.com/photo-1578721730435-453c4055edef",
@@ -572,7 +555,6 @@ const resorts = [
 
   },
   {
-    _id: "19",
     name: "Buceo Anilao Beach & Dive Resort",
     price_per_night: 3458,
     description:
@@ -584,7 +566,6 @@ const resorts = [
     latitude: 13.68655,
     longitude: 120.892174,
     phone: "0917 579 7333",
-    email: "info@example.com",
     website: "https://buceoanilao.business.site/",
     image:
       "https://images.unsplash.com/photo-1598090842581-c94b8e1e4bfb",
@@ -604,7 +585,6 @@ const resorts = [
     }
   },
   {
-    _id: "20",
     name: "Dakak Park and Beach Resort",
     price_per_night: 5793,
     description:
@@ -616,7 +596,7 @@ const resorts = [
     latitude: 8.695339,
     longitude: 123.393373,
     phone: "(065) 213 6813",
-    email: "info@example.com",
+    email: "info@dakakresort.com",
     website: "http://dakakresort.com/",
     image:
       "https://images.unsplash.com/photo-1585673103161-2ddf1521b8f6",
