@@ -49,7 +49,7 @@ const Rating = ({ rating, totalReviews }) => {
 
 Rating.propTypes = {
     rating: PropTypes.number.isRequired,
-    totalReviews: PropTypes.string.isRequired
+    totalReviews: PropTypes.number.isRequired
 }
 
 export default Rating

@@ -20,7 +20,7 @@ router.get('/', expressAsyncHandler (async (req, res) => {
 router.get('/:id', expressAsyncHandler (async (req, res) => {
     const resort = await Resort.findById(req.params.id)
     
-    if(resort){
+    if(resort){ 
         res.json(resort) 
     } else {
         res.status(404)
