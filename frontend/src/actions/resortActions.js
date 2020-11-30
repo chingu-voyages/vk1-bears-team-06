@@ -5,7 +5,6 @@ import {
     RESORT_LIST_FAIL 
 } from '../constants/resortConstants'
 
-
 export const ListResorts = () => async (dispatch) => {
     try {
         dispatch({ type: RESORT_LIST_REQUEST })

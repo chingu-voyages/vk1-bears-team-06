@@ -2,6 +2,8 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Resort from './Resort'
+import Message from './Message'
+import Loader from './Loader'
 import { ListResorts } from '../actions/resortActions'
 
 const PopularResortsList = () => {
@@ -17,12 +19,11 @@ const PopularResortsList = () => {
     return (
         <> 
     <div className="row">
-        { loading ? <h1>Loading..</h1> : error ? <h3>{error}</h3> : 
+      { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : 
         resorts.map(resort => <Resort key={resort._id} resort={resort} />)
         }
      </div>
-        </>
-            
+        </>    
     )
 }
 
