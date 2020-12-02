@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { listResortDetails } from '../actions/resortActions'
 import Rating from '../components/Rating'
+import Loader from '../components/Loader'
+import Message from '../components/Message'
 import { FaMapMarkerAlt  } from 'react-icons/fa'
 import { BiLinkAlt  } from "react-icons/bi"
 import { MdLocalPhone  } from "react-icons/md"
@@ -8,31 +11,34 @@ import { AiOutlineMail  } from "react-icons/ai"
 
 const ResortDetail = ({ match }) => {
      
-     const [resort, setResort] = useState({})
+   const dispatch = useDispatch()
 
-     useEffect(() => {
-        const fetchResort = async () => {
-            const { data } = await axios.get(`/api/resorts/${match.params.id}`) 
-            setResort(data)
-        }
- 
-        fetchResort()
-     }, [match])
-    
+   const resortDetails = useSelector(state => state.resortDetails)
+   
+   const { loading, error, resort } = resortDetails
+   
+   useEffect(() => {
+       dispatch(listResortDetails(match.params.id))
+   }, [dispatch, match])
+
+  
     const { name, address, city, province, zip_code, image, description, amenities, website, phone, email, rating, totalReviews } = resort
 
     return (
-        <div className="row mt-5">
-            <div className="col-lg-7">
-            <h1>{name}</h1>
-            <p><FaMapMarkerAlt /> {`${address}, ${city} ${province}, Philippines, ${zip_code}`}</p>
-            <img src={image} alt={name} width="700" />
-            <br/>
-            <p>{description}</p>
-            <br/>
-            <h4>Amenities:</h4>
-  <div>
-  { 
+        <>
+            { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
+                <div className="row mt-5">
+                <div className="col-lg-7">
+                <h1>{name}</h1>
+                <p><FaMapMarkerAlt /> {`${address}, ${city} ${province}, Philippines, ${zip_code}`}</p>
+                <img src={image} alt={name} width="700" />
+                <br/>
+                <p>{description}</p>
+                <br/>
+                <h4>Amenities:</h4> 
+             <div>
+
+{ 
   amenities && Object.entries(amenities).filter(([key,value]) =>  value === true).map(
     ([key]) => {
         switch(key){
@@ -76,7 +82,12 @@ const ResortDetail = ({ match }) => {
 
 
         </div>
-    ) 
+
+     )}
+
+</>
+
+)
 }
 
 export default ResortDetail

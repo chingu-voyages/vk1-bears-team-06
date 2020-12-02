@@ -12,10 +12,6 @@ connectDB()
 
 const app = express()
 
-app.get('/', (req, res) => {
-    res.send('Api is running')
-})
-
 app.use('/api/resorts', resortRoutes)
 
 app.use(notFound)

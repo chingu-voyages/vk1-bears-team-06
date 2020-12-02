@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Resort from './Resort'
 import Message from './Message'
 import Loader from './Loader'
-import { ListResorts } from '../actions/resortActions'
+import { listResorts } from '../actions/resortActions'
 
 const PopularResortsList = () => {
     const dispatch = useDispatch()
@@ -13,7 +13,7 @@ const PopularResortsList = () => {
     const { loading, error, resorts } = resortList
 
     useEffect(() => {
-       dispatch(ListResorts())
+       dispatch(listResorts())
     }, [dispatch])
 
     return (
