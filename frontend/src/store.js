@@ -16,3 +16,4 @@ const store = createStore(reducer, intialState, composeWithDevTools(
     applyMiddleware(...middleware)))
 
 export default store
+
