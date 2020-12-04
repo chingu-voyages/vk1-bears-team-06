@@ -5,6 +5,8 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import connectDB from './config/db.js'
 
 import resortRoutes from './routes/resortRoutes.js'
+import userRoutes from './routes/userRoutes.js'
+
 
 dotenv.config()
 
@@ -12,7 +14,10 @@ connectDB()
 
 const app = express()
 
+app.use(express.json())
+
 app.use('/api/resorts', resortRoutes)
+app.use('/api/users', userRoutes)
 
 app.use(notFound)
 

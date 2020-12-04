@@ -4,7 +4,7 @@ import {
     RESORT_LIST_SUCCESS, 
     RESORT_LIST_FAIL,
     RESORT_DETAILS_REQUEST,
-    RESORT_DETAILSSUCCESS,
+    RESORT_DETAILS_SUCCESS,
     RESORT_DETAILS_FAIL
 } from '../constants/resortConstants'
 
@@ -34,7 +34,7 @@ export const listResortDetails = (id) => async (dispatch) => {
         const { data } = await axios.get(`/api/resorts/${id}`)
 
         dispatch({
-            type: RESORT_DETAILSSUCCESS,
+            type: RESORT_DETAILS_SUCCESS,
             payload: data
         })
     
