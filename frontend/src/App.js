@@ -5,6 +5,7 @@ import ResortDetail from './screens/ResortDetail'
 import LoginScreen from './screens/LoginScreen'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import RegisterScreen from './screens/RegisterScreen'
 
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
        <Header />
           <div className="container">
              <Route path='/login' component={LoginScreen} exact />
+             <Route path='/register' component={RegisterScreen} exact />
              <Route path='/' component={HomeScreen} exact />
              <Route path='/resorts/:id' component={ResortDetail} />
           </div>
