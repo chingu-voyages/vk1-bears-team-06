@@ -10,7 +10,7 @@ import ProfileScreen from './screens/ProfileScreen'
 
 const App = () => {
   return (
-    <Router> 
+    <Router>  
        <Header />
           <div className="container">
              <Route path='/login' component={LoginScreen} exact />
