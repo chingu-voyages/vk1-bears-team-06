@@ -22,7 +22,7 @@ const userSchema = mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['administrator', 'resortOwner', 'regular'],
+        enum: ['administrator', 'resortOwner', 'reviewer'],
         default: 'regular'
      }
 }, { timestamps: true

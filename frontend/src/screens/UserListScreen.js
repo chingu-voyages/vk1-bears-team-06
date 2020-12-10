@@ -57,7 +57,7 @@ const UserListScreen = ({ history }) => {
                   <td>{user.phone}</td>
                   <td>{user.role}</td>
                   <td>
-                  <Link to={`/user/${user._id}/edit`}>
+                  <Link to={`/admin/user/${user._id}/edit`}>
                   <button classNameName="btn btn-sm">
                       EDIT
                   </button>
