@@ -53,7 +53,7 @@ const RegisterScreen = ({ location, history }) => {
             </div>
             <div className="form-group"> 
                 <label for="phone">Phone</label>
-                <input type="text" pattern="[0-9]{9}" className="form-control" id="phone" placeholder="Enter phone" onChange={(e) => setPhone(e.target.value)}  />
+                <input type="text" className="form-control" id="phone" placeholder="Enter phone" onChange={(e) => setPhone(e.target.value)}  />
             </div>
             <div className="form-group"> 
                 <label for="phone">User Role</label>

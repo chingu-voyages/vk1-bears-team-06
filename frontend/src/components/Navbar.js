@@ -54,6 +54,21 @@ const logoutHandler = () => {
           </>
         )
 }
+
+{ userInfo && userInfo.role === 'administrator' && (
+          <li className="nav-item dropdown">
+          <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" role="button" data-toggle="dropdown" aria-expanded="false">
+            Administrator
+          </a>
+
+        
+          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li> <Link className="dropdown-item" to='/admin/userslist'>Users</Link></li>
+            <li> <Link className="dropdown-item" to='/admin/resorts'>Resorts</Link></li>
+          </ul>
+        </li>
+)}
+
       </ul>
 
     </div>
