@@ -1,0 +1,77 @@
+
+
+
+.mini-header {
+    /* background: url(../images/mini-header-1.jpg); */
+    background-size: cover;
+    background-position: bottom;
+    height: 30vh;
+}
+
+.mini-header img {
+    object-fit: cover;
+}
+
+.mini-header .container {
+    position: relative;
+    height: 100%;
+}
+
+.mini-header .container .row {
+    position: absolute;
+    bottom: 0;
+    bottom: -30px;
+    width: 100%;
+}
+
+.mini-header .title-section {
+    text-align: center;
+}
+
+.mini-header .img-overlay {
+    width: 100%;
+    height: 30vh;
+    background: #000;
+    opacity: 0.6;
+    position: absolute;
+}
+
+.mini-header .title-section h2 {
+    color: #ffffff;
+}
+
+.mini-header .title-section p {
+    color: #dadada;
+}
+
+.card-col {
+    position: absolute;
+}
+
+.card-col p {
+    display: inline;
+}
+
+.card-col p,
+.card-col i {
+    color: #ffffff;
+}
+
+.card-img-overlay {
+    width: 100%;
+    height: 300px;
+    background: rgb(0,0,0);
+    background: linear-gradient(180deg, rgb(35 32 32 / 90%) 0%, rgb(0 0 0 / 0) 24%, rgba(0,212,255,0) 100%);
+    position: absolute;
+}
+
+.popular-item .rating {
+    position: absolute;
+    right: 0;
+    padding: 20px;
+    z-index: 1;
+}
+
+ul.pagination li a {
+    color: #212529;
+}
