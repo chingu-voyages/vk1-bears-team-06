@@ -64,7 +64,7 @@ const logoutHandler = () => {
         
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
             <li> <Link className="dropdown-item" to='/admin/userslist'>Users</Link></li>
-            <li> <Link className="dropdown-item" to='/admin/resorts'>Resorts</Link></li>
+            <li> <Link className="dropdown-item" to='/admin/resortslist'>Resorts</Link></li>
           </ul>
         </li>
 )}
