@@ -43,6 +43,17 @@ const logoutHandler = () => {
          </a>
 
          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+
+            { userInfo.role === 'administrator' ? (
+              <>
+                <li> <Link className="dropdown-item" to='/admin/userslist'>Users</Link></li>
+                <li> <Link className="dropdown-item" to='/admin/resortslist'>Resorts</Link></li>
+              </>
+            ):(
+              <></>
+            ) 
+            }
+
             <li> <Link className="dropdown-item" to='/profile'>Profile</Link></li>
             <li><hr className="dropdown-divider"></hr></li>
             <li><Link className="dropdown-item" to='/' onClick={logoutHandler}>Logout</Link></li>
