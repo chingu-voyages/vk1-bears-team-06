@@ -24,4 +24,21 @@ const getResortById = expressAsyncHandler(async (req, res) => {
     }
 })
 
-export { getResorts, getResortById } 
+
+// @description   Delete a resort
+// @route         DELETE /api/resorts/:id
+// @access        Private/Admin
+const deleteResort = expressAsyncHandler(async (req, res) => {
+    const resort = await Resort.findById(req.params.id)
+    
+    if(resort){ 
+        await resort.remove()
+        res.json({ message: 'Resort removed!' })
+    } else {
+        res.status(404)
+        throw new Error('Resort not found')
+    }
+})
+
+
+export { getResorts, getResortById, deleteResort } 
