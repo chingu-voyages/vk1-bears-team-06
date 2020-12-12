@@ -9,20 +9,29 @@ const Resort = ({ resort }) => {
 
     return (
         <>
-        <div className="col-md-3 mt-4">
-        <Link to={`/resorts/${_id}`}>
-               <div className="card">
-                <img src={image} className="card-img-top" alt="" />
-                <div className="card-body">
-                    <h5 className="card-title">{ name }</h5>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <Link to={`/resorts/${_id}`}>
+                <div class="popular-item card">
+                    <img src={image} alt="image 1"/>
+                    <div class="card-info">
+                        <div class="card-top">
+                        <h3 class="title">{ name }</h3>
+                        <div class="loc-section">
+                            <img class="loc-pin" src="#" alt="Pin" /> 
+                            <p>{`${city}, ${province}`}</p>
+                        </div>
+                        </div>
+                        <hr />
+                        <div class="card-bottom">
+                        <Link className="eye-btn" to={`/resorts/${_id}`}>
+                            <img src="#" alt="eye" />
+                        </Link>
+                        <p>35 Reviews</p>
+                        </div>
+                    </div>
                 </div>
-               </div>
-               <div className="card-header">
-                   <p><FaMapMarkerAlt /> {`${city}, ${province}`}</p>
-                   <Rating rating={rating} totalReviews={totalReviews} />
-                </div>
-                </Link>
-               </div>
+            </Link>
+        </div>
      </>
             
     )

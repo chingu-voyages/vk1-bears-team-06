@@ -1,0 +1,261 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.header {
+    background: url(../images/hero.png);
+    background-position: center;
+    background-size: cover;
+    height: calc(100vh - 86px);
+    display: flex;
+}
+
+.header .row {
+    height: 100%;
+    align-content: center;
+}
+
+.header .img-overlay {
+    width: 100%;
+    height: calc(100vh - 86px);
+    background: #000;
+    opacity: 0.5;
+    position: absolute;
+}
+
+.header .container {
+    z-index: 1;
+}
+
+.header .header-card {
+    color: #ffffff;
+}
+
+.header .header-card h2 {
+    margin-bottom: 20px;
+}
+
+.header p {
+    color: #dadada;
+    font-size: 18px;
+    margin-bottom:50px;
+}
+
+.form-container {
+    background-color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 2px;
+    border: 1px solid #f3eee7;
+}
+
+.form-container form {
+    display: flex;
+}
+
+.form-container form img {
+    width: auto;
+    height: 23px;
+    opacity: 0.6;
+    outline: none;
+}
+
+.form-container form input {
+    border: none;
+}
+
+.form-container form button {
+    border: none;
+    background: transparent;
+    margin: 0 10px;
+}
+
+.form-container form input:focus,
+.form-container form button:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.title-section {
+    margin-bottom: 50px;
+}
+
+.title-section h2 {
+    margin-bottom: 20px;
+    color: #2b2e3f;
+}
+
+.title-section p {
+    color: #555c62;
+    font-size: 18px;
+}
+
+h3.title {
+    font-weight: 600;
+    font-size: 19px;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.most-popular .more {
+    text-align: center
+}
+
+.most-popular .card {
+    background-clip: border-box;
+    border: 1px solid #DFE0E5;
+    border-radius: .25rem;
+}
+
+.loc-section {
+    opacity: 0.5;
+}
+
+.loc-section img.loc-pin {
+    width: auto;
+    height: 15px;
+    margin-bottom: 0;
+}
+
+.loc-section p {
+    font-size: 14px;
+    display: inline-block;
+    font-weight: 500;
+}
+
+/* ####### test */
+
+.popular-item.card {
+    box-shadow: none;
+    margin: 10px 0 50px 0;
+    transition: box-shadow 0.4s;
+}
+
+.popular-item.card:hover {
+    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.2);
+}
+
+.popular-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: .25rem .25rem 0 0;
+}
+
+.popular-item .card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.popular-item .card-bottom button {
+    border: none;
+    background-color: #f3f4f7;
+    border-radius: 50%;
+    height: 38px;
+    width: 38px;
+    transition: background 0.2s, filter 0.1s;
+}
+
+.popular-item .card-bottom .eye-btn:hover {
+    background: #116b79;
+    filter: invert(1);
+}
+
+.popular-item .card-bottom .eye-btn:focus {
+    outline: none;
+}
+
+.popular-item .card-bottom img {
+    height: 18px;
+    width: auto;
+}
+
+.card-info {
+    padding: 5px;
+}
+
+hr {
+    margin: 0;
+    background: #6d6d6d;
+}
+
+.card-top{
+    padding: 15px;
+} 
+
+.card-bottom {
+    padding: 10px 15px;
+} 
+
+.card-bottom p {
+    font-size: 14px;
+} 
+
+.iko-steps {
+    background: #faf7f2;
+}
+
+.iko-steps .item {
+    margin-bottom: 60px;
+}
+
+/* .iko-steps .list {
+    --bs-gutter-x: 3.5rem;
+} */
+
+.iko-steps img {
+    height: 25px;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+h4.title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.iko-steps h4.title {
+    margin-bottom: 20px;
+}
+
+.about img {
+    object-fit: cover;
+    width: 100%;
+    height: 70vh;
+    background-position: center;
+    border-radius: 1px;
+}
+
+.newsletter {
+    background: #faf7f2;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 575px) {
+    .header-card {
+        padding: 0 15px;
+    }
+
+    .section {
+        padding: 60px 15px;
+    }
+
+    .title-section p {
+        color: #555c62;
+        font-size: 16px;
+    }
+}
