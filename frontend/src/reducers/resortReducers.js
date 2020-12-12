@@ -4,7 +4,10 @@ import {
     RESORT_LIST_FAIL,
     RESORT_DETAILS_REQUEST,
     RESORT_DETAILS_SUCCESS,
-    RESORT_DETAILS_FAIL
+    RESORT_DETAILS_FAIL,
+    RESORT_DELETE_REQUEST,
+    RESORT_DELETE_SUCCESS,
+    RESORT_DELETE_FAIL
 } from '../constants/resortConstants'
 
 export const resortListReducer = (state = { resorts: [] }, action) => {
@@ -27,6 +30,20 @@ export const resortDetailsReducer = (state = { resort: { reviews: [] } }, action
        case RESORT_DETAILS_SUCCESS:
            return { loading: false, resort: action.payload }
       case RESORT_DETAILS_FAIL:
+          return { loading: false, error: action.payload }
+      default: 
+          return state
+    }
+ }
+
+
+ export const resortDeleteReducer = (state = {}, action) => {
+    switch(action.type){
+       case RESORT_DELETE_REQUEST:
+           return { loading: true }
+       case RESORT_DELETE_SUCCESS:
+           return { loading: false, success: true }
+      case RESORT_DELETE_FAIL:
           return { loading: false, error: action.payload }
       default: 
           return state
