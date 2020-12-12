@@ -1,0 +1,64 @@
+
+
+a {
+    color: #161616;
+}
+
+a:hover {
+    color: #161616;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+p {
+    line-height: 1.6;
+}
+
+.section {
+    padding: 80px 15px;
+}
+
+.btn {
+    padding: 13px 40px;
+    border-radius: 0;
+}
+
+.btn-main {
+    background: transparent;
+    border: 1px dashed #555c62;
+    transition: color .5s, border .5s;
+}
+
+.btn-main:hover {
+    color: #e88080;
+    border: 1px solid #e88080;
+}
+
+.btn-sec {
+    background: #6AC0C5;
+    color: #fff;
+}
+
+.btn-sec:hover {
+    background: #58a6aa;
+    color: #fff;
+}
+
+
+@media (max-width: 575px) {
+    .section {
+        padding: 60px 15px;
+    }
+
+    h2 {
+        font-size: 30px;
+        font-weight: 600;
+    }
+}

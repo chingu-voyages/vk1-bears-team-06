@@ -15,7 +15,7 @@ const App = () => {
   return (
     <Router>  
        <Header />
-          <div className="container">
+          <>
              <Route path='/login' component={LoginScreen} exact />
              <Route path='/register' component={RegisterScreen} exact />
              <Route path='/profile' component={ProfileScreen} exact />
@@ -23,7 +23,7 @@ const App = () => {
              <Route path='/admin/user/:id/edit' component={UserEditScreen} exact />
              <Route path='/' component={HomeScreen} exact />
              <Route path='/resorts/:id' component={ResortDetail} />
-          </div>
+          </>
        <Footer />
     </Router>
   )
