@@ -8,6 +8,7 @@ import '../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'
 import '../src/assets/css/nav.css';
 import '../src/assets/css/home.css';
 import '../src/assets/css/utility.css';
+import '../src/assets/css/footer.css';
 
 ReactDOM.render(
   <Provider store={store}>
