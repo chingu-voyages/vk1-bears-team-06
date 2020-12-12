@@ -3,13 +3,17 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
-import { listResorts } from '../actions/resortActions'
+import { listResorts, deleteResort } from '../actions/resortActions'
 
 const ResortListScreen = ({ history, match }) => {
     const dispatch = useDispatch()
 
     const resortList = useSelector(state => state.resortList)
     const { loading, error, resorts } = resortList
+
+    const resortDelete = useSelector(state => state.resortDelete)
+    const { loading:loadingDelete, error:errorDelete, success:successDelete } = resortDelete
+
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
@@ -21,12 +25,12 @@ const ResortListScreen = ({ history, match }) => {
             history.push('/login')
         }
         
-    }, [dispatch, history, userInfo])
+    }, [dispatch, history, userInfo, successDelete])
 
 
     const deleteHandler = (id) => {
         if(window.confirm('Are you sure')){
-            // DELETE RESORTS
+            dispatch(deleteResort(id))
         }
     }
 
@@ -35,16 +39,17 @@ const ResortListScreen = ({ history, match }) => {
             // DELETE RESORTS
         }
     }
-    
-    const availableAmenities = []
 
     return (
         <>
 
 
             <h1>Resorts</h1>
+     { loadingDelete && <Loader />}      
+    { errorDelete && <Message variant='danger'>{errorDelete}</Message>}       
     { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
-       <>
+    
+    <>
        <button className="my-3" onClick={createResortHandler}>Create Resort</button>
        <table className="table">
         <thead className="thead-dark">
