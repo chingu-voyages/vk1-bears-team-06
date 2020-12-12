@@ -1,13 +1,16 @@
 import React from 'react'
-
+import './Loader.css'
 const Loader = () => {
     return (
         <>
-            <div class="text-center">
-                    <div class="spinner-border" role="status">
-                    <span class="sr-only">Loading...</span>
-                </div>
-            </div>
+    <div class="loaderWrapper">
+        <div class="loader">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+       </div>
+
         </>
     )
 }
