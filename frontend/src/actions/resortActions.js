@@ -8,7 +8,11 @@ import {
     RESORT_DETAILS_FAIL,
     RESORT_DELETE_REQUEST,
     RESORT_DELETE_SUCCESS,
-    RESORT_DELETE_FAIL
+    RESORT_DELETE_FAIL,
+    RESORT_CREATE_REQUEST,
+    RESORT_CREATE_SUCCESS,
+    RESORT_CREATE_FAIL,
+    RESORT_CREATE_RESET
 } from '../constants/resortConstants'
 
 export const listResorts = () => async (dispatch) => {
@@ -72,6 +76,36 @@ export const deleteResort = (id) => async (dispatch, getState) => {
     } catch (error) {
        dispatch({
            type: RESORT_DELETE_FAIL,
+           payload: error.response && error.response.data.message ? 
+           error.response.data.message : error.message
+       })
+    }
+}  
+
+
+
+export const createResort = () => async (dispatch, getState) => {
+    try {
+        dispatch({ type: RESORT_CREATE_REQUEST })
+        
+        const { userLogin: { userInfo } } = getState()
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        const { data } = await axios.post(`/api/resorts`, {},  config)
+
+        dispatch({
+            type: RESORT_CREATE_SUCCESS,
+            payload: data
+        })
+    
+    } catch (error) {
+       dispatch({
+           type: RESORT_CREATE_FAIL,
            payload: error.response && error.response.data.message ? 
            error.response.data.message : error.message
        })

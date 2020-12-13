@@ -1,7 +1,13 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { resortListReducer, resortDetailsReducer, resortDeleteReducer } from './reducers/resortReducers'
+import { 
+    resortListReducer, 
+    resortDetailsReducer, 
+    resortDeleteReducer,
+    resortCreateReducer
+} from './reducers/resortReducers'
+
 import { 
     userLoginReducer, 
     userRegisterReducer, 
@@ -16,6 +22,7 @@ const reducer = combineReducers({
     resortList: resortListReducer,
     resortDetails: resortDetailsReducer,
     resortDelete: resortDeleteReducer,
+    resortCreate: resortCreateReducer,
     userLogin: userLoginReducer, 
     userRegister: userRegisterReducer,
     userDetails: userDetailsReducer,
