@@ -15,6 +15,10 @@ import {
     RESORT_UPDATE_REQUEST,
     RESORT_UPDATE_SUCCESS, 
     RESORT_UPDATE_FAIL,
+    RESORT_CREATE_REVIEW_REQUEST,
+    RESORT_CREATE_REVIEW_SUCCESS,
+    RESORT_CREATE_REVIEW_FAIL,
+    RESORT_CREATE_REVIEW_RESET
 } from '../constants/resortConstants'
 
 export const listResorts = () => async (dispatch) => {
@@ -140,6 +144,37 @@ export const updateResort = (resort) => async (dispatch, getState) => {
     } catch (error) {
        dispatch({
            type: RESORT_UPDATE_FAIL,
+           payload: error.response && error.response.data.message ? 
+           error.response.data.message : error.message
+       })
+    }
+}  
+
+
+
+
+export const createResortReview = (resortId, review) => async (dispatch, getState) => {
+    try {
+        dispatch({ type: RESORT_CREATE_REVIEW_REQUEST })
+        
+        const { userLogin: { userInfo } } = getState()
+ 
+        const config = {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+
+        await axios.post(`/api/resorts/${resortId}/reviews`, review, config)
+
+        dispatch({
+            type: RESORT_CREATE_REVIEW_SUCCESS,
+        })
+    
+    } catch (error) {
+       dispatch({
+           type: RESORT_CREATE_REVIEW_FAIL,
            payload: error.response && error.response.data.message ? 
            error.response.data.message : error.message
        })

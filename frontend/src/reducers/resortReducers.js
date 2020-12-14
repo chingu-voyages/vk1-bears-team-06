@@ -15,7 +15,11 @@ import {
     RESORT_UPDATE_REQUEST,
     RESORT_UPDATE_SUCCESS,
     RESORT_UPDATE_FAIL,
-    RESORT_UPDATE_RESET 
+    RESORT_UPDATE_RESET,
+    RESORT_CREATE_REVIEW_REQUEST,
+    RESORT_CREATE_REVIEW_SUCCESS,
+    RESORT_CREATE_REVIEW_FAIL,
+    RESORT_CREATE_REVIEW_RESET
 } from '../constants/resortConstants'
 
 export const resortListReducer = (state = { resorts: [] }, action) => {
@@ -85,6 +89,23 @@ export const resortDetailsReducer = (state = { resort: { reviews: [] } }, action
           return { loading: false, error: action.payload }
       case RESORT_UPDATE_RESET:
           return { resort: {} }
+      default: 
+          return state
+    }
+ }
+
+
+ 
+ export const resortReviewCreateReducer = (state = {}, action) => {
+    switch(action.type){
+       case RESORT_CREATE_REVIEW_REQUEST:
+           return { loading: true }
+       case RESORT_CREATE_REVIEW_SUCCESS:
+           return { loading: false, success: true }
+      case RESORT_CREATE_REVIEW_FAIL:
+          return { loading: false, error: action.payload }
+      case RESORT_CREATE_REVIEW_RESET:
+          return { }
       default: 
           return state
     }

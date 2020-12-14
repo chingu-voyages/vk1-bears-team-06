@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { listResortDetails } from '../actions/resortActions'
+import { Link } from 'react-router-dom'
+import { listResortDetails, createResortReview } from '../actions/resortActions'
+import { RESORT_CREATE_REVIEW_RESET, RESORT_LIST_REQUEST } from '../constants/resortConstants'
 import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -8,21 +10,45 @@ import { FaMapMarkerAlt  } from 'react-icons/fa'
 import { BiLinkAlt  } from "react-icons/bi"
 import { MdLocalPhone  } from "react-icons/md"
 import { AiOutlineMail  } from "react-icons/ai"
+import { resortListReducer } from '../reducers/resortReducers'
 
 const ResortDetail = ({ match }) => {
      
+  const [ratingInput, setRatingInput] = useState(0)
+  const [comment, setComment] = useState('')
+
    const dispatch = useDispatch()
 
    const resortDetails = useSelector(state => state.resortDetails)
-   
    const { loading, error, resort } = resortDetails
-   
+
+   const resortReviewCreate = useSelector(state => state.resortReviewCreate)
+   const { success:successResortReview, error: errorResortReview } = resortReviewCreate
+
+   const userLogin = useSelector(state => state.userLogin)
+   const { userInfo } = userLogin
+
    useEffect(() => {
+       if(successResortReview){
+           alert('Review submitted')
+           setRatingInput(0)
+           setComment('')
+           dispatch({ type: RESORT_CREATE_REVIEW_RESET} )
+       }
        dispatch(listResortDetails(match.params.id))
-   }, [dispatch, match])
+   }, [dispatch, match, successResortReview])
 
   
-    const { name, address, city, province, zip_code, image, description, amenities, website, phone, email, rating, totalReviews } = resort
+   const submitHandler = (e) => {
+       e.preventDefault()
+       dispatch(createResortReview(match.params.id, 
+        {
+        rating: ratingInput,
+        comment
+    }))
+   }
+
+    const { name, address, city, province, zip_code, image, description, amenities, website, phone, email, rating, totalReviews, reviews } = resort
 
     return (
         <>
@@ -38,7 +64,7 @@ const ResortDetail = ({ match }) => {
                 <h4>Amenities:</h4> 
              <div>
 
-{ 
+{  
   amenities && Object.entries(amenities).filter(([key,value]) =>  value === true).map(
     ([key]) => {
         switch(key){
@@ -79,11 +105,49 @@ const ResortDetail = ({ match }) => {
             </ul>
         </div>
         </div>
-
-
         </div>
 
      )}
+
+<div class="col-lg-4">
+    <h2>Reviews</h2>
+    { reviews.length === 0 && <Message>No Reviews</Message>}
+    <ul className="list-group">
+        {reviews.map(review => (
+            <li className="list-group-item" key={review._id}>
+                <strong>{review.name}</strong>
+                <Rating rating={review.rating} />
+                <p>{review.createdAt.substring(0, 10)}</p>
+                <p>{review.comment}</p>
+                </li>
+        ))}
+         <li class="list-group-item">
+           <h2>Write a Review</h2>
+           {errorResortReview && <Message variant='danger'>{errorResortReview}</Message>}
+            {userInfo ? (
+            <form onSubmit={submitHandler}>
+            <div className="form-group">
+                <label for="rating">Rating</label>
+                <select className="form-control" id="rating" value={ratingInput} onChange={(e) => setRatingInput(e.target.value)}>
+                    <option value=''>Select...</option>
+                    <option value='1'>1 - Poor</option>
+                    <option value='2'>2 - Fair</option>
+                    <option value='3'>3 - Good</option>
+                    <option value='4'>4 - Very Good</option>
+                    <option value='5'>5 - Excellent</option>
+                </select>
+             </div>
+  
+            <div class="form-group">
+               <textarea className="form-control" value={comment} onChange={(e) => setComment(e.target.value)} id="comment" rows="3"></textarea>
+            </div>
+            <button type="submit" className="btn btn-primary">Submit</button>
+            </form>
+            
+            ) : <Message>Please <Link to='/login'>Login</Link> to write a review</Message>}
+        </li>
+</ul>
+</div>
 
 </>
 

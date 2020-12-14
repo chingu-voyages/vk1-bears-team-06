@@ -13,6 +13,11 @@ const reviewSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
+    },
 }, {
     timestamps: true
 })
@@ -73,6 +78,11 @@ const resortSchema = mongoose.Schema({
     },
     reviews: [reviewSchema], 
     totalReviews: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+    rating: {
         type: Number,
         required: true,
         default: 0
