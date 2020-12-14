@@ -53,13 +53,8 @@ const ResortListScreen = ({ history, match }) => {
         }
     }
 
-    const createResortHandler = () => {
-        dispatch(createResort())
-    }
-
     return (
         <>
-
 
     <h1>Resorts</h1>
      { loadingDelete && <Loader />}      
@@ -69,7 +64,7 @@ const ResortListScreen = ({ history, match }) => {
     { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
     
     <>
-       <button className="my-3" onClick={createResortHandler}>Create Resort</button>
+       <Link to='/admin/resorts/create'>Create Resort</Link>
        <table className="table">
         <thead className="thead-dark">
           <tr>

@@ -45,33 +45,40 @@ const deleteResort = expressAsyncHandler(async (req, res) => {
 // @route         POST /api/resorts/:id
 // @access        Private/Admin
 const createResort = expressAsyncHandler(async (req, res) => {
+    const { 
+        name, 
+        price_per_night, 
+        description, 
+        address, 
+        city,
+        province,
+        zip_code,
+        phone,
+        website,
+        amenities,
+        image
+    } = req.body
+
+    const resortExists = await Resort.findOne({ name })
+    
+    if(resortExists){
+        res.status(400)
+        throw new Error('Resort already exist!')
+    }
+
     const resort = new Resort({
-        name: 'Sample name',
+        name,
         user: req.user._id,
-        price_per_night: 2804,
-        description: "this is a short description",
-        address: "Cadiz Viejo",
-        city: "Cadiz",
-        province: "Negros Occidental",
-        zip_code: "6121",
-        latitude: 11.045411,
-        longitude: 123.201465,
-        phone: "(034) 213 6354",
-        website: 'www.lakawonislandresort.com',
-        amenities: 
-            {
-                tv: false,
-                reservation: false,
-                moderate_noise: true,
-                free_wifi: true,
-                trendy: true,
-                credit_card: true,
-                bar: true,
-                animals: true,
-                kids: true
-            },
-        image:
-        "https://images.unsplash.com/photo-1591017403286-fd8493524e1e"
+        price_per_night,
+        description,
+        address,
+        city,
+        province,
+        zip_code,
+        phone,
+        website,
+        amenities,
+        image
     })
 
     const createResort = await resort.save()

@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import  Message from '../components/Message'
@@ -29,6 +30,7 @@ const ResortEditScreen = ({ match, history }) => {
     const [bar, setBar] = useState(false)
     const [animals, setAnimals] = useState(false)
     const [kids, setKids] = useState(false)
+    const [uploading, setUploading] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -75,6 +77,30 @@ const ResortEditScreen = ({ match, history }) => {
         }
      }, [dispatch, history, resortId, resort, successUpdate])
 
+     const uploadFileHandler = async(e) => {
+         const file = e.target.files[0]
+         const formData = new FormData()
+         formData.append('image', file)
+         setUploading(true)
+
+         try{
+             const config = {
+                 headers: {
+                     'Content-Type': 'multipart/form-data'
+                 }
+             }
+          
+             const { data } = await axios.post('/api/upload', formData, config)
+             setImage(data)
+             setUploading(false)
+         } catch(error){
+            console.error(error)
+            setUploading(false)
+         }
+     }
+
+
+
     const submitHandler = (e) => {
         e.preventDefault()
         dispatch(updateResort({ 
@@ -103,6 +129,8 @@ const ResortEditScreen = ({ match, history }) => {
             }
         }))
     }
+
+
 
     return ( 
         <>
@@ -168,6 +196,14 @@ const ResortEditScreen = ({ match, history }) => {
                 <label for="image">Image</label>
                 <input type="text" value={image} className="form-control" id="image" onChange={(e) => setImage(e.target.value)}  />
             </div>
+
+
+            <div className="form-group"> 
+               <label for="uploadImage">Upload Image</label>
+                <input type="file" class="form-control-file" id="uploadImage" onChange={uploadFileHandler} />
+            </div>
+
+            { uploading && <Loader /> }
 
             <div className="form-group"> 
             <div class="form-check">
