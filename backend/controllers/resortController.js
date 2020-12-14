@@ -41,4 +41,96 @@ const deleteResort = expressAsyncHandler(async (req, res) => {
 })
 
 
-export { getResorts, getResortById, deleteResort } 
+// @description   Create a resort
+// @route         POST /api/resorts/:id
+// @access        Private/Admin
+const createResort = expressAsyncHandler(async (req, res) => {
+    const { 
+        name, 
+        price_per_night, 
+        description, 
+        address, 
+        city,
+        province,
+        zip_code,
+        phone,
+        website,
+        amenities,
+        image
+    } = req.body
+
+    const resortExists = await Resort.findOne({ name })
+    
+    if(resortExists){
+        res.status(400)
+        throw new Error('Resort already exist!')
+    }
+
+    const resort = new Resort({
+        name,
+        user: req.user._id,
+        price_per_night,
+        description,
+        address,
+        city,
+        province,
+        zip_code,
+        phone,
+        website,
+        amenities,
+        image
+    })
+
+    const createResort = await resort.save()
+    res.status(201).json(createResort)
+})
+
+// @description   Update a resort
+// @route         PUT /api/resorts/:id
+// @access        Private/Admin
+const updateResort = expressAsyncHandler(async (req, res) => {
+
+    const { 
+        name, 
+        price_per_night, 
+        description,
+        address, 
+        city, 
+        province, 
+        zip_code,
+        latitude,
+        longitude,
+        phone,
+        website,
+        amenities,
+        image
+     } = req.body
+
+    const resort = await Resort.findById(req.params.id)
+
+    if(resort){
+        resort.name = name,
+        resort.price_per_night = price_per_night
+        resort.description = description
+        resort.address = address
+        resort.city = city
+        resort.province = province
+        resort.zip_code = zip_code
+        resort.latitude = latitude
+        resort.longitude = longitude
+        resort.phone = phone
+        resort.website = website
+        resort.amenities = amenities
+        resort.image = image
+
+        const updatedResort = await resort.save()
+        res.json(updatedResort)
+    } else{
+        res.status(404)
+        throw new Error('Resort not found!')
+    }
+})
+
+
+
+export { getResorts, getResortById, deleteResort, createResort, updateResort} 

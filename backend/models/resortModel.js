@@ -56,12 +56,10 @@ const resortSchema = mongoose.Schema({
         required: true
     },
     latitude: {
-        type: Number,
-        required: true
+        type: Number
     },
     longitude: {
-        type: Number,
-        required: true
+        type: Number
     },
     phone: {
         type: String,

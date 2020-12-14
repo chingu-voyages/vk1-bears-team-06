@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
-import { listResorts, deleteResort } from '../actions/resortActions'
+import { 
+    listResorts, 
+    deleteResort, 
+    createResort 
+} from '../actions/resortActions'
+
+import { RESORT_CREATE_RESET } from '../constants/resortConstants'
 
 const ResortListScreen = ({ history, match }) => {
     const dispatch = useDispatch()
@@ -14,18 +20,31 @@ const ResortListScreen = ({ history, match }) => {
     const resortDelete = useSelector(state => state.resortDelete)
     const { loading:loadingDelete, error:errorDelete, success:successDelete } = resortDelete
 
-
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
+    const resortCreate = useSelector(state => state.resortCreate)
+    const { 
+        loading:loadingCreate, 
+        error:errorCreate, 
+        success:successCreate,
+        resort:createdResort 
+    } = resortCreate
+
     useEffect(() => {
-        if(userInfo && userInfo.role === 'administrator'){
-            dispatch(listResorts())
-        } else {
+        dispatch({ type: RESORT_CREATE_RESET  })
+
+        if(!userInfo.role === 'administrator'){
             history.push('/login')
+        } 
+
+        if(successCreate){
+            history.push(`/admin/resorts/${createdResort._id}`)
+        } else {
+            dispatch(listResorts())
         }
         
-    }, [dispatch, history, userInfo, successDelete])
+    }, [dispatch, history, userInfo, successDelete, successCreate, createdResort])
 
 
     const deleteHandler = (id) => {
@@ -34,23 +53,18 @@ const ResortListScreen = ({ history, match }) => {
         }
     }
 
-    const createResortHandler = (id) => {
-        if(window.confirm('Are you sure')){
-            // DELETE RESORTS
-        }
-    }
-
     return (
         <>
 
-
-            <h1>Resorts</h1>
+    <h1>Resorts</h1>
      { loadingDelete && <Loader />}      
-    { errorDelete && <Message variant='danger'>{errorDelete}</Message>}       
+    { errorDelete && <Message variant='danger'>{errorDelete}</Message>}    
+    { loadingCreate && <Loader />}      
+    { errorCreate && <Message variant='danger'>{errorCreate}</Message>}    
     { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
     
     <>
-       <button className="my-3" onClick={createResortHandler}>Create Resort</button>
+       <Link to='/admin/resorts/create'>Create Resort</Link>
        <table className="table">
         <thead className="thead-dark">
           <tr>
