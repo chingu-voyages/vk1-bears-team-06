@@ -6,7 +6,8 @@ import {
     resortDetailsReducer, 
     resortDeleteReducer,
     resortCreateReducer,
-    resortUpdateReducer
+    resortUpdateReducer,
+    resortReviewCreateReducer
 } from './reducers/resortReducers'
 
 import { 
@@ -25,6 +26,7 @@ const reducer = combineReducers({
     resortDelete: resortDeleteReducer,
     resortCreate: resortCreateReducer,
     resortUpdate: resortUpdateReducer,
+    resortReviewCreate: resortReviewCreateReducer,
     userLogin: userLoginReducer, 
     userRegister: userRegisterReducer,
     userDetails: userDetailsReducer,

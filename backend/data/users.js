@@ -20,7 +20,14 @@ const users = [
         email: 'nicoleesposo.web@gmail.com',
         password: bcrypt.hashSync('123456', 10),
         phone: '09168467856',
-        role: 'regular'
+        role: 'reviewer'
+    },
+    {
+        name: 'James Navidad',
+        email: 'jamesnavidad.web@gmail.com',
+        password: bcrypt.hashSync('123456', 10),
+        phone: '0911111111',
+        role: 'reviewer'
     }
 ]
 

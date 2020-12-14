@@ -132,5 +132,46 @@ const updateResort = expressAsyncHandler(async (req, res) => {
 })
 
 
+// @description   Create new review
+// @route         POST /api/resorts/:id/reviews
+// @access        Private
+const createResortReview = expressAsyncHandler(async (req, res) => {
 
-export { getResorts, getResortById, deleteResort, createResort, updateResort} 
+    const { rating, comment } = req.body
+
+    const resort = await Resort.findById(req.params.id)
+
+    if(resort){
+       const alreadyReviewed = resort.reviews.find(r => r.user.toString() === req.user._id.toString())
+
+       if(alreadyReviewed){
+           res.status(400)
+           throw new Error('Resort already reviewed!')
+       }
+       
+       const review = {
+           name: req.user.name,
+           rating: Number(rating),
+           comment,
+           user: req.user._id   
+       }
+
+       resort.reviews.push(review)
+       resort.totalReviews = resort.reviews.length
+
+       resort.rating = resort.reviews.reduce((acc, item) => item.rating + acc, 0) / resort.reviews.length
+
+       await resort.save()
+
+       res.status(201).json({ message: 'Review added!'})
+    } else{
+        res.status(404)
+        throw new Error('Resort not found!')
+    }
+})
+ 
+
+
+
+
+export { getResorts, getResortById, deleteResort, createResort, updateResort, createResortReview} 

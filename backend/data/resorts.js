@@ -25,9 +25,7 @@ const resorts = [
         kids: true
     },
     image:
-      "https://images.unsplash.com/photo-1591017403286-fd8493524e1e",
-    rating: 4.5,
-    totalReviews: 11,
+      "https://images.unsplash.com/photo-1591017403286-fd8493524e1e"
   },
   {
     name: "Bluewater Maribago Beach Resort",
@@ -44,8 +42,6 @@ const resorts = [
     website: "http://www.bluewater.com.ph/",
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-    rating: 3.5,
-    totalReviews: 35,
     amenities: 
       {
         tv: true,
@@ -74,8 +70,6 @@ const resorts = [
     website: "https://www.camayanbeachresort.ph/",
     image:
       "https://images.unsplash.com/photo-1519046904884-53103b34b206",
-    rating: 2,
-    totalReviews: 32,
     amenities: 
       {
         tv: true,
@@ -104,8 +98,6 @@ const resorts = [
     website: "http://www.sabanginn.com/",
     image:
       "https://images.unsplash.com/photo-1495954484750-af469f2f9be5",
-    rating: 2.5,
-    totalReviews: 22,
     amenities: 
       {
         tv: true,
@@ -134,8 +126,6 @@ const resorts = [
     website: "https://playatropical.ph/",
     image:
       "https://images.unsplash.com/photo-1476673160081-cf065607f449",
-    rating: 4.5,
-    totalReviews: 78,
     amenities: 
       {
         tv: true,
@@ -165,8 +155,6 @@ const resorts = [
     website: "https://utopiaresort.ph/",
     image:
       "https://images.unsplash.com/photo-1437719417032-8595fd9e9dc6",
-    rating: 3,
-    totalReviews: 65,
     amenities: 
       {
         tv: true,
@@ -197,8 +185,6 @@ const resorts = [
     website: "https://www.dulibeach.com/",
     image:
       "https://images.unsplash.com/photo-1452784444945-3f422708fe5e",
-    rating: 1.5,
-    totalReviews: 78,
     amenities: 
       {
         tv: true,
@@ -227,8 +213,7 @@ const resorts = [
     website: "https://whispering-palms.com/",
     image:
       "https://images.unsplash.com/photo-1504814532849-cff240bbc503",
-    rating: 4.5,
-    totalReviews: 53,
+
     amenities: 
       {
         tv: true,
@@ -258,8 +243,6 @@ const resorts = [
     website: "http://hoyohoy-villas.com/",
     image:
       "https://images.unsplash.com/photo-1424581342241-2b1aba4d3462",
-    rating: 5,
-    totalReviews: 80,
     amenities: 
       {
         tv: true,
@@ -288,8 +271,6 @@ const resorts = [
     website: "https://blueribbondivers.com/",
     image:
       "https://images.unsplash.com/photo-1484821582734-6c6c9f99a672",
-    rating: 4.5,
-    totalReviews: 103,
     amenities: 
       {
         tv: true,
@@ -319,8 +300,6 @@ const resorts = [
     website: "https://blueribbondivers.com/",
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e",
-    rating: 3,
-    totalReviews: 12,
     amenities: 
       {
         tv: true,
@@ -350,8 +329,6 @@ const resorts = [
     website: "https://www.henann.com/boracay/henannregency/",
     image:
       "https://images.unsplash.com/photo-1591017403286-fd8493524e1e",
-    rating: 4,
-    totalReviews: 1118,
     amenities: 
       {
         tv: true,
@@ -382,8 +359,6 @@ const resorts = [
     website: "https://bohol-sunside-resort.com/",
     image:
       "https://images.unsplash.com/photo-1579625197446-3b8c000acfac",
-    rating: 5,
-    totalReviews: 66,
     amenities: 
       {
         tv: true,
@@ -413,8 +388,6 @@ const resorts = [
     website: "http://siargaophilippines.com/",
     image:
       "https://images.unsplash.com/photo-1590077983181-7cb31a76ed7f",
-    rating: 4.5,
-    totalReviews: 93,
     amenities: 
       {
         tv: true,
@@ -444,8 +417,6 @@ const resorts = [
     website: "http://blancobeachresort.com/",
     image:
       "https://images.unsplash.com/photo-1548780772-e21fa3f2cfd7",
-    rating: 3.5,
-    totalReviews: 79,
     amenities:
       {
         tv: true,
@@ -476,8 +447,6 @@ const resorts = [
     website: "http://www.mactanvistamarbeachresort.com/",
     image:
       "https://images.unsplash.com/photo-1573808479782-7c84a7707492",
-    rating: 4.5,
-    totalReviews: 44,
     amenities: 
       {
         tv: true,
@@ -520,8 +489,6 @@ const resorts = [
   },
     image:
       "https://images.unsplash.com/photo-1500375592092-40eb2168fd21",
-    rating: 5,
-    totalReviews: 388,
   },
   {
     name: "Alta Cebu - resort and convention centre",
@@ -538,8 +505,6 @@ const resorts = [
     website: null,
     image:
       "https://images.unsplash.com/photo-1578721730435-453c4055edef",
-    rating: 3,
-    totalReviews: 23,
     amenities: 
       {
         tv: true,
@@ -569,8 +534,6 @@ const resorts = [
     website: "https://buceoanilao.business.site/",
     image:
       "https://images.unsplash.com/photo-1598090842581-c94b8e1e4bfb",
-    rating: 5,
-    totalReviews: 108,
     amenities: 
       {
         tv: true,
@@ -600,8 +563,6 @@ const resorts = [
     website: "http://dakakresort.com/",
     image:
       "https://images.unsplash.com/photo-1585673103161-2ddf1521b8f6",
-    rating: 4.5,
-    totalReviews: 20,
     amenities: {
         tv: true,
         reservation: true,
