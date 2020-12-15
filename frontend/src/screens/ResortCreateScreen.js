@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import { createResort } from '../actions/resortActions'
+import { RESORT_CREATE_RESET } from '../constants/resortConstants'
 
 const ResortCreateScreen = ({ history }) => {
 
@@ -36,6 +37,7 @@ const ResortCreateScreen = ({ history }) => {
 
      useEffect(() => {
          if(success){
+            dispatch({ type: RESORT_CREATE_RESET })
             history.push('/admin/resortsList')
          } 
      }, [dispatch, history, success])

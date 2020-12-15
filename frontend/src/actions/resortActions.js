@@ -90,7 +90,7 @@ export const deleteResort = (id) => async (dispatch, getState) => {
 
 
 
-export const createResort = () => async (dispatch, getState) => {
+export const createResort = (resort) => async (dispatch, getState) => {
     try {
         dispatch({ type: RESORT_CREATE_REQUEST })
         
@@ -102,7 +102,7 @@ export const createResort = () => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.post(`/api/resorts`, {},  config)
+        const { data } = await axios.post(`/api/resorts`, resort,  config)
 
         dispatch({
             type: RESORT_CREATE_SUCCESS,
