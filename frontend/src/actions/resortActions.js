@@ -18,7 +18,9 @@ import {
     RESORT_CREATE_REVIEW_REQUEST,
     RESORT_CREATE_REVIEW_SUCCESS,
     RESORT_CREATE_REVIEW_FAIL,
-    RESORT_CREATE_REVIEW_RESET
+    RESORT_TOP_REQUEST,
+    RESORT_TOP_SUCCESS,
+    RESORT_TOP_FAIL
 } from '../constants/resortConstants'
 
 export const listResorts = (keywordInput = '') => async (dispatch) => {
@@ -34,6 +36,26 @@ export const listResorts = (keywordInput = '') => async (dispatch) => {
     } catch (error) {
        dispatch({
            type: RESORT_LIST_FAIL,
+           payload: error.response && error.response.data.message ? 
+           error.response.data.message : error.message
+       })
+    }
+}
+
+
+export const listTopResorts = () => async (dispatch) => {
+    try {
+        dispatch({ type: RESORT_TOP_REQUEST })
+        const { data } = await axios.get(`/api/resorts/top`)
+
+        dispatch({
+            type: RESORT_TOP_SUCCESS,
+            payload: data
+        })
+    
+    } catch (error) {
+       dispatch({
+           type: RESORT_TOP_FAIL,
            payload: error.response && error.response.data.message ? 
            error.response.data.message : error.message
        })

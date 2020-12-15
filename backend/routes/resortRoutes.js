@@ -5,7 +5,8 @@ import {
     deleteResort, 
     createResort, 
     updateResort,
-    createResortReview
+    createResortReview,
+    getTopResorts
 } from '../controllers/resortController.js'
 
 import { protect, admin } from '../middleware/authMiddleware.js'
@@ -13,6 +14,7 @@ const router = express.Router()
 
 router.route('/').get(getResorts).post(protect, admin, createResort)
 router.route('/:id/reviews').post(protect, createResortReview)
+router.get('/top', getTopResorts)
 router.route('/:id').get(getResortById).delete(protect, admin, deleteResort)
 .put(protect, admin, updateResort)
 
