@@ -178,6 +178,13 @@ const createResortReview = expressAsyncHandler(async (req, res) => {
  
 
 
+// @description   Get top rated resorts
+// @route         GET /api/resorts/top
+// @access        Public
+const getTopResorts = expressAsyncHandler(async (req, res) => {
+   const resorts = await Resort.find({}).sort({ rating: -1 }).limit(9)
+   res.json(resorts)
+})
+ 
 
-
-export { getResorts, getResortById, deleteResort, createResort, updateResort, createResortReview} 
+export { getResorts, getResortById, deleteResort, createResort, updateResort, createResortReview, getTopResorts } 
