@@ -12,7 +12,7 @@ import { MdLocalPhone  } from "react-icons/md"
 import { AiOutlineMail  } from "react-icons/ai"
 import { resortListReducer } from '../reducers/resortReducers'
 
-const ResortDetail = ({ match }) => {
+const ResortDetailScreen = ({ match }) => {
      
   const [ratingInput, setRatingInput] = useState(0)
   const [comment, setComment] = useState('')
@@ -154,4 +154,4 @@ const ResortDetail = ({ match }) => {
 )
 }
 
-export default ResortDetail
+export default ResortDetailScreen

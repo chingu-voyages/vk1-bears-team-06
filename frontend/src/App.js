@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import HomeScreen from './screens/HomeScreen'
-import ResortDetail from './screens/ResortDetail'
+import ResortDetailScreen from './screens/ResortDetailScreen'
 import LoginScreen from './screens/LoginScreen'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -12,6 +12,7 @@ import UserEditScreen from './screens/UserEditScreen'
 import ResortListScreen from './screens/ResortListScreen'
 import ResortEditScreen from './screens/ResortEditScreen'
 import ResortCreateScreen from './screens/ResortCreateScreen'
+import SearchResultScreen from './screens/SearchResultScreen'
 
 const App = () => {
   return (
@@ -27,7 +28,8 @@ const App = () => {
              <Route path='/admin/resort/:id/edit' component={ResortEditScreen} exact />
              <Route path='/admin/user/:id/edit' component={UserEditScreen} exact />
              <Route path='/' component={HomeScreen} exact />
-             <Route path='/resorts/:id' component={ResortDetail} />
+             <Route path='/search/:keyword' component={SearchResultScreen} exact />
+             <Route path='/resorts/:id' component={ResortDetailScreen} />
           </div>
        <Footer />
     </Router>

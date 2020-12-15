@@ -5,7 +5,13 @@ import Resort from '../models/resortModel.js'
 // @route         GET /api/resorts
 // @access        Public
 const getResorts = expressAsyncHandler(async (req, res) => {
-    const resorts = await Resort.find({})
+    const keyword = req.query.keyword ? {
+        name: {
+            $regex: req.query.keyword,
+            $options: 'i'
+        }
+    } : {}
+    const resorts = await Resort.find({ ...keyword })
     res.json(resorts)
 })
 

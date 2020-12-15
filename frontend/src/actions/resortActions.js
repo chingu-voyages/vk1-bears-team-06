@@ -21,10 +21,10 @@ import {
     RESORT_CREATE_REVIEW_RESET
 } from '../constants/resortConstants'
 
-export const listResorts = () => async (dispatch) => {
+export const listResorts = (keywordInput = '') => async (dispatch) => {
     try {
         dispatch({ type: RESORT_LIST_REQUEST })
-        const { data } = await axios.get('/api/resorts')
+        const { data } = await axios.get(`/api/resorts?keyword=${keywordInput}`)
 
         dispatch({
             type: RESORT_LIST_SUCCESS,
