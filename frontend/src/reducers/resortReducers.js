@@ -30,7 +30,12 @@ export const resortListReducer = (state = { resorts: [] }, action) => {
       case RESORT_LIST_REQUEST:
           return { loading: true, resorts: [] }
       case RESORT_LIST_SUCCESS:
-          return { loading: false, resorts: action.payload }
+          return { 
+              loading: false, 
+              resorts: action.payload.resorts, 
+              pages: action.payload.pages, 
+              page: action.payload.page
+            }
      case RESORT_LIST_FAIL:
          return { loading: false, error: action.payload }
      default: 
