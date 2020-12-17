@@ -23,10 +23,10 @@ import {
     RESORT_TOP_FAIL
 } from '../constants/resortConstants'
 
-export const listResorts = (keywordInput = '') => async (dispatch) => {
+export const listResorts = (keywordInput = '', pageNumber = '') => async (dispatch) => {
     try {
         dispatch({ type: RESORT_LIST_REQUEST })
-        const { data } = await axios.get(`/api/resorts?keyword=${keywordInput}`)
+        const { data } = await axios.get(`/api/resorts?keyword=${keywordInput}&pageNumber=${pageNumber}`)
 
         dispatch({
             type: RESORT_LIST_SUCCESS,

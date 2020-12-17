@@ -5,14 +5,20 @@ import Resort from '../models/resortModel.js'
 // @route         GET /api/resorts
 // @access        Public
 const getResorts = expressAsyncHandler(async (req, res) => {
+    const pageSize = 1
+    const page = Number(req.query.pageNumber) || 1
+
     const keyword = req.query.keyword ? {
         name: {
             $regex: req.query.keyword,
             $options: 'i'
         }
     } : {}
-    const resorts = await Resort.find({ ...keyword })
-    res.json(resorts)
+
+    const count = await Resort.countDocuments({ ...keyword } )
+
+    const resorts = await Resort.find({ ...keyword }).limit(pageSize).skip(pageSize * (page - 1))
+    res.json({ resorts, page, pages: Math.ceil(count / pageSize) })
 })
 
 

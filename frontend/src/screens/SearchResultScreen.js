@@ -3,15 +3,17 @@ import { Route } from 'react-router-dom'
 import ResultResortsList from '../components/ResultResortsList'
 import SearchBox from '../components/SearchBox'
 
-const SearchResultScreen = ({ match }) => {
 
+const SearchResultScreen = ({ match }) => {
+    
     const keywordInput = match.params.keyword
+    const pageNumber = match.params.pageNumber || 1
 
     return (
         <div>
              <h1>Search Result for: {keywordInput} </h1>
             <Route render={({ history }) => <SearchBox keywordInput={keywordInput} history={history}/>} />
-            <ResultResortsList keywordInput={keywordInput}/>
+            <ResultResortsList keywordInput={keywordInput} pageNumber={pageNumber}/>
         </div>
     )
 }
