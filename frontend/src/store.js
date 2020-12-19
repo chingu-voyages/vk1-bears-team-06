@@ -19,6 +19,7 @@ import {
     userListReducer,
     userDeleteReducer,
     userUpdateReducer,
+    userActivateReducer
 } from './reducers/userReducers'
 
 const reducer = combineReducers({
@@ -35,7 +36,8 @@ const reducer = combineReducers({
     userUpdateProfile: userUpdateProfileReducer,
     userList: userListReducer,
     userDelete: userDeleteReducer,
-    userUpdate: userUpdateReducer
+    userUpdate: userUpdateReducer,
+    userActivate: userActivateReducer
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null
