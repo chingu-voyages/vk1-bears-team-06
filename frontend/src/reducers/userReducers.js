@@ -22,7 +22,10 @@ import {
     USER_UPDATE_REQUEST,
     USER_UPDATE_SUCCESS,
     USER_UPDATE_FAIL,
-    USER_UPDATE_RESET
+    USER_UPDATE_RESET,
+    USER_ACTIVATION_REQUEST,
+    USER_ACTIVATION_SUCCESS,
+    USER_ACTIVATION_FAIL
     } from "../constants/userConstants"
 
 export const userLoginReducer = (state = {}, action) => {
@@ -44,15 +47,30 @@ export const userLoginReducer = (state = {}, action) => {
  export const userRegisterReducer = (state = {}, action) => {
     switch(action.type){
        case USER_REGISTER_REQUEST:
-           return { loading: true }
+           return { loading: true, success: false }
        case USER_REGISTER_SUCCESS:
-           return { loading: false, userInfo: action.payload }
+           return { loading: false, success: true }
       case USER_REGISTER_FAIL:
+          return { loading: false, error: action.payload, success: false }
+      default: 
+          return state
+    }
+ }
+
+
+ export const userActivateReducer = (state = {}, action) => {
+    switch(action.type){
+       case USER_ACTIVATION_REQUEST:
+           return { loading: true }
+       case USER_ACTIVATION_SUCCESS:
+           return { loading: false, userInfo: action.payload }
+      case USER_ACTIVATION_FAIL:
           return { loading: false, error: action.payload }
       default: 
           return state
     }
  }
+
 
  export const userDetailsReducer = (state = { user: {} }, action) => {
     switch(action.type){

@@ -1,6 +1,8 @@
 import expressAsyncHandler from 'express-async-handler'
-import generateToken from '../utlity/generateToken.js'
+import generateToken from '../utility/generateToken.js'
+import sgMail from '@sendgrid/mail'
 import User from '../models/userModel.js'
+import jwt from 'jsonwebtoken'
 
 // @description   Auth user & get token
 // @route         POST /api/users/login
@@ -35,28 +37,85 @@ const registerUser = expressAsyncHandler(async (req, res) => {
         throw new Error('User already exist!')
     }
 
-    const user = await User.create({ 
-        name,
-        email,
-        phone,
-        role,
-        password
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+
+    const token = jwt.sign({ name, email, phone, role, password }, process.env.JWT_ACCOUNT_ACTIVATION, {
+        expiresIn: '20m'
     })
 
-    if(user){
-       res.status(201).json({
-        _id: user._id,
-        name: user.name,
-        email: user.email,
-        phone: user.phone,
-        role: user.role,
-        token: generateToken(user._id)
-       })
-    } else {
-       res.status(400)
-       throw new Error('Invalid user data')
+    const emailData = {
+        to: email,
+        from: process.env.EMAIL_FROM,
+        subject: `Iko account activation link`,
+        html: `
+           <h2>Please use the following link to activate your account</h2>
+           <p>${process.env.CLIENT_URL}/auth/activate/${token}</p>
+           <hr/>
+           <p>This is email may contain sensitive information</p>
+        `
+    }
+    const emailSent = await sgMail.send(emailData)
+
+    if(emailSent){
+        res.status(201).json({
+              message: `Email has been sent to ${email}. Follow the instruction to activate your account!`
+        })
     }
  })
+ 
+
+
+// @description   Account activation 
+// @route         POST /api/users/accout-activation
+// @access        Public
+const accountActivation = expressAsyncHandler(async (req, res) => {
+    const { token } = req.body
+
+    if(token){
+       jwt.verify(token, process.env.JWT_ACCOUNT_ACTIVATION, (err, decode) => {
+           if(err){
+               console.log('JWT VERIFY IN ACCOUNT ACTIVATION ERROR')
+               return res.status(401).json({
+                   error: 'Expired link. Signup again'
+               })
+           }
+
+           const { name, email, phone, role, password } = jwt.decode(token)
+
+          const user = new User({ name, email, phone, role, password })
+
+          user.save((err, user) => {
+              if(err){
+                  console.log('SAVE USER IN ACCOUNT ACTIVATION ERROR', err)
+                  return res.status(401).json({
+                    error: 'Error saving user in database! Try signing up again!'
+                })
+            }
+
+              if(user){
+                res.status(201).json({
+                    _id: user._id,
+                    name: user.name,
+                    email: user.email,
+                    phone: user.phone,
+                    role: user.role,
+                    token: generateToken(user._id)
+                })
+                } else {
+                    res.status(400)
+                    throw new Error('Something went wrong. Try again')
+                }
+
+          })
+
+       })
+    }
+ })
+
+
+
+
+
 
 // @description   Get user profile
 // @route         POST /api/users/profle
@@ -174,4 +233,4 @@ const updateUser = expressAsyncHandler(async (req, res) => {
 
 
 
-export { authUser, getUserProfile, updateUserProfile, registerUser, getUsers, deleteUser, getUserById, updateUser }
+export { authUser, getUserProfile, updateUserProfile, registerUser, getUsers, deleteUser, getUserById, updateUser, accountActivation }

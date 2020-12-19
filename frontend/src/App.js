@@ -13,6 +13,10 @@ import ResortListScreen from './screens/ResortListScreen'
 import ResortEditScreen from './screens/ResortEditScreen'
 import ResortCreateScreen from './screens/ResortCreateScreen'
 import SearchResultScreen from './screens/SearchResultScreen'
+import ActivateAccountScreen from './screens/ActivateAccountScreen'
+import SentEmailScreen from './screens/SentEmailScreen'
+
+
 
 const App = () => {
   return (
@@ -31,6 +35,8 @@ const App = () => {
              <Route path='/search/:keyword' component={SearchResultScreen} exact />
              <Route path='/search/:keyword/page/:pageNumber' component={SearchResultScreen} exact />
              <Route path='/resorts/:id' component={ResortDetailScreen} />
+             <Route path='/auth/activate/:token' component={ActivateAccountScreen} />
+             <Route path='/confirm-email/email=:email' component={SentEmailScreen} />
           </div>
        <Footer />
     </Router>
