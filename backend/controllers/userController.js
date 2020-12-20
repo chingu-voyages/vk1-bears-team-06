@@ -47,12 +47,11 @@ const registerUser = expressAsyncHandler(async (req, res) => {
         to: email,
         from: process.env.EMAIL_FROM,
         subject: `Iko account activation link`,
-        html: `
-           <h2>Please use the following link to activate your account</h2>
-           <p>${process.env.CLIENT_URL}/auth/activate/${token}</p>
-           <hr/>
-           <p>This is email may contain sensitive information</p>
-        `
+        templateId: 'd-6fa57032754d4a76b500f93b3de342ee',
+        dynamic_template_data: {
+            name: name,
+            confirm_account_url:  `${process.env.CLIENT_URL}/auth/activate/${token}`,
+         }
     }
     const emailSent = await sgMail.send(emailData)
 
