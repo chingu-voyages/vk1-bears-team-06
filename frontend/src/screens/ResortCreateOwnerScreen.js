@@ -6,7 +6,7 @@ import  Loader from '../components/Loader'
 import { createResort } from '../actions/resortActions'
 import { RESORT_CREATE_RESET } from '../constants/resortConstants'
 
-const ResortCreateScreen = ({ history }) => {
+const ResortCreateOwnerScreen = ({ history }) => {
 
     const [name, setName] = useState('')
     const [pricePerNight, setPricePerNight] = useState(0)
@@ -220,4 +220,4 @@ const ResortCreateScreen = ({ history }) => {
       
 }
 
-export default ResortCreateScreen
+export default ResortCreateOwnerScreen

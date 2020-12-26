@@ -5,13 +5,11 @@ import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import { 
     listResorts, 
-    deleteResort, 
-    createResort 
+    deleteResort
 } from '../actions/resortActions'
 
-import { RESORT_CREATE_RESET } from '../constants/resortConstants'
 
-const ResortListScreen = ({ history, match }) => {
+const ResortListAdminScreen = ({ history, match }) => {
     const dispatch = useDispatch()
 
     const resortList = useSelector(state => state.resortList)
@@ -32,17 +30,13 @@ const ResortListScreen = ({ history, match }) => {
     } = resortCreate
 
     useEffect(() => {
-        dispatch({ type: RESORT_CREATE_RESET  })
 
         if(!userInfo.role === 'administrator'){
             history.push('/login')
         } 
 
-        if(successCreate){
-            history.push(`/admin/resorts/${createdResort._id}`)
-        } else {
-            dispatch(listResorts())
-        }
+         dispatch(listResorts())
+
         
     }, [dispatch, history, userInfo, successDelete, successCreate, createdResort])
 
@@ -117,4 +111,4 @@ const ResortListScreen = ({ history, match }) => {
     )
 }
 
-export default ResortListScreen
+export default ResortListAdminScreen

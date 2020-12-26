@@ -20,7 +20,10 @@ import {
     RESORT_CREATE_REVIEW_FAIL,
     RESORT_TOP_REQUEST,
     RESORT_TOP_SUCCESS,
-    RESORT_TOP_FAIL
+    RESORT_TOP_FAIL,
+    RESORT_OWNER_LIST_REQUEST,
+    RESORT_OWNER_LIST_SUCCESS,
+    RESORT_OWNER_LIST_FAIL
 } from '../constants/resortConstants'
 
 export const listResorts = (keywordInput = '', pageNumber = '') => async (dispatch) => {
@@ -41,6 +44,26 @@ export const listResorts = (keywordInput = '', pageNumber = '') => async (dispat
        })
     }
 }
+
+export const listOwnerResorts = (keywordInput = '', pageNumber = '') => async (dispatch) => {
+    try {
+        dispatch({ type: RESORT_OWNER_LIST_REQUEST })
+        const { data } = await axios.get(`/api/resorts?pageNumber=${pageNumber}`)
+
+        dispatch({
+            type: RESORT_OWNER_LIST_SUCCESS,
+            payload: data
+        })
+    
+    } catch (error) {
+       dispatch({
+           type: RESORT_OWNER_LIST_FAIL,
+           payload: error.response && error.response.data.message ? 
+           error.response.data.message : error.message
+       })
+    }
+}
+
 
 
 export const listTopResorts = () => async (dispatch) => {
