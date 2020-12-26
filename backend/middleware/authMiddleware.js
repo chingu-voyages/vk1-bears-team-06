@@ -35,4 +35,14 @@ const admin = (req, res, next) => {
   }
 }
 
-export { protect, admin }
+const resortOwner = (req, res, next) => {
+  if(req.user && req.user.role === 'resortOwner'){
+     next()
+  } else {
+    res.status(401)
+    throw new Error('Not authorized as a Resort Owner!')
+  }
+}
+
+
+export { protect, admin, resortOwner }

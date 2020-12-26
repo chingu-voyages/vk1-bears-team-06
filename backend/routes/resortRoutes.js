@@ -6,16 +6,17 @@ import {
     createResort, 
     updateResort,
     createResortReview,
-    getTopResorts
+    getTopResorts,
+    getOwnerResorts
 } from '../controllers/resortController.js'
 
-import { protect, admin } from '../middleware/authMiddleware.js'
+import { protect, admin, resortOwner } from '../middleware/authMiddleware.js'
 const router = express.Router()
 
-router.route('/').get(getResorts).post(protect, admin, createResort)
+router.route('/').get(getOwnerResorts, resortOwner).get(getResorts, admin).post(protect, resortOwner, admin, createResort)
 router.route('/:id/reviews').post(protect, createResortReview)
 router.get('/top', getTopResorts)
-router.route('/:id').get(getResortById).delete(protect, admin, deleteResort)
-.put(protect, admin, updateResort)
+router.route('/:id').get(getResortById).delete(protect, resortOwner, admin, deleteResort)
+.put(protect, admin, resortOwner, updateResort)
 
 export default router

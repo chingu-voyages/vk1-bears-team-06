@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { 
     resortListReducer, 
+    resortOwnerListReducer,
     resortDetailsReducer, 
     resortDeleteReducer,
     resortCreateReducer,
@@ -24,6 +25,7 @@ import {
 
 const reducer = combineReducers({
     resortList: resortListReducer,
+    resortOwnerList: resortOwnerListReducer,
     resortDetails: resortDetailsReducer,
     resortDelete: resortDeleteReducer,
     resortCreate: resortCreateReducer,

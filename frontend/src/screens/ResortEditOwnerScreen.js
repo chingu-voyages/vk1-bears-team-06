@@ -6,7 +6,7 @@ import  Loader from '../components/Loader'
 import { listResortDetails, updateResort } from '../actions/resortActions'
 import { RESORT_UPDATE_RESET } from '../constants/resortConstants'
 
-const ResortEditScreen = ({ match, history }) => {
+const ResortEditOwnerScreen = ({ match, history }) => {
 
     const resortId = match.params.id
 
@@ -263,4 +263,4 @@ const ResortEditScreen = ({ match, history }) => {
         </>
     )}
 
-export default ResortEditScreen
+export default ResortEditOwnerScreen

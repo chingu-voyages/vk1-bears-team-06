@@ -21,6 +21,19 @@ const getResorts = expressAsyncHandler(async (req, res) => {
     res.json({ resorts, page, pages: Math.ceil(count / pageSize) })
 })
 
+// @description   Fetch all resorts created by the resort owner
+// @route         GET /api/resorts
+// @access        Public
+const getOwnerResorts = expressAsyncHandler(async (req, res) => {
+    const pageSize = 10
+    const page = Number(req.query.pageNumber) || 1
+
+    const count = await Resort.countDocuments({ user: req.user._id })
+
+    const resorts = await Resort.find({ user: req.user._id }).limit(pageSize).skip(pageSize * (page - 1))
+    res.json({ resorts, page, pages: Math.ceil(count / pageSize) })
+})
+
 
 // @description   Fetch a single resort
 // @route         GET /api/resorts/:id
@@ -193,4 +206,4 @@ const getTopResorts = expressAsyncHandler(async (req, res) => {
 })
  
 
-export { getResorts, getResortById, deleteResort, createResort, updateResort, createResortReview, getTopResorts } 
+export { getResorts, getResortById, deleteResort, createResort, updateResort, createResortReview, getTopResorts, getOwnerResorts } 
