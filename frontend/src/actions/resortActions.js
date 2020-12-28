@@ -45,10 +45,10 @@ export const listResorts = (keywordInput = '', pageNumber = '') => async (dispat
     }
 }
 
-export const listOwnerResorts = (keywordInput = '', pageNumber = '') => async (dispatch) => {
+export const listOwnerResorts = (userid, pageNumber = '') => async (dispatch) => {
     try {
         dispatch({ type: RESORT_OWNER_LIST_REQUEST })
-        const { data } = await axios.get(`/api/resorts?pageNumber=${pageNumber}`)
+        const { data } = await axios.get(`/api/resorts/${userid}?pageNumber=${pageNumber}`)
 
         dispatch({
             type: RESORT_OWNER_LIST_SUCCESS,
@@ -69,7 +69,7 @@ export const listOwnerResorts = (keywordInput = '', pageNumber = '') => async (d
 export const listTopResorts = () => async (dispatch) => {
     try {
         dispatch({ type: RESORT_TOP_REQUEST })
-        const { data } = await axios.get(`/api/resorts/top`)
+        const { data } = await axios.get(`/api/resorts/toprated/top`)
 
         dispatch({
             type: RESORT_TOP_SUCCESS,

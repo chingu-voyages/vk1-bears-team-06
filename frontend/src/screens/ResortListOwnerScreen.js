@@ -9,7 +9,7 @@ import {
 } from '../actions/resortActions'
 
 
-const ResortListOwnerScreen = ({ history }) => {
+const ResortListOwnerScreen = ({ history, match }) => {
     const dispatch = useDispatch()
 
     const resortOwnerList = useSelector(state => state.resortOwnerList)
@@ -30,14 +30,16 @@ const ResortListOwnerScreen = ({ history }) => {
     } = resortCreate
 
     useEffect(() => {
-        if(!userInfo.role === 'resortOwner'){
-            history.push('/login')
+        console.log('current user >>>', userInfo._id)
+        console.log('params id >>>', match.params.userid)
+        if(userInfo.role !== 'resortOwner' || userInfo._id !== match.params.userid){
+            history.push('/')
         } 
 
-         dispatch(listOwnerResorts())
+         dispatch(listOwnerResorts(userInfo._id))
 
         
-    }, [dispatch, history, userInfo, successDelete, successCreate, createdResort])
+    }, [dispatch, history, userInfo, successDelete, successCreate, createdResort, match.params.userid])
 
 
     const deleteHandler = (id) => {
