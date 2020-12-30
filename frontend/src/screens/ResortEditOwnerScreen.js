@@ -3,12 +3,13 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
-import { listResortDetails, updateResort } from '../actions/resortActions'
-import { RESORT_UPDATE_RESET } from '../constants/resortConstants'
+import { listResortOwnerDetails, updateResortOwner } from '../actions/resortActions'
+import { RESORT_OWNER_UPDATE_RESET } from '../constants/resortConstants'
 
 const ResortEditOwnerScreen = ({ match, history }) => {
 
     const resortId = match.params.id
+    const userId = match.params.userid
 
     const [name, setName] = useState('')
     const [pricePerNight, setPricePerNight] = useState(0)
@@ -34,25 +35,30 @@ const ResortEditOwnerScreen = ({ match, history }) => {
 
     const dispatch = useDispatch()
 
-    const resortDetails = useSelector(state => state.resortDetails)
-    const { loading, error, resort } = resortDetails 
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
 
-    const resortUpdate = useSelector(state => state.resortUpdate)
+    const resortOwnerDetails = useSelector(state => state.resortOwnerDetails)
+    const { loading, error, resort } = resortOwnerDetails 
+
+    const resortOwnerUpdate = useSelector(state => state.resortOwnerUpdate)
     const { 
         loading: loadingUpdate, 
         error: errorUpdate, 
         success: successUpdate 
-    } = resortUpdate 
+    } = resortOwnerUpdate 
 
      useEffect(() => {
+        if(userInfo.role !== 'resortOwner' || userInfo._id !== userId){
+            history.push('/')
+        } 
 
         if(successUpdate){
-            dispatch({ type: RESORT_UPDATE_RESET })
-            history.push('/admin/resortsList')
+            dispatch({ type: RESORT_OWNER_UPDATE_RESET })
+            history.push(`/resort-owner/${userInfo._id}/resortslist`)
         } else {
-
             if(!resort.name || resort._id !== resortId){
-                dispatch(listResortDetails(resortId))
+                dispatch(listResortOwnerDetails(resortId, userId))
              } else {
                 setName(resort.name)
                 setPricePerNight(resort.price_per_night)
@@ -62,6 +68,7 @@ const ResortEditOwnerScreen = ({ match, history }) => {
                 setProvince(resort.province)
                 setZipCode(resort.zip_code)
                 setPhone(resort.phone)
+                setEmail(resort.email)
                 setWebsite(resort.website)
                 setImage(resort.image)
                 setTV(resort.amenities.tv)
@@ -75,7 +82,7 @@ const ResortEditOwnerScreen = ({ match, history }) => {
                 setKids(resort.amenities.kids)
              }
         }
-     }, [dispatch, history, resortId, resort, successUpdate])
+     }, [dispatch, history, resortId, resort, successUpdate, userInfo._id, userId, userInfo.role])
 
      const uploadFileHandler = async(e) => {
          const file = e.target.files[0]
@@ -103,7 +110,7 @@ const ResortEditOwnerScreen = ({ match, history }) => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        dispatch(updateResort({ 
+        dispatch(updateResortOwner({ 
             _id: resortId,
             name,
             price_per_night: pricePerNight,
@@ -127,7 +134,7 @@ const ResortEditOwnerScreen = ({ match, history }) => {
                 animals,
                 kids
             }
-        }))
+        }), userId)
     }
 
 
@@ -177,14 +184,13 @@ const ResortEditOwnerScreen = ({ match, history }) => {
 
             <div className="form-group"> 
                 <label for="city">Phone</label>
-                <input type="number" name="phone" value={phone} className="form-control" id="phone" onChange={(e) => setPhone(e.target.value)}  />
+                <input type="text" name="phone" value={phone} className="form-control" id="phone" onChange={(e) => setPhone(e.target.value)}  />
             </div>
 
             <div className="form-group"> 
                 <label for="city">Email</label>
-                <input type="email" name="email" value={email} className="form-control" id="email" onChange={(e) => setEmail(e.target.value)}  />
+                <input type="text" name="email" value={email} className="form-control" id="email" onChange={(e) => setEmail(e.target.value)}  />
             </div>
-
 
 
             <div className="form-group"> 

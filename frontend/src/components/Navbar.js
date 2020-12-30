@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../actions/userActions'
 
-const Navbar = () => {
+const Navbar = ({ match }) => {
 const dispatch = useDispatch()
 
 const userLogin = useSelector((state) => state.userLogin)
@@ -65,6 +65,20 @@ const logoutHandler = () => {
           <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
             <li> <Link className="dropdown-item" to='/admin/userslist'>Users</Link></li>
             <li> <Link className="dropdown-item" to='/admin/resortslist'>Resorts</Link></li>
+          </ul>
+        </li>
+)}
+
+
+{ userInfo && userInfo.role === 'resortOwner' && (
+          <li className="nav-item dropdown">
+          <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" role="button" data-toggle="dropdown" aria-expanded="false">
+            Resort Owner
+          </a>
+
+        
+          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li> <Link className="dropdown-item" to={`/resort-owner/${userInfo._id}/resortslist`}>Resorts</Link></li>
           </ul>
         </li>
 )}

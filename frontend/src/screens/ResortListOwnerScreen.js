@@ -5,18 +5,18 @@ import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import { 
     listOwnerResorts,
-    deleteResort
+    deleteResortOwner
 } from '../actions/resortActions'
 
 
-const ResortListOwnerScreen = ({ history }) => {
+const ResortListOwnerScreen = ({ history, match }) => {
     const dispatch = useDispatch()
 
     const resortOwnerList = useSelector(state => state.resortOwnerList)
     const { loading, error, resorts } = resortOwnerList
 
-    const resortDelete = useSelector(state => state.resortDelete)
-    const { loading:loadingDelete, error:errorDelete, success:successDelete } = resortDelete
+    const resortOwnerDelete = useSelector(state => state.resortOwnerDelete)
+    const { loading:loadingDelete, error:errorDelete, success:successDelete } = resortOwnerDelete
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
@@ -30,19 +30,19 @@ const ResortListOwnerScreen = ({ history }) => {
     } = resortCreate
 
     useEffect(() => {
-        if(!userInfo.role === 'resortOwner'){
-            history.push('/login')
+        if(userInfo.role !== 'resortOwner' || userInfo._id !== match.params.userid){
+            history.push('/')
         } 
 
-         dispatch(listOwnerResorts())
+         dispatch(listOwnerResorts(userInfo._id))
 
         
-    }, [dispatch, history, userInfo, successDelete, successCreate, createdResort])
+    }, [dispatch, history, userInfo, successDelete, successCreate, createdResort, match.params.userid])
 
 
     const deleteHandler = (id) => {
         if(window.confirm('Are you sure')){
-            dispatch(deleteResort(id))
+            dispatch(deleteResortOwner(id))
         }
     }
 
@@ -57,7 +57,7 @@ const ResortListOwnerScreen = ({ history }) => {
     { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
     
     <>
-       <Link to='/admin/resorts/create'>Create Resort</Link>
+       <Link to={`/resort-owner/${userInfo._id}/resorts/create`}>Create Resort</Link>
        <table className="table">
         <thead className="thead-dark">
           <tr>
@@ -90,7 +90,7 @@ const ResortListOwnerScreen = ({ history }) => {
                  }</td>
                   <td>
 
-                  <Link to={`/admin/resort/${resort._id}/edit`}>
+                  <Link to={`/resort-owner/${userInfo._id}/resort/${resort._id}/edit`}>
                   <button classNameName="btn btn-sm">
                       EDIT
                   </button>

@@ -34,9 +34,9 @@ const App = () => {
              <Route path='/admin/resorts/create' component={ResortCreateAdminScreen} exact />
              <Route path='/admin/resort/:id/edit' component={ResortEditAdminScreen} exact />
 
-             <Route path='/resort-owner/resortslist' component={ResortListOwnerScreen} exact />
-             <Route path='/resort-owner/resorts/create' component={ResortCreateOwnerScreen} exact />
-             <Route path='/resort-owner/resort/:id/edit' component={ResortEditOwnerScreen} exact />
+             <Route path='/resort-owner/:userid/resortslist' component={ResortListOwnerScreen} exact />
+             <Route path='/resort-owner/:userid/resorts/create' component={ResortCreateOwnerScreen} exact />
+             <Route path='/resort-owner/:userid/resort/:id/edit' component={ResortEditOwnerScreen} exact />
 
              <Route path='/admin/user/:id/edit' component={UserEditScreen} exact />
              <Route path='/' component={HomeScreen} exact />

@@ -3,10 +3,10 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
-import { createResort } from '../actions/resortActions'
-import { RESORT_CREATE_RESET } from '../constants/resortConstants'
+import { createResortOwner } from '../actions/resortActions'
+import { RESORT_OWNER_CREATE_RESET } from '../constants/resortConstants'
 
-const ResortCreateOwnerScreen = ({ history }) => {
+const ResortCreateOwnerScreen = ({ history, match }) => {
 
     const [name, setName] = useState('')
     const [pricePerNight, setPricePerNight] = useState(0)
@@ -29,18 +29,25 @@ const ResortCreateOwnerScreen = ({ history }) => {
     const [animals, setAnimals] = useState(false)
     const [kids, setKids] = useState(false)
     const [uploading, setUploading] = useState(false)
-
+    const userId =  match.params.userid
     const dispatch = useDispatch()
 
-    const resortCreate = useSelector(state => state.resortCreate)
-    const { loading, error, success } = resortCreate 
+    const userLogin = useSelector(state => state.userLogin)
+    const { userInfo } = userLogin
+
+    const resortOwnerCreate = useSelector(state => state.resortOwnerCreate)
+    const { loading, error, success } = resortOwnerCreate 
 
      useEffect(() => {
-         if(success){
-            dispatch({ type: RESORT_CREATE_RESET })
-            history.push('/admin/resortsList')
+        if(userInfo.role !== 'resortOwner' || userInfo._id !== userId){
+            history.push('/')
+        } 
+
+        if(success){
+            dispatch({ type: RESORT_OWNER_CREATE_RESET })
+            history.push(`/resort-owner/${userInfo._id}/resortslist`)
          } 
-     }, [dispatch, history, success])
+     }, [dispatch, history, success, userInfo._id, userInfo.role, userId])
 
      const uploadFileHandler = async(e) => {
         const file = e.target.files[0]
@@ -67,7 +74,7 @@ const ResortCreateOwnerScreen = ({ history }) => {
 
     const submitHandler = (e) => {
         e.preventDefault()
-        dispatch(createResort({ 
+        dispatch(createResortOwner({ 
             name,
             price_per_night: pricePerNight,
             description,
@@ -142,7 +149,7 @@ const ResortCreateOwnerScreen = ({ history }) => {
 
             <div className="form-group"> 
                 <label for="city">Email</label>
-                <input type="email" name="email" className="form-control" id="email" onChange={(e) => setEmail(e.target.value)}  />
+                <input type="text" name="email" className="form-control" id="email" onChange={(e) => setEmail(e.target.value)}  />
             </div>
 
             <div className="form-group"> 
