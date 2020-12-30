@@ -31,8 +31,8 @@ const ResortListAdminScreen = ({ history, match }) => {
 
     useEffect(() => {
 
-        if(!userInfo.role === 'administrator'){
-            history.push('/login')
+        if(userInfo.role !== 'administrator'){
+            history.push('/')
         } 
 
          dispatch(listResorts())

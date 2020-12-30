@@ -5,7 +5,7 @@ import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import { 
     listOwnerResorts,
-    deleteResort
+    deleteResortOwner
 } from '../actions/resortActions'
 
 
@@ -15,8 +15,8 @@ const ResortListOwnerScreen = ({ history, match }) => {
     const resortOwnerList = useSelector(state => state.resortOwnerList)
     const { loading, error, resorts } = resortOwnerList
 
-    const resortDelete = useSelector(state => state.resortDelete)
-    const { loading:loadingDelete, error:errorDelete, success:successDelete } = resortDelete
+    const resortOwnerDelete = useSelector(state => state.resortOwnerDelete)
+    const { loading:loadingDelete, error:errorDelete, success:successDelete } = resortOwnerDelete
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
@@ -30,8 +30,6 @@ const ResortListOwnerScreen = ({ history, match }) => {
     } = resortCreate
 
     useEffect(() => {
-        console.log('current user >>>', userInfo._id)
-        console.log('params id >>>', match.params.userid)
         if(userInfo.role !== 'resortOwner' || userInfo._id !== match.params.userid){
             history.push('/')
         } 
@@ -44,7 +42,7 @@ const ResortListOwnerScreen = ({ history, match }) => {
 
     const deleteHandler = (id) => {
         if(window.confirm('Are you sure')){
-            dispatch(deleteResort(id))
+            dispatch(deleteResortOwner(id))
         }
     }
 
@@ -59,7 +57,7 @@ const ResortListOwnerScreen = ({ history, match }) => {
     { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
     
     <>
-       <Link to='/admin/resorts/create'>Create Resort</Link>
+       <Link to={`/resort-owner/${userInfo._id}/resorts/create`}>Create Resort</Link>
        <table className="table">
         <thead className="thead-dark">
           <tr>
@@ -92,7 +90,7 @@ const ResortListOwnerScreen = ({ history, match }) => {
                  }</td>
                   <td>
 
-                  <Link to={`/admin/resort/${resort._id}/edit`}>
+                  <Link to={`/resort-owner/${userInfo._id}/resort/${resort._id}/edit`}>
                   <button classNameName="btn btn-sm">
                       EDIT
                   </button>

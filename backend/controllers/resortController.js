@@ -47,6 +47,21 @@ const getResortById = expressAsyncHandler(async (req, res) => {
     }
 })
 
+// @description   Fetch a single resort
+// @route         GET /api/resorts/:userid/:id
+// @access        Public
+const getResortOwnerById = expressAsyncHandler(async (req, res) => {
+    const resort = await Resort.findById(req.params.id)
+    
+    if(resort){ 
+        res.json(resort) 
+    } else {
+        res.status(404)
+        throw new Error('Resort not found')
+    }
+})
+
+
 
 // @description   Delete a resort
 // @route         DELETE /api/resorts/:id
@@ -64,6 +79,23 @@ const deleteResort = expressAsyncHandler(async (req, res) => {
 })
 
 
+// @description   Delete a resort
+// @route         DELETE /api/resorts/:id
+// @access        Private/Admin
+const deleteResortOwner = expressAsyncHandler(async (req, res) => {
+    const resort = await Resort.findById(req.params.id)
+    
+    if(resort){ 
+        await resort.remove()
+        res.json({ message: 'Resort removed!' })
+    } else {
+        res.status(404)
+        throw new Error('Resort not found')
+    }
+})
+
+
+
 // @description   Create a resort
 // @route         POST /api/resorts/:id
 // @access        Private/Admin
@@ -78,6 +110,7 @@ const createResort = expressAsyncHandler(async (req, res) => {
         province, 
         zip_code, 
         phone, 
+        email,
         website, 
         amenities, 
         image
@@ -100,6 +133,7 @@ const createResort = expressAsyncHandler(async (req, res) => {
         province, 
         zip_code, 
         phone, 
+        email,
         website, 
         amenities, 
         image
@@ -107,6 +141,54 @@ const createResort = expressAsyncHandler(async (req, res) => {
 
     res.status(201).json(createResort)
 })
+
+// @description   Create a resort
+// @route         POST /api/resorts/:userid
+// @access        Private/Admin
+const createOwnerResort = expressAsyncHandler(async (req, res) => {
+
+    const { 
+        name, 
+        price_per_night, 
+        description, 
+        address, 
+        city, 
+        province, 
+        zip_code, 
+        phone, 
+        email,
+        website, 
+        amenities, 
+        image
+      } = req.body
+    
+      const resortExists = await Resort.findOne({ name })
+    
+      if(resortExists){
+          res.status(400)
+          throw new Error('Resort already exist!')
+      }
+  
+    const resort = await Resort.create({
+        user: req.user._id,
+        name, 
+        price_per_night, 
+        description, 
+        address, 
+        city, 
+        province, 
+        zip_code, 
+        phone, 
+        email,
+        website, 
+        amenities, 
+        image
+    })
+
+    res.status(201).json(createResort)
+})
+
+
 
 // @description   Update a resort
 // @route         PUT /api/resorts/:id
@@ -124,6 +206,7 @@ const updateResort = expressAsyncHandler(async (req, res) => {
         latitude,
         longitude,
         phone,
+        email,
         website,
         amenities,
         image
@@ -142,6 +225,7 @@ const updateResort = expressAsyncHandler(async (req, res) => {
         resort.latitude = latitude
         resort.longitude = longitude
         resort.phone = phone
+        resort.email = email
         resort.website = website
         resort.amenities = amenities
         resort.image = image
@@ -153,6 +237,57 @@ const updateResort = expressAsyncHandler(async (req, res) => {
         throw new Error('Resort not found!')
     }
 })
+
+
+
+// @description   Update a resort
+// @route         PUT /api/resorts/:userid
+// @access        Private/Admin
+const updateResortOwner = expressAsyncHandler(async (req, res) => {
+
+    const { 
+        name, 
+        price_per_night, 
+        description,
+        address, 
+        city, 
+        province, 
+        zip_code,
+        latitude,
+        longitude,
+        phone,
+        email,
+        website,
+        amenities,
+        image
+     } = req.body
+
+    const resort = await Resort.findById(req.params.id)
+
+    if(resort){
+        resort.name = name,
+        resort.price_per_night = price_per_night
+        resort.description = description
+        resort.address = address
+        resort.city = city
+        resort.province = province
+        resort.zip_code = zip_code
+        resort.latitude = latitude
+        resort.longitude = longitude
+        resort.phone = phone
+        resort.email = email
+        resort.website = website
+        resort.amenities = amenities
+        resort.image = image
+
+        const updatedResort = await resort.save()
+        res.json(updatedResort)
+    } else{
+        res.status(404)
+        throw new Error('Resort not found!')
+    }
+})
+
 
 
 // @description   Create new review
@@ -204,4 +339,17 @@ const getTopResorts = expressAsyncHandler(async (req, res) => {
 })
  
 
-export { getResorts, getResortById, deleteResort, createResort, updateResort, createResortReview, getTopResorts, getOwnerResorts } 
+export { 
+    getResorts, 
+    getResortById, 
+    getResortOwnerById,
+    deleteResort, 
+    createResort, 
+    updateResort, 
+    createResortReview, 
+    getTopResorts, 
+    getOwnerResorts, 
+    createOwnerResort,
+    updateResortOwner,
+    deleteResortOwner
+} 

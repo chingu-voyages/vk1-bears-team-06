@@ -8,6 +8,9 @@ import {
     RESORT_DELETE_REQUEST,
     RESORT_DELETE_SUCCESS,
     RESORT_DELETE_FAIL,
+    RESORT_OWNER_DELETE_REQUEST,
+    RESORT_OWNER_DELETE_SUCCESS,
+    RESORT_OWNER_DELETE_FAIL,
     RESORT_CREATE_REQUEST,
     RESORT_CREATE_SUCCESS,
     RESORT_CREATE_FAIL,
@@ -25,7 +28,18 @@ import {
     RESORT_TOP_FAIL,
     RESORT_OWNER_LIST_REQUEST,
     RESORT_OWNER_LIST_SUCCESS,
-    RESORT_OWNER_LIST_FAIL
+    RESORT_OWNER_LIST_FAIL,
+    RESORT_OWNER_CREATE_REQUEST,
+    RESORT_OWNER_CREATE_SUCCESS,
+    RESORT_OWNER_CREATE_FAIL,
+    RESORT_OWNER_CREATE_RESET,
+    RESORT_OWNER_UPDATE_REQUEST,
+    RESORT_OWNER_UPDATE_SUCCESS,
+    RESORT_OWNER_UPDATE_FAIL,
+    RESORT_OWNER_UPDATE_RESET,
+    RESORT_OWNER_DETAILS_REQUEST,
+    RESORT_OWNER_DETAILS_SUCCESS,
+    RESORT_OWNER_DETAILS_FAIL
 } from '../constants/resortConstants'
 
 export const resortListReducer = (state = { resorts: [] }, action) => {
@@ -79,6 +93,21 @@ export const resortDetailsReducer = (state = { resort: { reviews: [] } }, action
  }
 
 
+ export const resortOwnerDetailsReducer = (state = { resort: { reviews: [] } }, action) => {
+    switch(action.type){
+       case RESORT_OWNER_DETAILS_REQUEST:
+           return { loading: true, ...state }
+       case RESORT_OWNER_DETAILS_SUCCESS:
+           return { loading: false, resort: action.payload }
+      case RESORT_OWNER_DETAILS_FAIL:
+          return { loading: false, error: action.payload }
+      default: 
+          return state
+    }
+ }
+
+
+
  export const resortDeleteReducer = (state = {}, action) => {
     switch(action.type){
        case RESORT_DELETE_REQUEST:
@@ -91,6 +120,21 @@ export const resortDetailsReducer = (state = { resort: { reviews: [] } }, action
           return state
     }
  }
+
+
+ export const resortOwnerDeleteReducer = (state = {}, action) => {
+    switch(action.type){
+       case RESORT_OWNER_DELETE_REQUEST:
+           return { loading: true }
+       case RESORT_OWNER_DELETE_SUCCESS:
+           return { loading: false, success: true }
+      case RESORT_OWNER_DELETE_FAIL:
+          return { loading: false, error: action.payload }
+      default: 
+          return state
+    }
+ }
+
 
 
  export const resortCreateReducer = (state = {}, action) => {
@@ -109,6 +153,23 @@ export const resortDetailsReducer = (state = { resort: { reviews: [] } }, action
  }
 
 
+ export const resortOwnerCreateReducer = (state = {}, action) => {
+    switch(action.type){
+       case RESORT_OWNER_CREATE_REQUEST:
+           return { loading: true }
+       case RESORT_OWNER_CREATE_SUCCESS:
+           return { loading: false, success: true, resort: action.payload }
+      case RESORT_OWNER_CREATE_FAIL:
+          return { loading: false, error: action.payload }
+      case RESORT_OWNER_CREATE_RESET:
+          return {}
+      default: 
+          return state
+    }
+ }
+
+
+
  export const resortUpdateReducer = (state = { resort: {} }, action) => {
     switch(action.type){
        case RESORT_UPDATE_REQUEST:
@@ -124,6 +185,21 @@ export const resortDetailsReducer = (state = { resort: { reviews: [] } }, action
     }
  }
 
+
+ export const resortOwnerUpdateReducer = (state = { resort: {} }, action) => {
+    switch(action.type){
+       case RESORT_OWNER_UPDATE_REQUEST:
+           return { loading: true }
+       case RESORT_OWNER_UPDATE_SUCCESS:
+           return { loading: false, success: true, resort: action.payload }
+      case RESORT_OWNER_UPDATE_FAIL:
+          return { loading: false, error: action.payload }
+      case RESORT_OWNER_UPDATE_RESET:
+          return { resort: {} }
+      default: 
+          return state
+    }
+ }
 
  
  export const resortReviewCreateReducer = (state = {}, action) => {
