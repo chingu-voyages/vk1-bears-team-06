@@ -60,7 +60,7 @@ export const listResorts = (keywordInput = '', pageNumber = '') => async (dispat
 export const listOwnerResorts = (userid, pageNumber = '') => async (dispatch) => {
     try {
         dispatch({ type: RESORT_OWNER_LIST_REQUEST })
-        const { data } = await axios.get(`/api/resorts/${userid}?pageNumber=${pageNumber}`)
+        const { data } = await axios.get(`/api/resortsByOwner/${userid}?pageNumber=${pageNumber}`)
 
         dispatch({
             type: RESORT_OWNER_LIST_SUCCESS,
@@ -81,7 +81,7 @@ export const listOwnerResorts = (userid, pageNumber = '') => async (dispatch) =>
 export const listTopResorts = () => async (dispatch) => {
     try {
         dispatch({ type: RESORT_TOP_REQUEST })
-        const { data } = await axios.get(`/api/resorts/topresort/top/resorts`)
+        const { data } = await axios.get(`/api/resorts/topresort/top`)
 
         dispatch({
             type: RESORT_TOP_SUCCESS,
@@ -120,7 +120,7 @@ export const listResortDetails = (id) => async (dispatch) => {
 export const listResortOwnerDetails = (id, userid) => async (dispatch) => {
     try {
         dispatch({ type: RESORT_OWNER_DETAILS_REQUEST })
-        const { data } = await axios.get(`/api/resorts/${userid}/${id}`)
+        const { data } = await axios.get(`/api/resortsByOwner/${userid}/${id}`)
 
         dispatch({
             type: RESORT_OWNER_DETAILS_SUCCESS,
@@ -181,7 +181,7 @@ export const deleteResortOwner = (id) => async (dispatch, getState) => {
             }
         }
 
-        await axios.delete(`/api/resorts/:userid/${id}`, config)
+        await axios.delete(`/api/resortsByOwner/:userid/${id}`, config)
 
         dispatch({
             type: RESORT_OWNER_DELETE_SUCCESS
@@ -240,7 +240,7 @@ export const createResortOwner = (resort) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.post(`/api/resorts/${userInfo._id}`, resort,  config)
+        const { data } = await axios.post(`/api/resortsByOwner/${userInfo._id}`, resort,  config)
 
         dispatch({
             type: RESORT_OWNER_CREATE_SUCCESS,
@@ -304,7 +304,7 @@ export const updateResortOwner = (resort) => async (dispatch, getState) => {
             }
         }
 
-        const { data } = await axios.post(`/api/resorts/${userInfo._id}/${resort._id}`, resort,  config)
+        const { data } = await axios.post(`/api/resortsByOwner/${userInfo._id}/${resort._id}`, resort,  config)
 
         dispatch({
             type: RESORT_OWNER_UPDATE_SUCCESS,

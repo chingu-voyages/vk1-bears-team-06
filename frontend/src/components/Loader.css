@@ -50,3 +50,14 @@
     opacity: 0;
   }
 }
+
+/* STAR RATING */
+
+.star-radio input[type="radio"] {
+  display: none;
+}
+
+.star {
+  cursor: pointer;
+  transition: color 200ms;
+}
