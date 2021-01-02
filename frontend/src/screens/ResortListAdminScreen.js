@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
+import Paginate from '../components/Paginate'
 import { 
     listResorts, 
     deleteResort
@@ -10,10 +11,13 @@ import {
 
 
 const ResortListAdminScreen = ({ history, match }) => {
+    const keyword = match.params.keyword
+    const pageNumber = match.params.pageNumber || 1
+
     const dispatch = useDispatch()
 
     const resortList = useSelector(state => state.resortList)
-    const { loading, error, resorts } = resortList
+    const { loading, error, resorts, page, pages } = resortList
 
     const resortDelete = useSelector(state => state.resortDelete)
     const { loading:loadingDelete, error:errorDelete, success:successDelete } = resortDelete
@@ -35,10 +39,10 @@ const ResortListAdminScreen = ({ history, match }) => {
             history.push('/')
         } 
 
-         dispatch(listResorts())
+         dispatch(listResorts(keyword, pageNumber))
 
         
-    }, [dispatch, history, userInfo, successDelete, successCreate, createdResort])
+    }, [dispatch, history, userInfo, successDelete, successCreate, createdResort, keyword, pageNumber])
 
 
     const deleteHandler = (id) => {
@@ -107,6 +111,7 @@ const ResortListAdminScreen = ({ history, match }) => {
       </table>
       </>
     )}
+        <Paginate pages={pages} page={page} />
         </>
     )
 }
