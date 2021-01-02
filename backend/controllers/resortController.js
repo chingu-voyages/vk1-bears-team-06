@@ -46,6 +46,7 @@ const getResortById = expressAsyncHandler(async (req, res) => {
     }
 })
 
+
 // @description   Fetch a single resort
 // @route         GET /api/resorts/:userid/:id
 // @access        Public
@@ -59,7 +60,6 @@ const getResortOwnerById = expressAsyncHandler(async (req, res) => {
         throw new Error('Resort not found')
     }
 })
-
 
 
 // @description   Delete a resort

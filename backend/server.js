@@ -7,6 +7,7 @@ import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import connectDB from './config/db.js'
 
 import resortRoutes from './routes/resortRoutes.js'
+import resortByOwnerRoutes from './routes/resortByOwnerRoutes.js'
 import userRoutes from './routes/userRoutes.js'
 import uploadRoutes from './routes/uploadRoutes.js'
 
@@ -23,6 +24,7 @@ if(process.env.NODE_ENV === 'development'){
 app.use(express.json())
 
 app.use('/api/resorts', resortRoutes)
+app.use('/api/resortsByOwner', resortByOwnerRoutes)
 app.use('/api/users', userRoutes)
 app.use('/api/upload', uploadRoutes)
 
