@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
+import Paginate from '../components/Paginate'
 import { 
     listOwnerResorts,
     deleteResortOwner
@@ -10,10 +11,13 @@ import {
 
 
 const ResortListOwnerScreen = ({ history, match }) => {
+
+    const pageNumber = match.params.pageNumber || 1
+
     const dispatch = useDispatch()
 
     const resortOwnerList = useSelector(state => state.resortOwnerList)
-    const { loading, error, resorts } = resortOwnerList
+    const { loading, error, resorts, page, pages } = resortOwnerList
 
     const resortOwnerDelete = useSelector(state => state.resortOwnerDelete)
     const { loading:loadingDelete, error:errorDelete, success:successDelete } = resortOwnerDelete
@@ -34,10 +38,10 @@ const ResortListOwnerScreen = ({ history, match }) => {
             history.push('/')
         } 
 
-         dispatch(listOwnerResorts(userInfo._id))
+         dispatch(listOwnerResorts(userInfo._id, pageNumber))
 
         
-    }, [dispatch, history, userInfo, successDelete, successCreate, createdResort, match.params.userid])
+    }, [dispatch, history, userInfo, successDelete, successCreate, createdResort, match.params.userid, pageNumber])
 
 
     const deleteHandler = (id) => {
@@ -104,6 +108,9 @@ const ResortListOwnerScreen = ({ history, match }) => {
            ))}
         </tbody>
       </table>
+     
+       <Paginate pages={pages} page={page} resortOwnerId={userInfo._id}/>
+
       </>
     )}
         </>

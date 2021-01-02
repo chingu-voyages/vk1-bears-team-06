@@ -5,7 +5,7 @@ import Resort from '../models/resortModel.js'
 // @route         GET /api/resorts
 // @access        Public
 const getResorts = expressAsyncHandler(async (req, res) => {
-    const pageSize = 10
+    const pageSize = 6
     const page = Number(req.query.pageNumber) || 1
 
     const keyword = req.query.keyword ? {
@@ -15,8 +15,7 @@ const getResorts = expressAsyncHandler(async (req, res) => {
         }
     } : {}
 
-    const count = await Resort.countDocuments({ ...keyword } )
-
+    const count = await Resort.countDocuments({ ...keyword })
     const resorts = await Resort.find({ ...keyword }).limit(pageSize).skip(pageSize * (page - 1))
     res.json({ resorts, page, pages: Math.ceil(count / pageSize) })
 })
@@ -26,9 +25,9 @@ const getResorts = expressAsyncHandler(async (req, res) => {
 // @access        Public
 const getOwnerResorts = expressAsyncHandler(async (req, res) => {
     const userId = req.params.userid
-    const pageSize = 10
+    const pageSize = 6
     const page = Number(req.query.pageNumber) || 1
-    const count = await Resort.countDocuments({ user: userId} )
+    const count = await Resort.countDocuments({ user: userId } )
     const resorts = await Resort.find({ user: userId }).limit(pageSize).skip(pageSize * (page - 1))
     res.json({ resorts, page, pages: Math.ceil(count / pageSize) })
 })

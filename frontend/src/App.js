@@ -30,11 +30,16 @@ const App = () => {
              <Route path='/register' component={RegisterScreen} exact />
              <Route path='/profile' component={ProfileScreen} exact />
              <Route path='/admin/userslist' component={UserListScreen} exact />
+             
              <Route path='/admin/resortslist' component={ResortListAdminScreen} exact />
+             <Route path='/admin/resortslist/page/:pageNumber' component={ResortListAdminScreen} exact />
+
              <Route path='/admin/resorts/create' component={ResortCreateAdminScreen} exact />
              <Route path='/admin/resort/:id/edit' component={ResortEditAdminScreen} exact />
 
              <Route path='/resort-owner/:userid/resortslist' component={ResortListOwnerScreen} exact />
+             <Route path='/resort-owner/:userid/resortslist/page/:pageNumber' component={ResortListOwnerScreen} exact />
+
              <Route path='/resort-owner/:userid/resorts/create' component={ResortCreateOwnerScreen} exact />
              <Route path='/resort-owner/:userid/resort/:id/edit' component={ResortEditOwnerScreen} exact />
 

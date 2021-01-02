@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { listResortDetails, createResortReview } from '../actions/resortActions'
-import { RESORT_CREATE_REVIEW_RESET, RESORT_LIST_REQUEST } from '../constants/resortConstants'
+import { RESORT_CREATE_REVIEW_RESET } from '../constants/resortConstants'
 import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
@@ -10,7 +10,6 @@ import { FaMapMarkerAlt  } from 'react-icons/fa'
 import { BiLinkAlt  } from "react-icons/bi"
 import { MdLocalPhone  } from "react-icons/md"
 import { AiOutlineMail  } from "react-icons/ai"
-import { resortListReducer } from '../reducers/resortReducers'
 
 const ResortDetailScreen = ({ match }) => {
      
