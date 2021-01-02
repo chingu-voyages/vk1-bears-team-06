@@ -19,8 +19,6 @@ import SearchResultScreen from './screens/SearchResultScreen'
 import ActivateAccountScreen from './screens/ActivateAccountScreen'
 import SentEmailScreen from './screens/SentEmailScreen'
 
-
-
 const App = () => {
   return (
     <Router>  

@@ -41,7 +41,11 @@
     "multer": "^1.4.2",
     "mustache": "^4.1.0",
     "path": "^0.12.7",
+    "postscribe": "^2.0.8",
+    "react-helmet": "^6.1.0",
+    "react-hook-form": "^6.14.0",
     "react-rating-stars-component": "^2.2.0",
+    "react-script-tag": "^1.1.2",
     "request": "^2.88.2"
   }
 }
