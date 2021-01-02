@@ -9,8 +9,7 @@ import { login } from '../actions/userActions'
 
 const LoginScreen = ({ location, history }) => {
 
-    const { watch, register, errors, handleSubmit } = useForm()
-    console.log(watch('password'))
+    const { register, errors, handleSubmit } = useForm()
 
     const dispatch = useDispatch()
     const userLogin = useSelector(state => state.userLogin)
@@ -36,7 +35,7 @@ const LoginScreen = ({ location, history }) => {
            { error && <Message variant='danger'>{error} </Message>}
            { loading && <Loader /> }
 
-         <form onSubmit={handleSubmit(submitHandler)} className="needs-validation"> 
+         <form onSubmit={handleSubmit(submitHandler)}> 
             <div className="form-group"> 
                 <label for="email">Email address</label>
                 <input 

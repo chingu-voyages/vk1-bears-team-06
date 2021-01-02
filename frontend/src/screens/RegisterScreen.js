@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react'
+import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
-import { register } from '../actions/userActions'
+import { registerUser } from '../actions/userActions'
 
 const RegisterScreen = ({ location, history }) => {
-    const [name, setName] = useState('')
-    const [email, setEmail] = useState('')
-    const [phone, setPhone] = useState('')
-    const [role, setRole] = useState('')
-    const [password, setPassword] = useState('')
-    const [confirmPassword, setConfirmPassword] = useState('')
-    const [message, setMessage] = useState(null)
 
+    const { register, errors, handleSubmit } = useForm()
+    const [email, setEmail] = useState('')
+    const [message, setMessage] = useState(null)
     const dispatch = useDispatch()
     const userRegister = useSelector(state => state.userRegister)
     const { loading, error, success } = userRegister 
@@ -26,13 +23,14 @@ const RegisterScreen = ({ location, history }) => {
          }
      }, [history, success, redirect, email])
 
-    const submitHandler = (e) => {
+    const submitHandler = (data, e) => {
         e.preventDefault()
-        // DISPATCH REGISTER
+        const { name, email, phone, role, password, confirmPassword } = data
+
         if(password !== confirmPassword){
             setMessage('Passwords do not match')
         } else {
-            dispatch(register(name, email, phone, role, password))
+            dispatch(registerUser(name, email, phone, role, password))
         }
     }
 
@@ -42,34 +40,111 @@ const RegisterScreen = ({ location, history }) => {
             { message && <Message variant='danger'>{message} </Message>}
            { error && <Message variant='danger'>{error} </Message>}
            { loading && <Loader /> }
-            <form onSubmit={submitHandler}> 
+            <form onSubmit={handleSubmit(submitHandler)} > 
             <div className="form-group"> 
                 <label for="name">Name</label>
-                <input type="text" name="name" className="form-control" id="name" placeholder="Enter name" onChange={(e) => setName(e.target.value)}  />
+                <input 
+                  type="text" 
+                  name="name" 
+                  className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                  id="name" 
+                  placeholder="Enter name" 
+                  ref={register({ required: true, minLength: 2, maxLength: 30 })}
+                />
+                { errors.name && errors.name.type ==='required' && <p className="text-danger">Name is required.</p> }
+                { errors.name && errors.name.type ==='minLength' && <p className="text-danger">Name is too short.</p> }
+                { errors.name && errors.name.type ==='maxLength' && <p className="text-danger">Name is exceeds maximum length.</p> }
             </div>
+
             <div className="form-group"> 
                 <label for="email">Email address</label>
-                <input type="email" name="email" className="form-control" id="email" placeholder="Enter email" onChange={(e) => setEmail(e.target.value)}  />
+                <input 
+                   type="email" 
+                   name="email" 
+                   className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                   id="email" 
+                   placeholder="Enter email" 
+                   onChange={(e) => setEmail(e.target.value)}
+                   ref={register({ required: true, minLength: 8, maxLength: 30, pattern: /^\S+@\S+\.\S+$/ })}
+                />
+                { errors.email && errors.email.type ==='required' && <p className="text-danger">Email is required.</p> }
+                { errors.email && errors.email.type ==='minLength' && <p className="text-danger">Email length is too small.</p> }
+                { errors.email && errors.email.type ==='maxLength' && <p className="text-danger">Email exceeds maximum length.</p> }
+                { errors.email && errors.email.type ==='pattern' && <p className="text-danger">That is not a valid email.</p> }
             </div>
+
             <div className="form-group"> 
                 <label for="phone">Phone</label>
-                <input type="text" className="form-control" id="phone" placeholder="Enter phone" onChange={(e) => setPhone(e.target.value)}  />
+                <input 
+                   type="text" 
+                   className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
+                   id="phone" 
+                   name="phone"
+                   placeholder="Enter phone" 
+                   ref={register({ required: true, minLength: 10, maxLength: 13, pattern: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/})}
+                />
+                { errors.phone && errors.phone.type ==='required' && <p className="text-danger">Phone is required.</p> }
+                { errors.phone && errors.phone.type ==='minLength' && <p className="text-danger">Phone length is too small.</p> }
+                { errors.phone && errors.phone.type ==='maxLength' && <p className="text-danger">Phone exceeds maximum length.</p> }
+                { errors.phone && errors.phone.type ==='pattern' && <p className="text-danger">Phone is not a valid phone.</p> }
+
             </div>
+
+
             <div className="form-group"> 
                 <label for="phone">User Role</label>
-                  <select class="form-control" onChange={(e) => setRole(e.target.value)}>
-                     <option>I am a...</option>
-                     <option value="resortOwner">Resort Owner</option>
-                     <option value="reviewer">Reviewer</option>
-                  </select>
+                <div class="role">
+                <input 
+                   type="radio" 
+                   className="btn-check" 
+                   name="role" 
+                   id="resort-owner" 
+                   autocomplete="off"  
+                   value='resortOwner'
+                   ref={register({ required: true })}
+                    />
+                <label className="btn btn-outline-success" for="resort-owner">Resort Owner</label>
+                <input 
+                   type="radio" 
+                   className="btn-check"
+                   name="role" 
+                   id="reviewer" 
+                   autocomplete="off" 
+                   value='reviewer'
+                   ref={register({ required: true })}
+                />
+                <label className="btn btn-outline-success" for="reviewer">Reviewer</label>
+                { errors.role && errors.role.type ==='required' && <p className="text-danger">Choose a role.</p> }
+             </div>
+
             </div>
+
             <div className="form-group">
                 <label for="password">Password</label>
-                <input type="password" name="password" className="form-control" id="password" placeholder="Enter Password" onChange={(e) => setPassword(e.target.value)}/>
+                <input 
+                   type="password" 
+                   name="password" 
+                   className="form-control" 
+                   id="password" 
+                   placeholder="Enter Password" 
+                   ref={register({ required: true, minLength: 6 })}
+                />
+                  { errors.password && errors.password.type ==='required' && <p className="text-danger">Password is required.</p> }
+                 { errors.password && errors.password.type ==='minLength' && <p className="text-danger">Password is too short.</p> }
             </div>
+
             <div className="form-group">
                 <label for="confirmPassword">Password</label>
-                <input type="password" name="confirmPassword" className="form-control" id="confirmPassword" placeholder="Confirm Password" onChange={(e) => setConfirmPassword(e.target.value)}/>
+                <input 
+                   type="password" 
+                   name="confirmPassword" 
+                   className="form-control" 
+                   id="confirmPassword" 
+                   placeholder="Confirm Password" 
+                   ref={register({ required: true, minLength: 6 })}
+                />
+                  { errors.confirmPassword && errors.confirmPassword.type ==='required' && <p className="text-danger">Password is required.</p> }
+                 { errors.confirmPassword && errors.confirmPassword.type ==='minLength' && <p className="text-danger">Password is too short.</p> }
             </div>
 
             <button type="submit" className="btn btn-primary">Register</button>
