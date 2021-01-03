@@ -18,6 +18,7 @@ import ResortCreateOwnerScreen from './screens/ResortCreateOwnerScreen'
 import SearchResultScreen from './screens/SearchResultScreen'
 import ActivateAccountScreen from './screens/ActivateAccountScreen'
 import SentEmailScreen from './screens/SentEmailScreen'
+import NotFoundScreen from './screens/NotFoundScreen'
 
 const App = () => {
   return (
@@ -48,6 +49,7 @@ const App = () => {
              <Route path='/resorts/:id' component={ResortDetailScreen} />
              <Route path='/auth/activate/:token' component={ActivateAccountScreen} />
              <Route path='/confirm-email/email=:email' component={SentEmailScreen} />
+             <Route component={NotFoundScreen} />
           </div>
        <Footer />
     </Router>

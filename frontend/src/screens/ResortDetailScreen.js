@@ -129,7 +129,7 @@ const ResortDetailScreen = ({ match }) => {
          <li class="list-group-item">
 
            {errorResortReview && <Message variant='danger'>{errorResortReview}</Message>}
-           {(userInfo.role !== 'administrator' && userInfo.role !== 'resortOwner') && (
+           {userInfo && (userInfo.role !== 'administrator' && userInfo.role !== 'resortOwner') && (
             <>
            <h2>Write a Review</h2>
             <form onSubmit={submitHandler}>
