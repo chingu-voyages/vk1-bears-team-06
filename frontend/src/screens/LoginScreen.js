@@ -6,6 +6,9 @@ import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import { login } from '../actions/userActions'
 
+import { store } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+import 'animate.css'
 
 const LoginScreen = ({ location, history }) => {
 
@@ -13,7 +16,7 @@ const LoginScreen = ({ location, history }) => {
 
     const dispatch = useDispatch()
     const userLogin = useSelector(state => state.userLogin)
-    const { loading, error, userInfo } = userLogin 
+    const { loading, error, userInfo, success } = userLogin 
 
     const redirect = location.search ? location.search.split('=')[1] : '/'
 
@@ -21,7 +24,21 @@ const LoginScreen = ({ location, history }) => {
          if(userInfo){
              history.push(redirect)
          }
-     }, [history, userInfo, redirect])
+         if(success){
+            store.addNotification({
+                title: 'Success!',
+                message: 'You are now logged in',
+                type: 'success',                       
+                container: 'top-right',               
+                animationIn: ["animate__animated", "animate__fadeInRight"],   
+                animationOut: ["animate__animated", "animate__fadeOutRight"],  
+                dismiss: {
+                  duration: 4000
+                }
+              })
+         }
+     }, [history, userInfo, redirect, success])
+
 
     const submitHandler = (data, e) => {
         e.preventDefault()

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import HomeScreen from './screens/HomeScreen'
 import ResortDetailScreen from './screens/ResortDetailScreen'
 import LoginScreen from './screens/LoginScreen'
@@ -19,12 +19,15 @@ import SearchResultScreen from './screens/SearchResultScreen'
 import ActivateAccountScreen from './screens/ActivateAccountScreen'
 import SentEmailScreen from './screens/SentEmailScreen'
 import NotFoundScreen from './screens/NotFoundScreen'
+import ReactNotifications from 'react-notifications-component';
 
 const App = () => {
   return (
     <Router>  
+       <ReactNotifications />
        <Header />
           <div className="container">
+             <Switch>
              <Route path='/login' component={LoginScreen} exact />
              <Route path='/register' component={RegisterScreen} exact />
              <Route path='/profile' component={ProfileScreen} exact />
@@ -49,7 +52,8 @@ const App = () => {
              <Route path='/resorts/:id' component={ResortDetailScreen} />
              <Route path='/auth/activate/:token' component={ActivateAccountScreen} />
              <Route path='/confirm-email/email=:email' component={SentEmailScreen} />
-             <Route component={NotFoundScreen} />
+             <Route path='*' component={NotFoundScreen} exact/>
+             </Switch>
           </div>
        <Footer />
     </Router>
