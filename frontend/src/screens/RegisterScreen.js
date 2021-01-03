@@ -64,7 +64,6 @@ const RegisterScreen = ({ location, history }) => {
                    className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                    id="email" 
                    placeholder="Enter email" 
-                   onChange={(e) => setEmail(e.target.value)}
                    ref={register({ required: true, minLength: 8, maxLength: 30, pattern: /^\S+@\S+\.\S+$/ })}
                 />
                 { errors.email && errors.email.type ==='required' && <p className="text-danger">Email is required.</p> }
@@ -129,8 +128,8 @@ const RegisterScreen = ({ location, history }) => {
                    placeholder="Enter Password" 
                    ref={register({ required: true, minLength: 6 })}
                 />
-                  { errors.password && errors.password.type ==='required' && <p className="text-danger">Password is required.</p> }
-                 { errors.password && errors.password.type ==='minLength' && <p className="text-danger">Password is too short.</p> }
+                { errors.password && errors.password.type ==='required' && <p className="text-danger">Password is required.</p> }
+                { errors.password && errors.password.type ==='minLength' && <p className="text-danger">Password is too short.</p> }
             </div>
 
             <div className="form-group">
@@ -143,8 +142,8 @@ const RegisterScreen = ({ location, history }) => {
                    placeholder="Confirm Password" 
                    ref={register({ required: true, minLength: 6 })}
                 />
-                  { errors.confirmPassword && errors.confirmPassword.type ==='required' && <p className="text-danger">Password is required.</p> }
-                 { errors.confirmPassword && errors.confirmPassword.type ==='minLength' && <p className="text-danger">Password is too short.</p> }
+                { errors.confirmPassword && errors.confirmPassword.type ==='required' && <p className="text-danger">Password is required.</p> }
+                { errors.confirmPassword && errors.confirmPassword.type ==='minLength' && <p className="text-danger">Password is too short.</p> }
             </div>
 
             <button type="submit" className="btn btn-primary">Register</button>
