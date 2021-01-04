@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { store } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import 'animate.css'
+import { Modal, Button } from 'react-bootstrap'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import Paginate from '../components/Paginate'
@@ -14,6 +15,15 @@ import {
 
 
 const ResortListAdminScreen = ({ history, match }) => {
+
+    const [show, setShow] = useState(false)
+    const [resortId, setResortId] = useState(0)
+    const handleClose = () => setShow(false)
+    const handleShow = (id) => {
+        setShow(true)
+        setResortId(id)
+    }
+
     const keyword = match.params.keyword
     const pageNumber = match.params.pageNumber || 1
 
@@ -27,14 +37,6 @@ const ResortListAdminScreen = ({ history, match }) => {
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
-
-    const resortCreate = useSelector(state => state.resortCreate)
-    const { 
-        loading:loadingCreate, 
-        error:errorCreate, 
-        success:successCreate,
-        resort:createdResort 
-    } = resortCreate
 
     useEffect(() => {
 
@@ -54,28 +56,25 @@ const ResortListAdminScreen = ({ history, match }) => {
                   duration: 4000
                 }
               })
+              setShow(false)
         }
 
          dispatch(listResorts(keyword, pageNumber))
 
         
-    }, [dispatch, history, userInfo, successDelete, successCreate, createdResort, keyword, pageNumber])
+    }, [dispatch, history, userInfo, successDelete, keyword, pageNumber])
 
 
     const deleteHandler = (id) => {
-        if(window.confirm('Are you sure')){
-            dispatch(deleteResort(id))
-        }
-    }
+        dispatch(deleteResort(id))
+}
 
     return (
         <>
 
     <h1>Resorts</h1>
      { loadingDelete && <Loader />}      
-    { errorDelete && <Message variant='danger'>{errorDelete}</Message>}    
-    { loadingCreate && <Loader />}      
-    { errorCreate && <Message variant='danger'>{errorCreate}</Message>}    
+    { errorDelete && <Message variant='danger'>{errorDelete}</Message>}     
     { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
     
     <>
@@ -118,17 +117,34 @@ const ResortListAdminScreen = ({ history, match }) => {
                   </button>
                   </Link>
       
-                   <button classNameName="btn btn-sm" onClick={() => deleteHandler(resort._id)}>
-                      DELETE
-                  </button>
+                  <button classNameName="btn btn-sm" onClick={() => handleShow(resort._id)}>DELETE</button> 
                   </td>
                </tr>
            ))}
         </tbody>
       </table>
+
+
       </>
     )}
         <Paginate pages={pages} page={page} />
+
+        <Modal show={show} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>Delete Resort Confirmation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this Resort?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={() => deleteHandler(resortId)}>
+            Yes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+
         </>
     )
 }
