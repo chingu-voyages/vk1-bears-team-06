@@ -24,7 +24,6 @@ const UserEditScreen = ({ match, history }) => {
     const { loading:loadingUpdate, error:errorUpdate, success:successUpdate } = userUpdate 
 
      useEffect(() => {
-
        if(successUpdate){
            dispatch({ type: USER_UPDATE_RESET })
            history.push('/admin/userslist')
@@ -39,14 +38,13 @@ const UserEditScreen = ({ match, history }) => {
               duration: 4000
             }
           })
-
-       } else {
-        if(!user.name || user._id !== userId){
-            dispatch(getUserDetails(userId))
-        }
-
+       } 
+       
+       if(!user.name || user._id !== userId){
+        dispatch(getUserDetails(userId))
        }
-     }, [dispatch, history, userId, user, successUpdate,])
+     
+     }, [dispatch, history, userId, user, successUpdate])
 
     const submitHandler = (data, e) => {
         e.preventDefault()
