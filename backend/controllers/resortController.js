@@ -333,7 +333,7 @@ const createResortReview = expressAsyncHandler(async (req, res) => {
 // @route         GET /api/resorts/top
 // @access        Public
 const getTopResorts = expressAsyncHandler(async (req, res) => {
-   const resorts = await Resort.find({}).sort({ rating: -1 }).limit(9)
+   const resorts = await Resort.find({}).sort({ rating: -1 }).limit(6)
    res.json(resorts)
 })
  
