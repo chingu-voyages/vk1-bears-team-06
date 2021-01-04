@@ -8,18 +8,9 @@ import { USER_UPDATE_RESET } from '../constants/userConstants'
 
 const UserEditScreen = ({ match, history }) => {
 
-    const { watch, register, errors, handleSubmit } = useForm()
-    console.log(watch('name'))
-    console.log(watch('email'))
-    console.log(watch('phone'))
-    console.log(watch('role'))
+    const { register, errors, handleSubmit } = useForm()
 
     const userId = match.params.id
-
-    // const [name, setName] = useState('')
-    // const [email, setEmail] = useState('')
-    // const [phone, setPhone] = useState('')
-    // const [role, setRole] = useState('')
 
     const dispatch = useDispatch()
 
@@ -39,12 +30,6 @@ const UserEditScreen = ({ match, history }) => {
             dispatch(getUserDetails(userId))
         }
 
-        // else {
-        //      setName(user.name)
-        //      setEmail(user.email)
-        //      setPhone(user.phone)
-        //      setRole(user.role)
-        //  }
        }
      }, [dispatch, history, userId, user, successUpdate,])
 
@@ -99,7 +84,7 @@ const UserEditScreen = ({ match, history }) => {
                             defaultValue={user.phone}
                             className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
                             id="phone"
-                            ref={register({ required: true, minLength: 10, maxLength: 13, pattern: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/  })}
+                            ref={register({ required: true, minLength: 10, maxLength: 13, pattern: /(^0|[89]\d{2}-\d{3}\-?\d{4}$)|(^0|[89]\d{2}\d{3}\d{4}$)|(^63[89]\d{2}-\d{3}-\d{4}$)|(^63[89]\d{2}\d{3}\d{4}$)|(^[+]63[89]\d{2}\d{3}\d{4}$)|(^[+]63[89]\d{2}-\d{3}-\d{4}$)|(^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$)/  })}
                         />
                         { errors.phone && errors.phone.type ==='required' && <p className="text-danger">Phone is required.</p> }
                         { errors.phone && errors.phone.type ==='minLength' && <p className="text-danger">Phone length is too small.</p> }
