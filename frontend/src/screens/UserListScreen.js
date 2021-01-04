@@ -1,11 +1,23 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { store } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+import 'animate.css'
+import { Modal, Button } from 'react-bootstrap'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import { listUsers, deleteUser } from '../actions/userActions'
 
 const UserListScreen = ({ history }) => {
+
+    const [show, setShow] = useState(false)
+    const [userId, setUserId] = useState(0)
+    const handleClose = () => setShow(false)
+    const handleShow = (id) => {
+        setShow(true)
+        setUserId(id)
+    }
     const dispatch = useDispatch()
 
     const userList = useSelector(state => state.userList)
@@ -23,14 +35,27 @@ const UserListScreen = ({ history }) => {
         } else {
             history.push('/login')
         }
+
+        if(successDelete){
+            store.addNotification({
+                title: 'Success!',
+                message: 'User successfully deleted.',
+                type: 'success',                       
+                container: 'top-right',               
+                animationIn: ["animate__animated", "animate__fadeInRight"],   
+                animationOut: ["animate__animated", "animate__fadeOutRight"],  
+                dismiss: {
+                  duration: 4000
+                }
+              })
+              setShow(false)
+        }
         
     }, [dispatch, history, successDelete, userInfo])
 
 
     const deleteHandler = (id) => {
-        if(window.confirm('Are you sure')){
             dispatch(deleteUser(id))
-        }
     }
 
     return (
@@ -63,7 +88,7 @@ const UserListScreen = ({ history }) => {
                   </button>
                   </Link>
       
-                   <button classNameName="btn btn-sm" onClick={() => deleteHandler(user._id)}>
+                   <button classNameName="btn btn-sm" onClick={() => handleShow(user._id)}>
                       DELETE
                   </button>
                   </td>
@@ -73,6 +98,23 @@ const UserListScreen = ({ history }) => {
       </table>
       
     )}
+
+
+<Modal show={show} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>Delete User Confirmation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Are you sure you want to delete this User?</Modal.Body>
+        <Modal.Footer>
+          <Button variant="primary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={() => deleteHandler(userId)}>
+            Yes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
         </>
     )
 }
