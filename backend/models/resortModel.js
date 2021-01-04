@@ -88,9 +88,7 @@ const resortSchema = mongoose.Schema({
         default: 0
     },
     image: {
-        type: String,
-        required: true,
-        default: 0
+        type: String
     },
     amenities: {
         tv: { type: Boolean, required: true, default: false },

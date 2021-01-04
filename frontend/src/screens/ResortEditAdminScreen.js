@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
+import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { store } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
@@ -11,19 +12,10 @@ import { RESORT_UPDATE_RESET } from '../constants/resortConstants'
 
 const ResortEditAdminScreen = ({ match, history }) => {
 
+    const { register, errors, handleSubmit } = useForm()
     const resortId = match.params.id
-
-    const [name, setName] = useState('')
-    const [pricePerNight, setPricePerNight] = useState(0)
-    const [description, setDescription] = useState('')
-    const [address, setAddress] = useState('')
-    const [city, setCity] = useState('')
-    const [province, setProvince] = useState('')
-    const [zipCode, setZipCode] = useState('')
-    const [phone, setPhone] = useState('')
-    const [email, setEmail] = useState('')
-    const [website, setWebsite] = useState('')
     const [image, setImage] = useState('')
+    const [uploading, setUploading] = useState(false)
     const [tv, setTV] = useState(false)
     const [reservation, setReservation] = useState(false)
     const [moderateNoise, setModerateNoise] = useState(false)
@@ -33,7 +25,6 @@ const ResortEditAdminScreen = ({ match, history }) => {
     const [bar, setBar] = useState(false)
     const [animals, setAnimals] = useState(false)
     const [kids, setKids] = useState(false)
-    const [uploading, setUploading] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -67,17 +58,8 @@ const ResortEditAdminScreen = ({ match, history }) => {
 
             if(!resort.name || resort._id !== resortId){
                 dispatch(listResortDetails(resortId))
-             } else {
-                setName(resort.name)
-                setPricePerNight(resort.price_per_night)
-                setDescription(resort.description)
-                setAddress(resort.address)
-                setCity(resort.city)
-                setProvince(resort.province)
-                setZipCode(resort.zip_code)
-                setPhone(resort.phone)
-                setWebsite(resort.website)
-                setImage(resort.image)
+            }
+            else {
                 setTV(resort.amenities.tv)
                 setReservation(resort.amenities.reservation)
                 setModerateNoise(resort.amenities.moderate_noise)
@@ -115,8 +97,10 @@ const ResortEditAdminScreen = ({ match, history }) => {
 
 
 
-    const submitHandler = (e) => {
+    const submitHandler = (data, e) => {
         e.preventDefault()
+        const { name, pricePerNight, description, address, city, province, zipCode, phone, email, website } = data
+
         dispatch(updateResort({ 
             _id: resortId,
             name,
@@ -152,79 +136,171 @@ const ResortEditAdminScreen = ({ match, history }) => {
     { loadingUpdate && <Loader /> }    
     { errorUpdate && <Message variant='danger'>{errorUpdate}</Message> }   
     { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
-            <form onSubmit={submitHandler}> 
+            <form onSubmit={handleSubmit(submitHandler)}> 
             <div className="form-group"> 
-                <label for="name">Name</label>
-                <input type="text" name="name" value={name} className="form-control" id="name" onChange={(e) => setName(e.target.value)}  />
+            <label for="name">Name</label>
+                        <input
+                            type="text"
+                            name="name"
+                            defaultValue={resort.name}
+                            className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                            id="name"
+                            ref={register({ required: true, minLength: 2, maxLength: 30 })}
+                        />
+                        { errors.name && errors.name.type ==='required' && <p className="text-danger">Name is required.</p> }
+                        { errors.name && errors.name.type ==='minLength' && <p className="text-danger">Name is too short.</p> }
+                        { errors.name && errors.name.type ==='maxLength' && <p className="text-danger">Name is exceeds maximum length.</p> }
             </div>
  
             <div className="form-group"> 
-                <label for="name">Price Per Night</label>
-                <input type="number" name="price_per_night" value={pricePerNight} className="form-control" id="price_per_night" onChange={(e) => setPricePerNight(e.target.value)}  />
+                    <label for="name">Price Per Night</label>
+                    <input
+                        type="text"
+                        name="pricePerNight"
+                        defaultValue={resort.price_per_night}
+                        className={`form-control ${errors.pricePerNight ? 'is-invalid' : ''}`}
+                        id="pricePerNight"
+                        ref={register({ required: true, minLength: 2, maxLength: 5, pattern: /^-?(0|[1-9]\d*)?$/ })}
+                    />
+                    { errors.pricePerNight && errors.pricePerNight.type ==='required' && <p className="text-danger">Price is required.</p> }
+                    { errors.pricePerNight && errors.pricePerNight.type ==='minLength' && <p className="text-danger">Price is too small.</p> }
+                    { errors.pricePerNight && errors.pricePerNight.type ==='maxLength' && <p className="text-danger">Price exceeds maximum length.</p> }
+                    { errors.pricePerNight && errors.pricePerNight.type ==='pattern' && <p className="text-danger">That is not a valid price.</p> }
             </div>
 
             <div className="form-group"> 
                 <label for="description">Description</label>
-                 <textarea class="form-control" id="description" value={description} rows="5" onChange={(e) => setDescription(e.target.value)}></textarea>
+                    <textarea
+                    name="description"
+                    defaultValue={resort.description}
+                    className = {`form-control ${errors.description ? 'is-invalid' : ''}`}
+                    id="description"
+                    rows="5"
+                    ref={register({ required: true, minLength: 100, maxLength: 500})}
+                    />
+                    {errors.description && errors.description.type === 'required' && <p className="text-danger">Description is required.</p>}
+                    { errors.description && errors.description.type ==='minLength' && <p className="text-danger">Description is too short.</p> }
+                    { errors.description && errors.description.type === 'maxLength' && <p className="text-danger">Description exceeds maximum length.</p>}
+                    
             </div>
 
             <div className="form-group"> 
-                <label for="province">Address</label>
-                <input type="text" name="address" value={address} className="form-control" id="address" onChange={(e) => setAddress(e.target.value)}  />
+                <label for="address">Address</label>
+                    <input
+                        type="text"
+                        name="address"
+                        defaultValue={resort.address}
+                        className= {`form-control ${errors.address ? 'is-invalid' : ''}`}
+                        id="address"
+                        ref={register({ required: true })}
+                    />
+                    { errors.address && errors.address.type ==='required' && <p className="text-danger">Address is required.</p> }
             </div>
 
             <div className="form-group"> 
                 <label for="province">Province</label>
-                <input type="text" name="province" value={province} className="form-control" id="province" onChange={(e) => setProvince(e.target.value)}  />
+                    <input
+                        type="text"
+                        name="province"
+                        defaultValue={resort.province}
+                        className={`form-control ${errors.province ? 'is-invalid' : ''}`}
+                        id="province"
+                        ref={register({ required: true })}
+                    />
+                    { errors.province && errors.province.type ==='required' && <p className="text-danger">Province is required.</p> }
             </div>
 
             <div className="form-group"> 
                 <label for="zip_code">Zip Code</label>
-                <input type="number" name="zip_code" value={zipCode} className="form-control" id="zip_code" onChange={(e) => setZipCode(e.target.value)}  />
+                    <input
+                        type="text"
+                        name="zipCode"
+                        defaultValue={resort.zip_code}
+                        className={`form-control ${errors.zipCode ? 'is-invalid' : ''}`}
+                        id="zipCode"
+                        ref={register({ required: true, minLength: 4,  maxLength: 4, pattern: /^[0-9]*$/ })}
+                    />
+                    { errors.zipCode && errors.zipCode.type === 'required' && <p className="text-danger">Zip Code is required.</p>}
+                    {errors.zipCode && errors.zipCode.type === 'minLength' && <p className="text-danger">Zip Code must consist with 4 digits.</p>}
+                    { errors.zipCode && errors.zipCode.type === 'maxLength' && <p className="text-danger">Zip Code must consist with 4 digits.</p>}
+                    { errors.zipCode && errors.zipCode.type ==='pattern' && <p className="text-danger">Not a valid Zip Code.</p> }
             </div>
-
 
             <div className="form-group"> 
                 <label for="city">City</label>
-                <input type="text" name="city" value={city} className="form-control" id="city" onChange={(e) => setCity(e.target.value)}  />
+                    <input
+                        type="text"
+                        name="city"
+                        defaultValue={resort.city}
+                        className={`form-control ${errors.city ? 'is-invalid' : ''}`}
+                        id="city"
+                        ref={register({ required: true })}
+                    />
+                    { errors.city && errors.city.type ==='required' && <p className="text-danger">City is required.</p> }
             </div>
 
             <div className="form-group"> 
-                <label for="city">Phone</label>
-                <input type="number" name="phone" value={phone} className="form-control" id="phone" onChange={(e) => setPhone(e.target.value)}  />
+                <label for="phone">Phone</label>
+                        <input
+                            type="text"
+                            name="phone"
+                            defaultValue={resort.phone}
+                            className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
+                            id="phone"
+                            ref={register({ required: true, minLength: 10, maxLength: 13, pattern: /(^0|[89]\d{2}-\d{3}\-?\d{4}$)|(^0|[89]\d{2}\d{3}\d{4}$)|(^63[89]\d{2}-\d{3}-\d{4}$)|(^63[89]\d{2}\d{3}\d{4}$)|(^[+]63[89]\d{2}\d{3}\d{4}$)|(^[+]63[89]\d{2}-\d{3}-\d{4}$)|(^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$)/})}
+                    />
+                    { errors.phone && errors.phone.type ==='required' && <p className="text-danger">Phone is required.</p> }
+                    { errors.phone && errors.phone.type ==='minLength' && <p className="text-danger">Phone length is too small.</p> }
+                    { errors.phone && errors.phone.type ==='maxLength' && <p className="text-danger">Phone exceeds maximum length.</p> }
+                    { errors.phone && errors.phone.type ==='pattern' && <p className="text-danger">Phone is not a valid phone.</p> }
             </div>
 
             <div className="form-group"> 
-                <label for="city">Email</label>
-                <input type="email" name="email" value={email} className="form-control" id="email" onChange={(e) => setEmail(e.target.value)}  />
+                <label for="email">Email</label>
+                    <input
+                        type="email"
+                        name="email"
+                        defaultValue={resort.email}
+                        className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                        id="email"
+                        ref={register({ required: true, minLength: 8, maxLength: 30, pattern: /^\S+@\S+\.\S+$/ })}
+                    />
+                    { errors.email && errors.email.type ==='required' && <p className="text-danger">Email is required.</p> }
+                    { errors.email && errors.email.type ==='minLength' && <p className="text-danger">Email length is too small.</p> }
+                    { errors.email && errors.email.type ==='maxLength' && <p className="text-danger">Email exceeds maximum length.</p> }
+                    { errors.email && errors.email.type ==='pattern' && <p className="text-danger">That is not a valid email.</p> }
             </div>
-
-
 
             <div className="form-group"> 
                 <label for="website">Website</label>
-                <input type="text" value={website} className="form-control" id="website" onChange={(e) => setWebsite(e.target.value)}  />
+                    <input
+                        type="text"
+                        name="website"
+                        defaultValue={resort.website}
+                        className={`form-control ${errors.website ? 'is-invalid' : ''}`}
+                        id="website" 
+                        ref={register({ required: true, pattern: /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/ })}
+                    />
+                    { errors.website && errors.website.type === 'required' && <p className="text-danger">Website is required.</p>}
+                    { errors.website && errors.website.type ==='pattern' && <p className="text-danger">Not a valid website url.</p> }
             </div>
-
-            <div className="form-group"> 
-                <label for="image">Image</label>
-                <input type="text" value={image} className="form-control" id="image" onChange={(e) => setImage(e.target.value)}  />
-            </div>
-
 
             <div className="form-group"> 
                <label for="uploadImage">Upload Image</label>
-                <input type="file" class="form-control-file" id="uploadImage" onChange={uploadFileHandler} />
+                <input 
+                type="file" 
+                className="form-control-file"
+                id="uploadImage" 
+                onChange={uploadFileHandler}
+                />
             </div>
 
-            { uploading && <Loader /> }
 
-            <div className="form-group"> 
+           <div className="form-group"> 
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" checked={tv ? 'checked' : '' } id="tv" onChange={(e) => setTV(!tv)} />
                 <label class="form-check-label" for="tv">TV</label>
             </div>
-
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" checked={reservation ? 'checked' : '' } id="reservation" onChange={(e) => setReservation(!reservation)} />
                 <label class="form-check-label" for="reservation">Reservation</label>
@@ -270,6 +346,7 @@ const ResortEditAdminScreen = ({ match, history }) => {
             </div>
 
             <button type="submit" className="btn btn-primary">Update</button>
+
             </form>
             
     )}
