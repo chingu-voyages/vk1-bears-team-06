@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
+import { store } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+import 'animate.css'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
@@ -30,7 +33,20 @@ const ProfileScreen = ({ history }) => {
               dispatch(getUserDetails('profile'))
            } 
          }
-     }, [dispatch, history, userInfo, user])
+         if(success){
+            store.addNotification({
+                title: 'Success!',
+                message: 'Profile successfully updated.',
+                type: 'success',                       
+                container: 'top-right',               
+                animationIn: ["animate__animated", "animate__fadeInRight"],   
+                animationOut: ["animate__animated", "animate__fadeOutRight"],  
+                dismiss: {
+                  duration: 4000
+                }
+              })
+         }
+     }, [dispatch, history, userInfo, user, success])
 
     const submitHandler = (data, e) => {
         e.preventDefault()
@@ -48,7 +64,6 @@ const ProfileScreen = ({ history }) => {
           <h1>User Profile</h1>
             { message && <Message variant='danger'>{message} </Message>}
            { error && <Message variant='danger'>{error} </Message>}
-           { success && <Message variant='success'>Profile Updated </Message>}
            { loading && <Loader /> }
             <form onSubmit={handleSubmit(submitHandler)}> 
             <div className="form-group"> 

@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
+import { store } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+import 'animate.css'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import { getUserDetails, updateUser } from '../actions/userActions'
@@ -25,6 +28,18 @@ const UserEditScreen = ({ match, history }) => {
        if(successUpdate){
            dispatch({ type: USER_UPDATE_RESET })
            history.push('/admin/userslist')
+           store.addNotification({
+            title: 'Success!',
+            message: 'User successfully updated.',
+            type: 'success',                       
+            container: 'top-right',               
+            animationIn: ["animate__animated", "animate__fadeInRight"],   
+            animationOut: ["animate__animated", "animate__fadeOutRight"],  
+            dismiss: {
+              duration: 4000
+            }
+          })
+
        } else {
         if(!user.name || user._id !== userId){
             dispatch(getUserDetails(userId))
