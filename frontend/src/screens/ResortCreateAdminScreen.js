@@ -12,9 +12,7 @@ import { RESORT_CREATE_RESET } from '../constants/resortConstants'
 
 const ResortCreateAdminScreen = ({ history }) => {
 
-    const { watch, register, errors, handleSubmit } = useForm()
-    console.log(watch('tv'))
-    console.log(watch('reservation'))
+    const { register, errors, handleSubmit } = useForm()
     
     const [uploading, setUploading] = useState(false)
     const [image, setImage] = useState('')
