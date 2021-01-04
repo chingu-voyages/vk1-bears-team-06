@@ -1,6 +1,9 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { store } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+import 'animate.css'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import { createResortOwner } from '../actions/resortActions'
@@ -46,6 +49,17 @@ const ResortCreateOwnerScreen = ({ history, match }) => {
         if(success){
             dispatch({ type: RESORT_OWNER_CREATE_RESET })
             history.push(`/resort-owner/${userInfo._id}/resortslist`)
+            store.addNotification({
+                title: 'Success!',
+                message: 'Resort successfully created.',
+                type: 'success',                       
+                container: 'top-right',               
+                animationIn: ["animate__animated", "animate__fadeInRight"],   
+                animationOut: ["animate__animated", "animate__fadeOutRight"],  
+                dismiss: {
+                  duration: 4000
+                }
+              })
          } 
      }, [dispatch, history, success, userInfo._id, userInfo.role, userId])
 

@@ -1,13 +1,34 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { logout } from '../actions/userActions'
+import { store } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+import 'animate.css'
 
 const Navbar = ({ match }) => {
 const dispatch = useDispatch()
 
 const userLogin = useSelector((state) => state.userLogin)
-const { userInfo } = userLogin
+const { userInfo, logoutSuccess } = userLogin
+
+
+useEffect(() => {
+  if(logoutSuccess){
+     store.addNotification({
+         title: 'Success!',
+         message: 'You are now logged out',
+         type: 'success',                       
+         container: 'top-right',               
+         animationIn: ["animate__animated", "animate__fadeInRight"],   
+         animationOut: ["animate__animated", "animate__fadeOutRight"],  
+         dismiss: {
+           duration: 4000
+         }
+       })
+  }
+}, [userInfo, logoutSuccess])
+
 
 const logoutHandler = () => {
   dispatch(logout())

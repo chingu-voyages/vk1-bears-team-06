@@ -4,6 +4,9 @@ import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import { activateUser } from '../actions/userActions'
 import jwt from 'jsonwebtoken';
+import { store } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+import 'animate.css'
 
 const ActivateAccountScreen = ({ match, history, location }) => {
     const [values, setValues] = useState({ name: '', token: '' })
@@ -11,7 +14,7 @@ const ActivateAccountScreen = ({ match, history, location }) => {
 
     const dispatch = useDispatch()
     const userActivate = useSelector(state => state.userActivate)
-    const { loading, error, userInfo } = userActivate 
+    const { loading, error, userInfo, success } = userActivate 
 
     const redirect = location.search ? location.search.split('=')[1] : '/'
 
@@ -21,13 +24,27 @@ const ActivateAccountScreen = ({ match, history, location }) => {
             history.push(redirect)
         }
 
+        if(success){
+            store.addNotification({
+                title: 'Success!',
+                message: 'Your account is now activated.',
+                type: 'success',                       
+                container: 'top-right',               
+                animationIn: ["animate__animated", "animate__fadeInRight"],   
+                animationOut: ["animate__animated", "animate__fadeOutRight"],  
+                dismiss: {
+                  duration: 4000
+                }
+              })
+         }
+
         let token = match.params.token
         let { name } = jwt.decode(token)
         if (token) {
             setValues({ ...values, name, token })
         }
 
-    }, [match, values, history, userInfo, redirect])
+    }, [match, values, history, userInfo, redirect, success])
 
     const { name, token } = values
 

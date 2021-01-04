@@ -1,10 +1,15 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { store } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+import 'animate.css'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import { createResort } from '../actions/resortActions'
 import { RESORT_CREATE_RESET } from '../constants/resortConstants'
+
+
 
 const ResortCreateAdminScreen = ({ history }) => {
 
@@ -39,6 +44,17 @@ const ResortCreateAdminScreen = ({ history }) => {
          if(success){
             dispatch({ type: RESORT_CREATE_RESET })
             history.push('/admin/resortsList')
+            store.addNotification({
+                title: 'Success!',
+                message: 'Resort successfully created.',
+                type: 'success',                       
+                container: 'top-right',               
+                animationIn: ["animate__animated", "animate__fadeInRight"],   
+                animationOut: ["animate__animated", "animate__fadeOutRight"],  
+                dismiss: {
+                  duration: 4000
+                }
+              })
          } 
      }, [dispatch, history, success])
 

@@ -20,7 +20,7 @@ const router = express.Router()
 router.route('/').get(getResorts, admin).post(protect, admin, createResort)
 router.route('/:id/reviews').post(protect, createResortReview)
 router.get('/topresort/top', getTopResorts)
-router.route('/:id').get(getResortById).delete(protect, resortOwner, admin, deleteResort)
+router.route('/:id').get(getResortById).delete(protect, admin, deleteResort)
 .put(protect, admin, updateResort)
 
 export default router
