@@ -60,6 +60,7 @@ const ResortEditAdminScreen = ({ match, history }) => {
                 dispatch(listResortDetails(resortId))
             }
             else {
+                setImage(resort.image)
                 setTV(resort.amenities.tv)
                 setReservation(resort.amenities.reservation)
                 setModerateNoise(resort.amenities.moderate_noise)
