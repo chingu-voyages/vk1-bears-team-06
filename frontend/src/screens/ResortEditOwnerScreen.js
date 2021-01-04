@@ -1,6 +1,9 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { store } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+import 'animate.css'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import { listResortOwnerDetails, updateResortOwner } from '../actions/resortActions'
@@ -56,6 +59,17 @@ const ResortEditOwnerScreen = ({ match, history }) => {
         if(successUpdate){
             dispatch({ type: RESORT_OWNER_UPDATE_RESET })
             history.push(`/resort-owner/${userInfo._id}/resortslist`)
+            store.addNotification({
+                title: 'Success!',
+                message: 'Resort successfully updated.',
+                type: 'success',                       
+                container: 'top-right',               
+                animationIn: ["animate__animated", "animate__fadeInRight"],   
+                animationOut: ["animate__animated", "animate__fadeOutRight"],  
+                dismiss: {
+                  duration: 4000
+                }
+              })
         } else {
             if(!resort.name || resort._id !== resortId){
                 dispatch(listResortOwnerDetails(resortId, userId))

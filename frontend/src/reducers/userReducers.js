@@ -61,11 +61,11 @@ export const userLoginReducer = (state = {}, action) => {
  export const userActivateReducer = (state = {}, action) => {
     switch(action.type){
        case USER_ACTIVATION_REQUEST:
-           return { loading: true }
+           return { loading: true, success: false }
        case USER_ACTIVATION_SUCCESS:
-           return { loading: false, userInfo: action.payload }
+           return { loading: false, success: true, userInfo: action.payload }
       case USER_ACTIVATION_FAIL:
-          return { loading: false, error: action.payload }
+          return { loading: false, success: false, error: action.payload }
       default: 
           return state
     }

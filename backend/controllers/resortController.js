@@ -16,7 +16,7 @@ const getResorts = expressAsyncHandler(async (req, res) => {
     } : {}
 
     const count = await Resort.countDocuments({ ...keyword })
-    const resorts = await Resort.find({ ...keyword }).limit(pageSize).skip(pageSize * (page - 1))
+    const resorts = await Resort.find({ ...keyword }).sort({ 'createdAt': -1 }).limit(pageSize).skip(pageSize * (page - 1))
     res.json({ resorts, page, pages: Math.ceil(count / pageSize) })
 })
 
@@ -28,7 +28,7 @@ const getOwnerResorts = expressAsyncHandler(async (req, res) => {
     const pageSize = 6
     const page = Number(req.query.pageNumber) || 1
     const count = await Resort.countDocuments({ user: userId } )
-    const resorts = await Resort.find({ user: userId }).limit(pageSize).skip(pageSize * (page - 1))
+    const resorts = await Resort.find({ user: userId }).sort({ 'createdAt': -1 }).limit(pageSize).skip(pageSize * (page - 1))
     res.json({ resorts, page, pages: Math.ceil(count / pageSize) })
 })
 

@@ -2,13 +2,12 @@ import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import  Message from '../components/Message'
-import  Loader from '../components/Loader'
-import { login } from '../actions/userActions'
-
 import { store } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import 'animate.css'
+import  Message from '../components/Message'
+import  Loader from '../components/Loader'
+import { login } from '../actions/userActions'
 
 const LoginScreen = ({ location, history }) => {
 
