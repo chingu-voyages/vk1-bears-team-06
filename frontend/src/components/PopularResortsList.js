@@ -18,11 +18,21 @@ const PopularResortsList = () => {
 
     return (
         <> 
-    <div className="row">
-      { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : 
-        resorts.map(resort => <Resort key={resort._id} resort={resort} />)
-        }
-     </div>
+        <div class="most-popular section pt-80">
+            <div class="container">
+                <div className="row">
+                    <div className="col-lg-12 title-card-container">
+                        <div className="title">
+                            <p className="fweight-500 subtitle">Browse 600+ Destinations</p>
+                            <h3 className="fweight-700">Most Popular Resorts</h3>
+                        </div>
+                    </div>
+                    { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : 
+                        resorts.map(resort => <Resort key={resort._id} resort={resort} />)
+                    }
+                </div>
+            </div>
+        </div>
         </>    
     )
 }
