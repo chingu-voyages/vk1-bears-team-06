@@ -1,0 +1,17 @@
+
+
+.activate img {
+    height: 160px !important;
+}
+
+.activate a {
+    background: #fe4e37;
+    color: #ffffff;
+    border: 1px solid #fe4e37;
+    margin-bottom: 15px;
+}
+
+.activate a:hover {
+    background: #d63a25;
+    color: #ffffff;
+}

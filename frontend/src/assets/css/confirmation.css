@@ -1,0 +1,47 @@
+
+
+.confirmation {
+    background: url(../images/img3.jpg);
+    height: 100vh;
+    background-size: cover;
+    position: relative;
+}
+
+.confirmation .overlay-img {
+    height: 100vh;
+}
+
+.confirmation .container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirmation .container .row {
+    width: 100%;
+}
+
+.confirmation .join {
+    z-index: 99;
+}
+
+.confirmation img {
+    height: 100px;
+    margin-bottom: 30px;
+}
+
+.confirmation .confirm-email {
+    text-align: center;
+    z-index: 99;
+    width: 100%;
+    background: #f4f7f6;
+    padding: 50px;
+    border-radius: 3px;
+}
+
+.confirmation .confirm-email a.user-email {
+    color: #fe4e37;
+    font-weight: 600;
+    font-size: 18px;
+}

@@ -6,6 +6,10 @@ import { store } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import 'animate.css'
 
+import {ReactComponent as LogoNav} from '../assets/images/svg/logo-nav.svg';
+import {ReactComponent as Menu} from '../assets/images/svg/menu.svg';
+import {ReactComponent as UserIcon} from '../assets/images/svg/user.svg';
+
 const Navbar = ({ match }) => {
 const dispatch = useDispatch()
 
@@ -35,80 +39,108 @@ const logoutHandler = () => {
 }
     return (
 <>
-<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div className="container-fluid">
-    <Link className="navbar-brand" to='/'>Iko</Link>
-    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon"></span>
-    </button>
-    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul className="navbar-nav mr-auto mb-2 mb-lg-0">
-        <li className="nav-item">
-        <Link className="nav-link active" aria-current="page" to="/">Home</Link>
-        </li>
-        <li className="nav-item">
-        <Link className="nav-link" to="/resort">Resort Detail</Link>
-        </li>
+<div id="nav-bar">
+        <div id="main-nav-bar">
+            <div className="nav-divider on-the-left">
+                <div id="hamburger-icon" className="hamburger-icon hvr-sweep-to-top">
+                    <div className="hamburger">
+                      <Menu />
+                    </div>
+                </div>
+                <div className="divider-line"></div>
+                <Link to='/'>
+                    <div className="nav-item write-review-link hvr-sweep-to-top">
+                        Write Review
+                    </div>
+                </Link>
+                <div className="divider-line"></div>
+            </div>
+            <div className="nav-divider on-the-right">
 
-        { userInfo ? (
+                { userInfo ? (
+                    <>
+                    
+                    <div className="divider-line"></div>
+                    <div className="dropdown">
+                        <div className="nav-item account-link hvr-sweep-to-top dropdown-toggle" href="#" role="button" id="navbarDropdownAdmin" data-toggle="dropdown" aria-expanded="false">
+                            <UserIcon />
+                            <p>My Account</p> 
+                        </div>
+                            <ul className="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
 
-        <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-            { userInfo.name }
-          </a>
+                                { userInfo && userInfo.role === 'administrator' && (
+                                    <>
+                                    <li><Link className="dropdown-item" to='/admin/userslist'>Users</Link></li>
+                                    <li><Link className="dropdown-item" to='/admin/resortslist'>Resorts</Link></li>
+                                    </>
+                                    )
+                                }
 
-        
-          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li> <Link className="dropdown-item" to='/profile'>Profile</Link></li>
-            <li><hr className="dropdown-divider"></hr></li>
-            <li><Link className="dropdown-item" to='/' onClick={logoutHandler}>Logout</Link></li>
-          </ul>
-        </li>
-        ) : (
-          <>
-          <li className="nav-item">
-              <Link className="nav-link" to="/login">Login</Link> 
-          </li> 
-          <li className="nav-item">
-            <Link className="nav-link" to="/register">Register</Link> 
-          </li>
-          </>
-        )
-}
+                                { userInfo && userInfo.role === 'resortOwner' && (
+                                    <>
+                                    <li><Link className="dropdown-item" to={`/resort-owner/${userInfo._id}/resortslist`}>Resorts</Link></li>
+                                    </>
+                                    )
+                                }
 
-{ userInfo && userInfo.role === 'administrator' && (
-          <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" role="button" data-toggle="dropdown" aria-expanded="false">
-            Administrator
-          </a>
+                                <li><Link className="dropdown-item" to='/profile'>Settings</Link></li>
+                                <li><hr className="dropdown-divider" /></li>
+                                <li><Link className="dropdown-item" to='/' onClick={logoutHandler}>Logout</Link></li>
+                            </ul>
+                    </div>
+                    </>
+                    ) : (
+                        <>
+                        <div className="divider-line"></div>
+                        <Link to="/login">
+                            <div className="nav-item login-link hvr-sweep-to-top">Login</div>
+                        </Link>
+                        <div className="divider-line"></div>
+                        <Link to="/register">
+                            <div className="nav-item register-link hvr-sweep-to-top">Register</div>
+                        </Link>
+                        </>
+                    )
+                }
+            </div>
+            <Link to='/' className="main-logo">
+              <LogoNav />
+            </Link>
+            <div className="bottom-line"></div>
+        </div>
 
-        
-          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li> <Link className="dropdown-item" to='/admin/userslist'>Users</Link></li>
-            <li> <Link className="dropdown-item" to='/admin/resortslist'>Resorts</Link></li>
-          </ul>
-        </li>
-)}
-
-
-{ userInfo && userInfo.role === 'resortOwner' && (
-          <li className="nav-item dropdown">
-          <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownAdmin" role="button" data-toggle="dropdown" aria-expanded="false">
-            Resort Owner
-          </a>
-
-        
-          <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li> <Link className="dropdown-item" to={`/resort-owner/${userInfo._id}/resortslist`}>Resorts</Link></li>
-          </ul>
-        </li>
-)}
-
-      </ul>
-
+        <div id="mega-menu" className="mega-menu hidden">
+            <div className="overlay-menu">
+                <nav>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-sm-6">
+                                <Link to='/'>Write Review</Link>
+                                <Link to='/'>About Us</Link>
+                                <Link to='/'>Explore</Link>
+                            </div>
+                            <div className="col-sm-6">
+                                <Link to='/'>Help Center</Link>
+                                <Link to='/'>Contact</Link>
+                                
+                                { userInfo ? 
+                                    (
+                                        <Link to='/profile'>My Account</Link>
+                                    ) :
+                                    (
+                                        <>
+                                        <Link to='/'>Login</Link>
+                                        <Link to='/'>Register</Link>
+                                        </>
+                                    )
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
     </div>
-  </div>
-</nav>
 </>
 )
 }
