@@ -59,6 +59,22 @@ const UserListScreen = ({ history }) => {
     }
 
     return (
+
+      <>
+        <div className="sub-hero">
+        <div className="overlay-img"></div>
+        <div className="container">
+            <div className="row">
+                <div className="col-md-8 offset-md-2 col-sm-12">
+                    <div className="sub-content">
+                        <h3 className="fweight-500">Admin</h3>
+                        <h2 className="fweight-700">Users</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
         <>
             <div className="sub-hero">
               <div className="overlay-img"></div>
@@ -74,12 +90,23 @@ const UserListScreen = ({ history }) => {
                 </div>
         </div>
         
+
     { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
         <div className="admin account-body">
         <div className="container-fluid">
             <div className="row">
                 <div className="col-lg-3 col-md-12 sidebar">
                     <div className="list-group">
+
+                        <Link to="/admin/resortslist" className="list-group-item list-group-item-action" aria-current="true">
+                            Resorts
+                        </Link>
+                        <Link to="/admin/userslist" className="list-group-item list-group-item-action active" aria-current="true">Users</Link>
+                    </div>
+                </div>
+                <div className="col-lg-9 col-md-12">
+                    
+
                         <Link to="/" className="list-group-item list-group-item-action" aria-current="true">
                             Resorts
                         </Link>
@@ -87,11 +114,39 @@ const UserListScreen = ({ history }) => {
                     </div>
                 </div>
                 <div className="col-lg-9 col-md-12">
+
                     <div className="content">
                         <div className="table-responsive">
                             <table className="table">
                                 <thead>
                                     <tr>
+
+                                        <th scope="col" className="pl-3">#</th>
+                                        <th scope="col" className="pl-3">Name</th>
+                                        <th scope="col" className="pl-3">Email</th>
+                                        <th scope="col" className="pl-3">Phone</th>
+                                        <th scope="col" className="pl-3">Role</th>
+                                        <th scope="col" className="pl-3">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {users.map(user => (
+                                    <tr key={user._id}>
+                                        <td>{user._id}</td>
+                                        <td>{user.name}</td>
+                                        <td>{user.email}</td>
+                                        <td>{user.phone}</td>
+                                        <td>{user.role}</td>
+                                        <td>
+                                          
+                                        <Link class="edit" to={`/admin/user/${user._id}/edit`}>Edit</Link>
+                                        <Link class="delete" onClick={() => handleShow(user._id)} data-bs-toggle="modal"
+                                        data-bs-target="#delete-user">Delete</Link>
+                                      
+                                        </td>
+                                    </tr>
+                                ))}
+
                                         <th scope="col">#</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
@@ -137,10 +192,12 @@ const UserListScreen = ({ history }) => {
                                                 data-bs-target="#delete-user">Delete</Link>
                                         </td>
                                     </tr>
+
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                    
                     <nav aria-label="Page navigation example">
                         <ul className="pagination justify-content-center">
                             <li className="page-item"><Link className="page-link" to="/">1</Link></li>
@@ -148,13 +205,13 @@ const UserListScreen = ({ history }) => {
                             <li className="page-item"><Link className="page-link" to="/">3</Link></li>
                         </ul>
                     </nav>
+
                 </div>
             </div>
         </div>
     </div>
       
     )}
-
 
 <Modal show={show} onHide={handleClose}>
         <Modal.Header>
