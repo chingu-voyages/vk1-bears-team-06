@@ -26,7 +26,7 @@ const App = () => {
     <Router>  
        <ReactNotifications />
        <Header />
-          <div className="container">
+          <>
              <Switch>
              <Route path='/login' component={LoginScreen} exact />
              <Route path='/register' component={RegisterScreen} exact />
@@ -54,7 +54,7 @@ const App = () => {
              <Route path='/confirm-email/email=:email' component={SentEmailScreen} />
              <Route path='*' component={NotFoundScreen} exact/>
              </Switch>
-          </div>
+          </>
        <Footer />
     </Router>
   )

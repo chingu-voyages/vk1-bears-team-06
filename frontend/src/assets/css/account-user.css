@@ -1,0 +1,167 @@
+
+
+.account-body {
+    background: #f4f7f6;
+    padding: 50px;
+}
+
+.account-body .list-group {
+    border-radius: 3px;
+}
+
+.account-body .list-group-item {
+    background-color: #f9f9f9;
+    font-size: 15px;
+    padding: 18px;
+}
+
+.account-body .list-group-item span {
+    color: #fe4e37;
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.account-body .list-group-item.active {
+    color: #231f20 !important;
+    background-color: #ffffff !important;
+    border-color: #dadada !important;
+    font-weight: 600;
+}
+
+/* .account-body .content {
+    background: #ffffff;
+    border-radius: 3px;
+} */
+
+.account-body label {
+    color: #000000;
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+.account-body label span {
+    color: #fe4e37;
+}
+
+.account-body input {
+    background: #ffffff;
+    width: calc(100% - 105px);
+    border: 1px solid #cacaca;
+    border-radius: 3px;
+    color: #000000;
+    font-size: 14px;
+    height: 45px;
+    padding: 10px 15px;
+    width: 100%;
+}
+
+.account-body input:focus,
+.account-body button:focus {
+    outline: none;
+}
+
+/* .account-body .inner-form {
+    padding: 40px 45px;
+} */
+
+.account-body .form-control-plaintext {
+    background: #edf1f0;
+}
+
+.account-body .sidebar {
+    margin-bottom: 30px;
+}
+
+.account-body .side-ad {
+    background-color: transparent;
+    background-image: linear-gradient(220deg, #EA406F 19%, #FD5D47 85%);
+    padding: 25px;
+    border-radius: 3px;
+    color: #ffffff;
+}
+
+.account-body .side-ad p,
+.account-body .side-ad ul li {
+    font-size: 14px;
+    line-height: 1.88;
+}
+
+.account-body .side-ad a {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    margin-top: 20px;
+}
+
+.account-body .submit button {
+    background: #fe4e37;
+    color: #ffffff;
+    border: 1px solid #fe4e37;
+    margin-top: 30px;
+}
+
+.account-body .submit button:hover {
+    background: #d63a25;
+    color: #ffffff;
+    border: 1px solid #fe4e37;
+}
+
+.account-body .submit button:focus {
+    box-shadow: none;
+}
+
+.account-body .submit p {
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+.account-body .additional {
+    margin: 15px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.account-body .additional a.delete-link {
+    font-size: 15px;
+    color: #000000 !important;
+    text-decoration: underline !important;
+}
+
+/* .account-body input[type="file"] {
+    display: none;
+} */
+
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto auto 15px auto;
+    flex-direction: column;
+}
+
+.custom-file-upload img {
+    height: 25px;
+    display: block;
+}
+
+.img-upload {
+    text-align: center;
+}
+
+.account-body .form-control:focus {
+    border-color: #cacaca;
+    box-shadow: none;
+}
+
+.account-body .sidebar .list-group,
+.account-body .side-ad {
+    position: sticky;
+    top: 80px;
+}
