@@ -38,8 +38,8 @@ const RegisterScreen = ({ location, history }) => {
         <>
             <h1>Sign Up</h1>
             { message && <Message variant='danger'>{message} </Message>}
-           { error && <Message variant='danger'>{error} </Message>}
-           { loading && <Loader /> }
+            { error && <Message variant='danger'>{error} </Message>}
+            { loading && <Loader /> }
             <form onSubmit={handleSubmit(submitHandler)} > 
             <div className="form-group"> 
                 <label for="name">Name</label>
