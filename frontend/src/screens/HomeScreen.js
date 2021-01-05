@@ -1,20 +1,21 @@
 import React from 'react'
 import PopularResortList from '../components/PopularResortsList'
 import HeaderHomepage from '../components/HeaderHomepage'
-import { Route } from 'react-router-dom'
-import FakeSearchBox from '../components/FakeSearchBox'
-
+import Showcase from '../components/Showcase'
+import Counters from '../components/Counters'
+import FAQ from '../components/FAQ'
+import Subscription from '../components/Subscription'
 
 const HomeScreen = () => {
     return (
         <>
             <HeaderHomepage />
+            <Showcase />
+            <PopularResortList />
+            <Counters />
+            <FAQ />
+            <Subscription />
         </>
-        // <div className="container">
-        //     <Route render={({ history }) => <FakeSearchBox history={history}/>} />
-        //     <h1>Home Screen</h1>
-        //     <PopularResortList />
-        // </div>
     )
 }
 

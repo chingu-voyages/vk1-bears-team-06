@@ -205,7 +205,7 @@ body {
 }
 
 .section p {
-    color: #495056;
+    color: #000000;
     line-height: 1.8;
 }
 
@@ -285,12 +285,14 @@ body {
 }
 
 .popular-item .info h3.title {
-    font-size: 18px;
-    letter-spacing: -1px;
+    font-size: 21px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .popular-item .info .location {
-    font-size: 15px;
+    font-size: 14px;
     color: #a7a19f;
     margin-bottom: 0.5rem;
 }
@@ -304,16 +306,16 @@ body {
 }
 
 .popular-item .info h4 span {
-    color: #a7a19f;
+    color: #000000;
     font-size: 14px;
     padding-left: 8px;
 }
 
 .popular-item .info hr {
-    margin: 1.5rem 0;
+    margin: 1rem 0;
 }
 
-.popular-item .info .card-bottom svg {
+.popular-item .info .card-bottom img {
     height: 18px;
     padding-right: 10px;
 }
@@ -512,6 +514,12 @@ h4.title {
     margin-bottom: 20px;
 }
 
+.faq .accordion-header {
+    width: 100%;
+    outline: none;
+    border: none;
+}
+
 .faq .accordion-container {
     display: flex;
     align-items: center;
@@ -547,7 +555,7 @@ h4.title {
     background-color: transparent;
     background-image: linear-gradient(220deg, #EA406F 19%, #FD5D47 85%);
     color: #fff;
-    padding: 1.2rem 1.25rem;
+    padding: 15px 20px;
 }
 
 .faq .accordion-button:not(.collapsed) {
