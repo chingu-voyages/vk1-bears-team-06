@@ -15,11 +15,13 @@
   flex-direction: row;
   align-items: center;
   z-index: 999;
+  position: absolute;
+  top: 38vh;
 }
 .loader .bar {
   width: 10px;
   height: 5px;
-  background: #49c5b6;
+  background: #f15e4b;
   margin: 2px;
   animation: bar 1s infinite linear;
 }
