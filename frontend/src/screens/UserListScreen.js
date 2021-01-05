@@ -61,18 +61,18 @@ const UserListScreen = ({ history }) => {
     return (
       <>
         <div className="sub-hero">
-        <div className="overlay-img"></div>
-        <div className="container">
-            <div className="row">
-                <div className="col-md-8 offset-md-2 col-sm-12">
-                    <div className="sub-content">
-                        <h3 className="fweight-500">Admin</h3>
-                        <h2 className="fweight-700">Users</h2>
+          <div className="overlay-img"></div>
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-8 offset-md-2 col-sm-12">
+                        <div className="sub-content">
+                            <h3 className="fweight-500">Admin</h3>
+                            <h2 className="fweight-700">Users</h2>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
         <div className="admin account-body">
         <div className="container-fluid">
@@ -85,6 +85,7 @@ const UserListScreen = ({ history }) => {
                         <Link to="/admin/userslist" className="list-group-item list-group-item-action active" aria-current="true">Users</Link>
                     </div>
                 </div>
+
                 <div className="col-lg-9 col-md-12">
                     
                     <div className="content">
