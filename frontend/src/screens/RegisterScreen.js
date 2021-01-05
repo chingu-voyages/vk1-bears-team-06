@@ -37,6 +37,9 @@ const RegisterScreen = ({ location, history }) => {
 
     return ( 
         <>
+        { message && <Message variant='danger'>{message} </Message>}
+        { error && <Message variant='danger'>{error} </Message>}
+        { loading && <Loader /> }
         <div className="register">
         <div className="overlay-img"></div>
         <div className="container-fluid">
