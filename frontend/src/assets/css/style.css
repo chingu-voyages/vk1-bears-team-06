@@ -620,11 +620,41 @@ h4.title {
     margin-bottom: 0;
 }
 
+div.alert-danger {
+    color: #f52222;
+    background-color: #efdedf;
+    border: 1px solid #f52222;
+    padding: 5px 15px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    font-size: small;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+}
 
+div.alert-danger p {
+    margin-top: 2px;
+}
 
+div.alert-danger .sr-only {
+    display: none;
+}
 
+div.alert-danger button {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+}
 
+.alert-dismissible .btn-close {
+    padding: 10px 15px !important;
+}
 
+.alert-dismissible .btn-close:focus {
+    box-shadow: none;
+}
 
 
 
