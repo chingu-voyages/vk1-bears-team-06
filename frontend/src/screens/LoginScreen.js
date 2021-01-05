@@ -47,43 +47,51 @@ const LoginScreen = ({ location, history }) => {
 
     return ( 
         <>
-            <h1>Sign In</h1>
-           { error && <Message variant='danger'>{error} </Message>}
-           { loading && <Loader /> }
+            { loading && <Loader /> }
+            <div className="login">
+                <div className="overlay-img"></div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-xs-12 join">
+                        
+                            <div className="join-form-container">
+                                <div className="title">
+                                    <h2>User Login</h2>
+                                    <p className="fweight-500">Welcome back! Login to continue your access.</p>
+                                </div>
 
-         <form onSubmit={handleSubmit(submitHandler)}> 
-            <div className="form-group"> 
-                <label for="email">Email address</label>
-                <input 
-                  type="email" 
-                  name="email" 
-                  className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-                  id="email" 
-                  placeholder="Enter email" 
-                  ref={register({ required: true, minLength: 8, maxLength: 30, pattern: /^\S+@\S+\.\S+$/ })}
-                />
-                { errors.email && errors.email.type ==='required' && <p className="text-danger">Email is required.</p> }
-                { errors.email && errors.email.type ==='minLength' && <p className="text-danger">Email length is too small.</p> }
-                { errors.email && errors.email.type ==='maxLength' && <p className="text-danger">Email exceeds maximum length.</p> }
-                { errors.email && errors.email.type ==='pattern' && <p className="text-danger">That is not a valid email.</p> }
+                                { error && <Message variant='danger'>{error} </Message>}
+                                
+                                <form onSubmit={handleSubmit(submitHandler)}>
+                                    <div className="mb-3 form-group">
+                                        <label for="email" className="form-label fweight-600">Email Address</label>
+                                        <input type="email" name="email" id="email" className={`form-control ${errors.email ? 'is-invalid' : ''}`}placeholder="example@email.com" ref={register({ required: true, minLength: 8, maxLength: 30, pattern: /^\S+@\S+\.\S+$/ })} />
+                                        { errors.email && errors.email.type ==='required' && <p className="text-danger">Email is required.</p> }
+                                        { errors.email && errors.email.type ==='minLength' && <p className="text-danger">Email length is too small.</p> }
+                                        { errors.email && errors.email.type ==='maxLength' && <p className="text-danger">Email exceeds maximum length.</p> }
+                                        { errors.email && errors.email.type ==='pattern' && <p className="text-danger">That is not a valid email.</p> }
+                                    </div>
+                                    <div className="mb-3 form-group">
+                                        <label for="password" className="form-label fweight-600">Password</label>
+                                        <input type="password" 
+                                        name="password" 
+                                        className={`form-control ${errors.password ? 'is-invalid' : ''}`}
+                                        id="password" 
+                                        placeholder="Password" 
+                                        ref={register({ required: true, minLength: 6 })} />
+                                        { errors.password && errors.password.type ==='required' && <p className="text-danger">Password is required.</p> }
+                                        { errors.password && errors.password.type ==='minLength' && <p className="text-danger">Password is too short.</p> }
+                                    </div>
+                                    <div className="d-grid submit">
+                                        <button type="submit" class="btn btn-primary btn-block">LOGIN</button>
+                                        <p>Don't have an account? <Link className="fweight-600" to='/register'>Register</Link></p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="form-group">
-                <label for="password">Password</label>
-                <input 
-                  type="password" 
-                  name="password" 
-                  className={`form-control ${errors.password ? 'is-invalid' : ''}`}
-                  id="password" 
-                  placeholder="Password" 
-                  ref={register({ required: true, minLength: 6 })}
-                 />
-                 { errors.password && errors.password.type ==='required' && <p className="text-danger">Password is required.</p> }
-                 { errors.password && errors.password.type ==='minLength' && <p className="text-danger">Password is too short.</p> }
-            </div>
-            <button type="submit" className="btn btn-primary">Login</button>
-            </form>
-
-            <p>New User? <Link to={redirect ? `/register?redirect=${redirect}` : '/register' }>Register</Link></p>
         </>
     )
 }
