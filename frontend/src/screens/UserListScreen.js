@@ -59,43 +59,73 @@ const UserListScreen = ({ history }) => {
     }
 
     return (
-        <>
-            <h1>Users</h1>
+      <>
+        <div className="sub-hero">
+        <div className="overlay-img"></div>
+        <div className="container">
+            <div className="row">
+                <div className="col-md-8 offset-md-2 col-sm-12">
+                    <div className="sub-content">
+                        <h3 className="fweight-500">Admin</h3>
+                        <h2 className="fweight-700">Users</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
-        <table className="table">
-        <thead className="thead-dark">
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Role</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-           {users.map(user => (
-               <tr key={user._id}>
-                  <td>{user._id}</td>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>{user.phone}</td>
-                  <td>{user.role}</td>
-                  <td>
-                  <Link to={`/admin/user/${user._id}/edit`}>
-                  <button classNameName="btn btn-sm">
-                      EDIT
-                  </button>
-                  </Link>
-      
-                   <button classNameName="btn btn-sm" onClick={() => handleShow(user._id)}>
-                      DELETE
-                  </button>
-                  </td>
-               </tr>
-           ))}
-        </tbody>
-      </table>
+        <div className="admin account-body">
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-lg-3 col-md-12 sidebar">
+                    <div className="list-group">
+                        <Link to="/admin/resortslist" className="list-group-item list-group-item-action" aria-current="true">
+                            Resorts
+                        </Link>
+                        <Link to="/admin/userslist" className="list-group-item list-group-item-action active" aria-current="true">Users</Link>
+                    </div>
+                </div>
+                <div className="col-lg-9 col-md-12">
+                    
+                    <div className="content">
+                        <div className="table-responsive">
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" className="pl-3">#</th>
+                                        <th scope="col" className="pl-3">Name</th>
+                                        <th scope="col" className="pl-3">Email</th>
+                                        <th scope="col" className="pl-3">Phone</th>
+                                        <th scope="col" className="pl-3">Role</th>
+                                        <th scope="col" className="pl-3">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {users.map(user => (
+                                    <tr key={user._id}>
+                                        <td>{user._id}</td>
+                                        <td>{user.name}</td>
+                                        <td>{user.email}</td>
+                                        <td>{user.phone}</td>
+                                        <td>{user.role}</td>
+                                        <td>
+                                          
+                                        <Link class="edit" to={`/admin/user/${user._id}/edit`}>Edit</Link>
+                                        <Link class="delete" onClick={() => handleShow(user._id)} data-bs-toggle="modal"
+                                        data-bs-target="#delete-user">Delete</Link>
+                                      
+                                        </td>
+                                    </tr>
+                                ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
       
     )}
 
