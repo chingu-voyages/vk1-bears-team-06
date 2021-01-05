@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { store } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
@@ -8,6 +9,7 @@ import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import { getUserDetails, updateUser } from '../actions/userActions'
 import { USER_UPDATE_RESET } from '../constants/userConstants'
+import '../assets/css/admin.css'
 
 const UserEditScreen = ({ match, history }) => {
 
@@ -54,102 +56,146 @@ const UserEditScreen = ({ match, history }) => {
 
     return ( 
         <>
-            <h1>Edit User</h1>
-            { loadingUpdate && <Loader /> }
-    { errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
-    { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
-            <form onSubmit={handleSubmit(submitHandler)}> 
-            <div className="form-group"> 
-                <label for="name">Name</label>
-                        <input
-                            type="text"
-                            name="name"
-                            defaultValue={user.name}
-                            className={`form-control ${errors.name ? 'is-invalid' : ''}`}
-                            id="name"
-                            ref={register({ required: true, minLength: 2, maxLength: 30 })}
-                        />
-                        { errors.name && errors.name.type ==='required' && <p className="text-danger">Name is required.</p> }
-                        { errors.name && errors.name.type ==='minLength' && <p className="text-danger">Name is too short.</p> }
-                        { errors.name && errors.name.type ==='maxLength' && <p className="text-danger">Name is exceeds maximum length.</p> }
+            <div className="sub-hero">
+                <div className="overlay-img"></div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-8 offset-md-2 col-sm-12">
+                            <div className="sub-content">
+                                <h3 className="fweight-500">Admin</h3>
+                                <h2 className="fweight-700">Edit User</h2>
+                            </div>
+                        </div>
                     </div>
-                    
-            <div className="form-group"> 
-                <label for="email">Email address</label>
-                        <input
-                            type="email"
-                            name="email"
-                            defaultValue={user.email}
-                            className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-                            id="email"
-                            ref={register({ required: true, minLength: 8, maxLength: 30, pattern: /^\S+@\S+\.\S+$/ })}
-                        />
-                        { errors.email && errors.email.type ==='required' && <p className="text-danger">Email is required.</p> }
-                        { errors.email && errors.email.type ==='minLength' && <p className="text-danger">Email length is too small.</p> }
-                        { errors.email && errors.email.type ==='maxLength' && <p className="text-danger">Email exceeds maximum length.</p> }
-                        { errors.email && errors.email.type ==='pattern' && <p className="text-danger">That is not a valid email.</p> }
+                </div>
             </div>
-            <div className="form-group"> 
-                <label for="phone">Phone</label>
-                        <input
-                            type="text"
-                            name="phone"
-                            defaultValue={user.phone}
-                            className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
-                            id="phone"
-                            ref={register({ required: true, minLength: 10, maxLength: 13, pattern: /(^0|[89]\d{2}-\d{3}\-?\d{4}$)|(^0|[89]\d{2}\d{3}\d{4}$)|(^63[89]\d{2}-\d{3}-\d{4}$)|(^63[89]\d{2}\d{3}\d{4}$)|(^[+]63[89]\d{2}\d{3}\d{4}$)|(^[+]63[89]\d{2}-\d{3}-\d{4}$)|(^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$)/  })}
-                        />
-                        { errors.phone && errors.phone.type ==='required' && <p className="text-danger">Phone is required.</p> }
-                        { errors.phone && errors.phone.type ==='minLength' && <p className="text-danger">Phone length is too small.</p> }
-                        { errors.phone && errors.phone.type ==='maxLength' && <p className="text-danger">Phone exceeds maximum length.</p> }
-                        { errors.phone && errors.phone.type ==='pattern' && <p className="text-danger">Phone is not a valid phone.</p> }
+            
+            { loadingUpdate && <Loader /> }
+            { errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
+            { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
+            
+            <div className="admin account-body">
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-lg-3 col-md-12 sidebar">
+                            <div className="list-group">
+                                <Link to="/" className="list-group-item list-group-item-action active" aria-current="true">
+                                    Resorts
+                                </Link>
+                                <Link to="/" className="list-group-item list-group-item-action">Users</Link>
+                            </div>
+                        </div>
+                            
+                <div className="col-lg-9 col-md-12">
+                    <div className="content">
+                        <form onSubmit={handleSubmit(submitHandler)}>
+                            <div className="mb-3 row form-group"> 
+                                <label for="name" className="col-lg-2 col-md-12 col-form-label fweight-600">Your Full Name</label>
+                                    <div className="col-lg-10 col-sm-12">
+                                        <input
+                                            type="text"
+                                            name="name"
+                                            defaultValue={user.name}
+                                            className={`form-control ${errors.name ? 'is-invalid' : ''}`}
+                                            id="name"
+                                            ref={register({ required: true, minLength: 2, maxLength: 30 })}
+                                        />
+                                        { errors.name && errors.name.type ==='required' && <p className="text-danger">Name is required.</p> }
+                                        { errors.name && errors.name.type ==='minLength' && <p className="text-danger">Name is too short.</p> }
+                                        { errors.name && errors.name.type ==='maxLength' && <p className="text-danger">Name is exceeds maximum length.</p> }
+                                    </div>
+                            </div>
+                            
+                            <div className="mb-3 row form-group"> 
+                                <label for="email" className="col-lg-2 col-md-12 col-form-label fweight-600">Email address</label>
+                                    <div className="col-lg-10 col-sm-12">
+                                        <input
+                                            type="email"
+                                            name="email"
+                                            defaultValue={user.email}
+                                            className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                                            id="email"
+                                            ref={register({ required: true, minLength: 8, maxLength: 30, pattern: /^\S+@\S+\.\S+$/ })}
+                                        />
+                                        { errors.email && errors.email.type ==='required' && <p className="text-danger">Email is required.</p> }
+                                        { errors.email && errors.email.type ==='minLength' && <p className="text-danger">Email length is too small.</p> }
+                                        { errors.email && errors.email.type ==='maxLength' && <p className="text-danger">Email exceeds maximum length.</p> }
+                                        { errors.email && errors.email.type ==='pattern' && <p className="text-danger">That is not a valid email.</p> }
+                            
+                                    </div>
+                            </div>
+                            
+                            <div className="mb-3 row form-group"> 
+                                <label for="phone" className="col-lg-2 col-md-12 col-form-label fweight-600">Phone</label>
+                                    <div className="col-lg-10 col-sm-12">
+                                        <input
+                                            type="text"
+                                            name="phone"
+                                            defaultValue={user.phone}
+                                            className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
+                                            id="phone"
+                                            ref={register({ required: true, minLength: 10, maxLength: 13, pattern: /(^0|[89]\d{2}-\d{3}\-?\d{4}$)|(^0|[89]\d{2}\d{3}\d{4}$)|(^63[89]\d{2}-\d{3}-\d{4}$)|(^63[89]\d{2}\d{3}\d{4}$)|(^[+]63[89]\d{2}\d{3}\d{4}$)|(^[+]63[89]\d{2}-\d{3}-\d{4}$)|(^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$)/  })}
+                                        />
+                                        { errors.phone && errors.phone.type ==='required' && <p className="text-danger">Phone is required.</p> }
+                                        { errors.phone && errors.phone.type ==='minLength' && <p className="text-danger">Phone length is too small.</p> }
+                                        { errors.phone && errors.phone.type ==='maxLength' && <p className="text-danger">Phone exceeds maximum length.</p> }
+                                        { errors.phone && errors.phone.type ==='pattern' && <p className="text-danger">Phone is not a valid phone.</p> }
+                                    </div>
+                            </div>
+                            
+                            <div className="mb-3 row form-group"> 
+                                <label for="phone" className="col-lg-2 col-md-12 col-form-label fweight-600">Account Type</label>
+                                <div class="col-lg-10 col-sm-12">
+                                    <div class="role">
+                                        <input 
+                                            type="radio" 
+                                            className="btn-check" 
+                                            name="role" 
+                                            id="administrator" 
+                                            autocomplete="off"  
+                                            value='administrator'
+                                            defaultChecked={user.role === 'administrator'}
+                                            ref={register({ required: true })}
+                                            />
+                                            <label className="btn btn-outline-success mb-2 mr-2" for="administrator">Administrator</label>
+                                            
+                                        <input 
+                                            type="radio" 
+                                            className="btn-check" 
+                                            name="role" 
+                                            id="resort-owner" 
+                                            autocomplete="off"  
+                                            value='resortOwner'
+                                            defaultChecked={user.role === 'resortOwner'}
+                                            ref={register({ required: true })}
+                                            />
+                                            <label className="btn btn-outline-success mb-2 mr-2" for="resort-owner">Resort Owner</label>
+                                            
+                                        <input 
+                                            type="radio" 
+                                            className="btn-check"
+                                            name="role" 
+                                            id="reviewer" 
+                                            autocomplete="off" 
+                                            value='reviewer'
+                                            defaultChecked={user.role === 'reviewer'}
+                                            ref={register({ required: true })}
+                                            />
+                                            <label className="btn btn-outline-success mb-2 mr-2" for="reviewer">Reviewer</label>
+                                            { errors.role && errors.role.type ==='required' && <p className="text-danger">Choose a role.</p> }
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="d-grid submit">
+                                <button type="submit" className="btn btn-primary btn-block">Update User</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div className="form-group"> 
-                <label for="phone">User Role</label>
-                        <div class="role">
-                        <input 
-                   type="radio" 
-                   className="btn-check" 
-                   name="role" 
-                   id="administrator" 
-                   autocomplete="off"  
-                   value='administrator'
-                   defaultChecked={user.role === 'administrator'}
-                   ref={register({ required: true })}
-               
-                    />
-                <label className="btn btn-outline-success" for="administrator">Administrator</label>
-                <input 
-                   type="radio" 
-                   className="btn-check" 
-                   name="role" 
-                   id="resort-owner" 
-                   autocomplete="off"  
-                   value='resortOwner'
-                   defaultChecked={user.role === 'resortOwner'}
-                    ref={register({ required: true })}
-                   
-                    />
-                <label className="btn btn-outline-success" for="resort-owner">Resort Owner</label>
-                <input 
-                   type="radio" 
-                   className="btn-check"
-                   name="role" 
-                   id="reviewer" 
-                   autocomplete="off" 
-                   value='reviewer'
-                   defaultChecked={user.role === 'reviewer'}
-                    ref={register({ required: true })}
-                    
-                />
-                <label className="btn btn-outline-success" for="reviewer">Reviewer</label>
-                { errors.role && errors.role.type ==='required' && <p className="text-danger">Choose a role.</p> }
-             </div>
-
-            </div>
-        
-            <button type="submit" className="btn btn-primary">Update</button>
-            </form>
+        </div>
+    </div>
             
     )}
 
