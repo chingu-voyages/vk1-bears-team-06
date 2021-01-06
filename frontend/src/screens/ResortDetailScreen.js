@@ -197,7 +197,7 @@ const ResortDetailScreen = ({ match }) => {
                                     {reviews.map(review => (
                                         <div className="col-lg-6">
                                             <div className="card" key={review._id}>
-                                                <p className="name fweight-600">h{review.name}</p>
+                                                <p className="name fweight-600">h{review.user.name}</p>
                                                 <p className="date">{review.createdAt.substring(0, 10)}</p>
                                                 <p className="review">
                                                     {review.comment}
