@@ -69,6 +69,86 @@ const ResortListOwnerScreen = ({ history, match }) => {
     }
 
     return (
+
+        <>
+
+    <h1>Resorts</h1>
+     { loadingDelete && <Loader />}      
+    { errorDelete && <Message variant='danger'>{errorDelete}</Message>}      
+    { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
+    
+    <>
+       <Link to={`/resort-owner/${userInfo._id}/resorts/create`}>Create Resort</Link>
+       <table className="table">
+        <thead className="thead-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price Per Night</th>
+            <th scope="col">Description</th>
+            <th scope="col">Address</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Website</th>
+            <th scope="col">Amenities</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+           {resorts.map(resort => (
+               <tr key={resort._id}>
+                  <td>{resort._id}</td>
+                  <td>{resort.name}</td>
+                  <td>{resort.price_per_night}</td>
+                  <td>{resort.description}</td>
+                  <td>{`${resort.address}, ${resort.city}, ${resort.province}, Philippines ${resort.zip_code}`}</td>
+                  <td>{resort.phone}</td>
+                  <td>{resort.website}</td>
+                  <td>{
+                  Object.entries(resort.amenities).map(
+                    ([key, value], index, arr) => {
+                        return (value && index === arr.length-1) ? <span>{key}</span> : value ? <span>{`${key}, `}</span> : null;
+                    })
+                 }</td>
+                  <td>
+
+                  <Link to={`/resort-owner/${userInfo._id}/resort/${resort._id}/edit`}>
+                  <button classNameName="btn btn-sm">
+                      EDIT
+                  </button>
+                  </Link>
+      
+                  <button classNameName="btn btn-sm" onClick={() => handleShow(resort._id)}>DELETE</button> 
+                  </td>
+               </tr>
+           ))}
+        </tbody>
+      </table>
+     
+
+       <Paginate pages={pages} page={page} resortOwnerId={userInfo._id}/>
+
+       <Modal className="d-flex justify-content-center align-items-center" show={show} onHide={handleClose}>
+            <Modal.Header className="d-flex justify-content-center">
+            <div className = "admin">
+                <div className = "modal-body">
+                    <img className="mb-4" src={ModalImg} alt="" />
+                            <Modal.Title>Are You Sure?</Modal.Title>
+                            <p className="text-center">Do you really want to delete this user?</p>
+                            <p>This action cannot be undone.</p>
+                </div>
+            </div>
+            </Modal.Header>
+            <Modal.Footer className="d-flex justify-content-center">
+            <Button className="btn-secondary mr-3" variant="primary" onClick={handleClose}>
+                Close
+            </Button>
+            <Button className="btn-danger" variant="primary" onClick={() => deleteHandler(userId)}>
+                Delete
+            </Button>
+            </Modal.Footer>
+    </Modal>
+
+
       <>
           <div className="sub-hero">
               <div className="overlay-img"></div>
@@ -170,6 +250,7 @@ const ResortListOwnerScreen = ({ history, match }) => {
                   </div>
               </div>
           )}
+
       </>
   )}
 

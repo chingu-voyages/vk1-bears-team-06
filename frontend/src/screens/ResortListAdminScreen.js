@@ -69,6 +69,35 @@ const ResortListAdminScreen = ({ history, match }) => {
         dispatch(deleteResort(id)
     )}
 
+        <Paginate pages={pages} page={page} />
+
+        <Modal className="d-flex justify-content-center align-items-center" show={show} onHide={handleClose}>
+            <Modal.Header className="d-flex justify-content-center">
+            <div className = "admin">
+                <div className = "modal-body">
+                    <img className="mb-4" src={ModalImg} alt="" />
+                            <Modal.Title>Are You Sure?</Modal.Title>
+                            <p className="text-center">Do you really want to delete this user?</p>
+                            <p>This action cannot be undone.</p>
+                </div>
+            </div>
+            </Modal.Header>
+            <Modal.Footer className="d-flex justify-content-center">
+            <Button className="btn-secondary mr-3" variant="primary" onClick={handleClose}>
+                Close
+            </Button>
+            <Button className="btn-danger" variant="primary" onClick={() => deleteHandler(userId)}>
+                Delete
+            </Button>
+            </Modal.Footer>
+    </Modal>
+
+
+        </>
+    )
+}
+
+
 
 return (
     <>
@@ -174,5 +203,6 @@ return (
         )}
     </>
 )}
+
 
 export default ResortListAdminScreen
