@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 
-const SearchBox = ({ history, keywordInput }) => {
+const SearchBox = ({ history, keywordInput, pageNumber, count }) => {
+
     const [keyword, setKeyword] = useState(keywordInput)
 
    const submitHandler = (e) => {
        if(keyword.trim()){
-           history.push(`/search/${keyword}`)
+           history.push(`/search/${keyword}/page/${pageNumber}/count/${count}`)
        } else {
            history.push('/')
        }
@@ -13,12 +14,22 @@ const SearchBox = ({ history, keywordInput }) => {
 
     return (
         <>
-           <div className="col-lg-4">
-               <form onSubmit={submitHandler} className="form-inline">
-                    <input className="form-control mr-sm-2" value={keyword} type="search" name='q' placeholder="Search" aria-label="Search" onChange={(e) => setKeyword(e.target.value)} />
-                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-           </div>
+           <div className="search">
+        <div className="container">
+            <div className="row">
+                <div className="col-lg-8 offset-lg-2 col-md-12">
+                    <label className="fweight-600">Search for your favorite resort spots</label>
+                    <div className="search-bar-container">
+                        <form onSubmit={submitHandler}>
+                            <input className="search-resort"placeholder="Search" value={keyword} type="search" name='q' aria-label="Search" onChange={(e) => setKeyword(e.target.value)}/> 
+                            <button type="submit">SEARCH</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
       </>
     )
 }

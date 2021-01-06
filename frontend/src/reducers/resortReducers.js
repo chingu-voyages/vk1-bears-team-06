@@ -51,7 +51,8 @@ export const resortListReducer = (state = { resorts: [] }, action) => {
               loading: false, 
               resorts: action.payload.resorts, 
               pages: action.payload.pages, 
-              page: action.payload.page
+              page: action.payload.page,
+              count: action.payload.count
             }
      case RESORT_OWNER_LIST_FAIL:
          return { loading: false, error: action.payload }

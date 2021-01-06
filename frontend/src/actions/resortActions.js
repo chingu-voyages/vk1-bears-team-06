@@ -38,10 +38,10 @@ import {
     RESORT_OWNER_DETAILS_FAIL
 } from '../constants/resortConstants'
 
-export const listResorts = (keywordInput = '', pageNumber = '') => async (dispatch) => {
+export const listResorts = (keywordInput = '', pageNumber = '', count = '') => async (dispatch) => {
     try {
         dispatch({ type: RESORT_LIST_REQUEST })
-        const { data } = await axios.get(`/api/resorts?keyword=${keywordInput}&pageNumber=${pageNumber}`)
+        const { data } = await axios.get(`/api/resorts?keyword=${keywordInput}&pageNumber=${pageNumber}&count=${count}`)
 
         dispatch({
             type: RESORT_LIST_SUCCESS,

@@ -17,7 +17,7 @@ const getResorts = expressAsyncHandler(async (req, res) => {
 
     const count = await Resort.countDocuments({ ...keyword })
     const resorts = await Resort.find({ ...keyword }).sort({ 'createdAt': -1 }).limit(pageSize).skip(pageSize * (page - 1))
-    res.json({ resorts, page, pages: Math.ceil(count / pageSize) })
+    res.json({ resorts, page, count, pages: Math.ceil(count / pageSize) })
 })
 
 // @description   Fetch all resorts created by the resort owner
