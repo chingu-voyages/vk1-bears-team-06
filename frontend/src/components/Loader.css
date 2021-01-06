@@ -16,7 +16,7 @@
   align-items: center;
   z-index: 999;
   position: absolute;
-  top: 38vh;
+  top: 45vh;
 }
 .loader .bar {
   width: 10px;
