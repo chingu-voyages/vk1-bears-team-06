@@ -5,9 +5,11 @@ import { store } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import 'animate.css'
 import { Modal, Button } from 'react-bootstrap'
+import ModalImg from '../assets/images/svg/trash-bin.svg'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import { listUsers, deleteUser } from '../actions/userActions'
+import '../assets/css/admin.css'
 
 const UserListScreen = ({ history }) => {
 
@@ -110,8 +112,8 @@ const UserListScreen = ({ history }) => {
                                         <td>{user.role}</td>
                                         <td>
                                           
-                                        <Link class="edit" to={`/admin/user/${user._id}/edit`}>Edit</Link>
-                                        <Link class="delete" onClick={() => handleShow(user._id)} data-bs-toggle="modal"
+                                        <Link className="edit" to={`/admin/user/${user._id}/edit`}>Edit</Link>
+                                        <Link className="delete" onClick={() => handleShow(user._id)} data-bs-toggle="modal"
                                         data-bs-target="#delete-user">Delete</Link>
                                       
                                         </td>
@@ -126,24 +128,30 @@ const UserListScreen = ({ history }) => {
             </div>
         </div>
     </div>
-      
+    
     )}
 
 
-<Modal show={show} onHide={handleClose}>
-        <Modal.Header>
-          <Modal.Title>Delete User Confirmation</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you sure you want to delete this User?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={() => deleteHandler(userId)}>
-            Yes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+    <Modal className="d-flex justify-content-center align-items-center" show={show} onHide={handleClose}>
+            <Modal.Header className="d-flex justify-content-center">
+            <div className = "admin">
+                <div className = "modal-body">
+                    <img className="mb-4" src={ModalImg} alt="" />
+                            <Modal.Title>Are You Sure?</Modal.Title>
+                            <p className="text-center">Do you really want to delete this user?</p>
+                            <p>This action cannot be undone.</p>
+                </div>
+            </div>
+            </Modal.Header>
+            <Modal.Footer className="d-flex justify-content-center">
+            <Button className="btn-secondary mr-3" variant="primary" onClick={handleClose}>
+                Close
+            </Button>
+            <Button className="btn-danger" variant="primary" onClick={() => deleteHandler(userId)}>
+                Delete
+            </Button>
+            </Modal.Footer>
+    </Modal>
 
         </>
     )

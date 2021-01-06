@@ -176,20 +176,26 @@ const ResortListAdminScreen = ({ history, match }) => {
     )}
         <Paginate pages={pages} page={page} />
 
-        <Modal show={show} onHide={handleClose}>
-        <Modal.Header>
-          <Modal.Title>Delete Resort Confirmation</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you sure you want to delete this Resort?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="primary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={() => deleteHandler(resortId)}>
-            Yes
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        <Modal className="d-flex justify-content-center align-items-center" show={show} onHide={handleClose}>
+            <Modal.Header className="d-flex justify-content-center">
+            <div className = "admin">
+                <div className = "modal-body">
+                    <img className="mb-4" src={ModalImg} alt="" />
+                            <Modal.Title>Are You Sure?</Modal.Title>
+                            <p className="text-center">Do you really want to delete this user?</p>
+                            <p>This action cannot be undone.</p>
+                </div>
+            </div>
+            </Modal.Header>
+            <Modal.Footer className="d-flex justify-content-center">
+            <Button className="btn-secondary mr-3" variant="primary" onClick={handleClose}>
+                Close
+            </Button>
+            <Button className="btn-danger" variant="primary" onClick={() => deleteHandler(userId)}>
+                Delete
+            </Button>
+            </Modal.Footer>
+    </Modal>
 
 
         </>
