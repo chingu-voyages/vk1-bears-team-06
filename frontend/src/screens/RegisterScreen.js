@@ -37,8 +37,6 @@ const RegisterScreen = ({ location, history }) => {
 
     return ( 
         <>
-        { message && <Message variant='danger'>{message} </Message>}
-        { error && <Message variant='danger'>{error} </Message>}
         { loading && <Loader /> }
         <div className="register">
         <div className="overlay-img"></div>
@@ -51,6 +49,8 @@ const RegisterScreen = ({ location, history }) => {
                             <h2>Create Account</h2>
                             <p className="fweight-500">Getting started is quick and simple, fill out the form below.</p>
                         </div>
+                        { message && <Message variant='danger'>{message} </Message>}
+                        { error && <Message variant='danger'>{error} </Message>}
                         <form onSubmit={handleSubmit(submitHandler)}>
                         <div className="form-group"> 
                             <label for="name" className="form-label fweight-600">Name</label>
