@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
+import { Link } from 'react-router-dom'
+import  activateAccount from '../assets/images/svg/activate_account.svg'
 import { activateUser } from '../actions/userActions'
 import jwt from 'jsonwebtoken';
 import { store } from 'react-notifications-component'
@@ -58,16 +60,21 @@ const ActivateAccountScreen = ({ match, history, location }) => {
     };
     return (
         <>
-             <h1>Activate</h1>
-            { message && <Message variant='danger'>{message} </Message>}
-           { error && <Message variant='danger'>{error} </Message>}
-           { loading && <Loader /> }
-            <div className="col-md-6 offset-md-3">
-            <h1 className="p-5">Hey {name}, Ready to activate your account?</h1>
-            <button className="btn btn-outline-primary" onClick={submitHandler}>
-                Activate Account
-            </button>
+            <div className="confirmation activate">
+            <div className="overlay-img"></div>
+            <div className="container">
+                <div className="row">
+                    <div className="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-xs-12 join">
+                        <div className="confirm-email">
+                            <img src={activateAccount} alt="mail" />
+                            <h2>You're almost there!</h2>
+                            <p>Just one more step to get started. Click the button below.</p>
+                            <button className="btn btn-activate" onClick={submitHandler}>Activate Account</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
         </>
     );
 };
