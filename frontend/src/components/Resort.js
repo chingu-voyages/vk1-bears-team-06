@@ -19,7 +19,7 @@ const Resort = ({ resort }) => {
                         <div className="info">
                             <h3 className="title fweight-700">{name}</h3>
                             <p className="location"><FaMapMarkerAlt /> {`${city}, ${province}`}</p>
-                            <h4 className="price fweight-700">₱ {price_per_night} <span className="fweight-500">/night</span></h4>
+                            <h4 className="price fweight-700">₱ {String(price_per_night).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")} <span className="fweight-500">/night</span></h4>
                             <hr />
                             <div className="card-bottom">
                                 <div className="rating">
