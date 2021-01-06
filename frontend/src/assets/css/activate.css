@@ -1,17 +1,33 @@
-
-
 .activate img {
-    height: 160px !important;
+  height: 160px !important;
 }
 
 .activate a {
-    background: #fe4e37;
-    color: #ffffff;
-    border: 1px solid #fe4e37;
-    margin-bottom: 15px;
+  background: #fe4e37;
+  color: #ffffff;
+  border: 1px solid #fe4e37;
+  margin-bottom: 15px;
 }
 
 .activate a:hover {
-    background: #d63a25;
-    color: #ffffff;
+  background: #d63a25;
+  color: #ffffff;
+}
+
+button.btn.btn-activate {
+  background: #fe4e37;
+  color: #ffffff;
+  border: 1px solid #fe4e37;
+  margin-bottom: 15px;
+}
+
+button.btn.btn-activate:hover {
+  background: #d63a25;
+  color: #ffffff;
+}
+
+button.btn.btn-activate:active,
+button.btn.btn-activate:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }
