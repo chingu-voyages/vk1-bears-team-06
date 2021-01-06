@@ -47,8 +47,10 @@ const App = () => {
 
              <Route path='/admin/user/:id/edit' component={UserEditScreen} exact />
              <Route path='/' component={HomeScreen} exact />
+
              <Route path='/search/:keyword' component={SearchResultScreen} exact />
-             <Route path='/search/:keyword/page/:pageNumber' component={SearchResultScreen} exact />
+             <Route path='/search/:keyword/page/:pageNumber/count/:count' component={SearchResultScreen} exact />
+             
              <Route path='/resorts/:id' component={ResortDetailScreen} />
              <Route path='/auth/activate/:token' component={ActivateAccountScreen} />
              <Route path='/confirm-email/email=:email' component={SentEmailScreen} />
