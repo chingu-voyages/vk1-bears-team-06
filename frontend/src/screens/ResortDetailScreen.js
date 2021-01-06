@@ -182,10 +182,10 @@ const ResortDetailScreen = ({ match }) => {
                         <hr id="reviews" />
                         <div className="col-lg-8 offset-lg-2">
                             <h3>Reviews</h3>
-                            <div className="review-form">
                               {errorResortReview && <Message variant='danger'>{errorResortReview}</Message>}
                                 {userInfo && (userInfo.role !== 'administrator' && userInfo.role !== 'resortOwner') && (
                                     <>
+                                    <div className="review-form">
                                         <form onSubmit={submitHandler}>
                                             <div className="start">
                                             <span>Rate this resort: </span>
@@ -202,9 +202,9 @@ const ResortDetailScreen = ({ match }) => {
                                                 <button type="submit" className="btn btn-primary btn-block">Post Review</button>
                                             </div>
                                         </form>
+                                    </div>
                                     </>
                                 )}
-                            </div>
                         </div>
                         <div className="col-lg-12">
                             <div className="review-list">
