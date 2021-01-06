@@ -152,7 +152,8 @@
   color: #000000;
   width: auto;
   height: auto;
-  padding: 10px;
+  padding: 10px !important;
+  margin-right: 10px;
 }
 
 .admin.account-body textarea#description {
