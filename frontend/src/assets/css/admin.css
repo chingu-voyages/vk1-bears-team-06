@@ -241,6 +241,11 @@ small {
   color: #a7a19f;
 }
 
+.admin.account-body .card .dropdown-menu {
+  transform: translate3d(-108px, 30px, 0px) !important;
+}
+
+
 @media (max-width: 768px) {
   .admin .content .bottom-content .amenities {
     text-align: left !important;
