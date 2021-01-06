@@ -611,7 +611,7 @@ h4.title {
 }
 
 .subscription .title-card-container {
-    z-index: 2;
+    z-index: 999;
     text-align: center;
     padding: 0 30px;
 }
