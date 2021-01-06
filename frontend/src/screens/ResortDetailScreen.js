@@ -86,7 +86,7 @@ const ResortDetailScreen = ({ match }) => {
                                     </div>
                                     <div className="col-md-4">
                                         <div className="price">
-                                            <h4 className="fweight-700">₱{price_per_night} <span className="fweight-500">/night</span></h4>
+                                            <h4 className="fweight-700">₱{String(price_per_night).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")} <span className="fweight-500">/night</span></h4>
                                         </div>
                                     </div>
                                 </div>
