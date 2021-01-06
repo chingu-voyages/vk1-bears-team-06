@@ -6,10 +6,13 @@ import { RESORT_CREATE_REVIEW_RESET } from '../constants/resortConstants'
 import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import { FaMapMarkerAlt  } from 'react-icons/fa'
-import { BiLinkAlt  } from "react-icons/bi"
-import { MdLocalPhone  } from "react-icons/md"
-import { AiOutlineMail  } from "react-icons/ai"
+import { FaWifi, FaRegImages, FaCocktail, FaBabyCarriage, FaMapMarkerAlt, FaPhone } from 'react-icons/fa'
+import { HiHome } from "react-icons/hi"
+import { FiMonitor } from "react-icons/fi"
+import { BiCreditCard } from "react-icons/bi"
+import { AiFillSound } from "react-icons/ai"
+import { MdPets, MdEmail } from "react-icons/md"
+import { ImLink } from "react-icons/im"
 import ReactStars from "react-rating-stars-component";
 
 
@@ -50,118 +53,168 @@ const ResortDetailScreen = ({ match }) => {
     }))
    }
 
-    const { name, address, city, province, zip_code, image, description, amenities, website, phone, email, rating, totalReviews, reviews } = resort
+    const { name, address, city, province, zip_code, image, description, amenities, website, phone, email, rating, totalReviews, reviews, price_per_night } = resort
 
     return (
         <>
             { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
-                <div className="row mt-5">
-                <div className="col-lg-7">
-                <h1>{name}</h1>
-                <p><FaMapMarkerAlt /> {`${address}, ${city} ${province}, Philippines, ${zip_code}`}</p>
-                <img src={image} alt={name} width="700" />
-                <br/>
-                <p>{description}</p>
-                <br/>
-                <h4>Amenities:</h4> 
-             <div>
+                <>
+                    <div className="resort-hero-img">
+                        <img src={image} alt={name} />
+                        <div className="img-overlay"></div>
+                        <div className="resort-info">
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-md-8 title">
+                                        <h1 className="fweight-700">{name}</h1>
+                                        <h2><FaMapMarkerAlt /> {`${address}, ${city} ${province}, Philippines, ${zip_code}`}</h2>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <div className="price">
+                                            <h4 className="fweight-700">₱{price_per_night} <span className="fweight-500">/night</span></h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-{  
-  amenities && Object.entries(amenities).filter(([key,value]) =>  value === true).map(
-    ([key]) => {
-        switch(key){
-            case 'tv':
-                return <p><FaMapMarkerAlt />  {key}</p>;
-            case 'reservation':
-                return <p><FaMapMarkerAlt />  {key}</p>;
-            case 'moderate_noise':
-                return <p><FaMapMarkerAlt />  {key}</p>;
-            case 'free_wifi':
-                return <p><FaMapMarkerAlt />  {key}</p>;
-            case 'trendy':
-                return <p><FaMapMarkerAlt />  {key}</p>;
-            case 'credit_card':
-                return <p><FaMapMarkerAlt />  {key}</p>;
-            case 'bar':
-                return <p><FaMapMarkerAlt />  {key}</p>;
-            case 'animals':
-                return <p><FaMapMarkerAlt />  {key}</p>;
-            case 'kids':
-                return <p><FaMapMarkerAlt />  {key}</p>;
-            default:
-                return null;
-        }
-    })
-}
+                    <div className="resort-content">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-lg-8">
+                                    <div className="left-content">
+                                        <div className="desc">
+                                            <p>{description}</p>
+                                        </div>
+                                        <hr />
+                                        <div className="desc">
+                                            <h3>Amenities</h3>
+                                            <div className="row">
+                                                <div className="col-md-6 amenities">
+                                                    <ul>
+                                                    {  
+                                                    amenities && Object.entries(amenities).filter(([key,value]) =>  value === true).map(
+                                                        ([key]) => {
+                                                            switch(key){
+                                                                case 'tv':
+                                                                    return <li><p><FiMonitor />  {key}</p></li>;
+                                                                case 'reservation':
+                                                                    return <li><p><HiHome />  {key}</p></li>;
+                                                                case 'moderate_noise':
+                                                                    return <li><p><AiFillSound />  Noise Cancellation</p></li>;
+                                                                case 'free_wifi':
+                                                                    return <li><p><FaWifi />  Free Wifi</p></li>;
+                                                                case 'trendy':
+                                                                    return <li><p><FaRegImages />  {key}</p></li>;
+                                                                case 'credit_card':
+                                                                    return <li><p><BiCreditCard />  Credit Card</p></li>;
+                                                                case 'bar':
+                                                                    return <li><p><FaCocktail />  {key}</p></li>;
+                                                                case 'animals':
+                                                                    return <li><p><MdPets />  {key}</p></li>;
+                                                                case 'kids':
+                                                                    return <li><p><FaBabyCarriage />  {key}</p></li>;
+                                                                default:
+                                                                    return null;
+                                                            }
+                                                        })
+                                                    }
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="col-lg-4">
+                                    <div className="side-ad">
+                                        <ul className="list-group list-group-flush">
+                                            <li className="list-group-item item one">
+                                                <p>{totalReviews} Reviews</p>
+                                                <div className="rating">
+                                                    <Rating rating={rating} />
+                                                </div>
+                                            </li>
+                                            <li className="list-group-item item">
+                                                <ImLink />
+                                                <p><a className="links" href={ website ?  `${website}` : ''}>{ website ? website : 'No website provided'}</a></p>
+                                            </li>
+                                            <li className="list-group-item item">
+                                                <FaPhone />
+                                                <p>{ phone ? phone : 'No phone number' }</p>
+                                            </li>
+                                            <li className="list-group-item item">
+                                                <MdEmail />
+                                                <p>{ email ? <a className="links" href={`mailto:${email}`}>{email}</a> : 'No email provided' }</p>
+                                            </li>
+                                            <div className="list-group-item">
+                                                <div className="submit d-grid">
+                                                    <a href="#reviews" className="btn btn-block">WRITE A REVIEW</a>
+                                                </div>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            )}
 
-            </div> 
-        </div>
-
-        <div className="col-lg-4">
-        <div className="card">
-            <ul className="list-group list-group-flush">
-                 <li className="list-group-item"><span>{totalReviews} Reviews</span> <Rating rating={rating} /> <span>{rating}/5.0</span></li>
-                <li className="list-group-item"><BiLinkAlt /> <a href={ website ?  `${website}` : ''}>{ website ? website : 'No website provided'}</a> </li>
-                <li className="list-group-item"><MdLocalPhone /> { phone ? phone : 'No phone number' }</li>
-                <li className="list-group-item"><AiOutlineMail /> <a href={`mailto:${email}`}>{ email ? email : 'No email provided' }</a> </li>
-            </ul>
-        </div>
-        </div>
-        </div>
-
-     )}
-
-<div class="col-lg-4">
-    <h2>Reviews</h2>
-
-    { reviews.length === 0 && <Message>No Reviews</Message>}
-    <ul className="list-group">
-        {reviews.map(review => (
-            <li className="list-group-item" key={review._id}>
-                <strong>{review.name}</strong>
-                <Rating rating={review.rating} />
-                <p>{review.createdAt.substring(0, 10)}</p>
-                <p>{review.comment}</p>
-                </li>
-        ))}
-
-
-         <li class="list-group-item">
-
-           {errorResortReview && <Message variant='danger'>{errorResortReview}</Message>}
-           {userInfo && (userInfo.role !== 'administrator' && userInfo.role !== 'resortOwner') && (
-            <>
-           <h2>Write a Review</h2>
-            <form onSubmit={submitHandler}>
-            <div className="form-group">
-                <label for="rating">Rating</label>
-
-                <ReactStars
-                    count={5}
-                    onChange={setRatingInput}
-                    size={34}
-                    activeColor="#ffd700"
-                />
- 
-             </div>
-  
-            <div class="form-group">
-               <textarea className="form-control" value={comment} onChange={(e) => setComment(e.target.value)} id="comment" rows="3"></textarea>
+            <div className="resort-reviews">
+                <div className="container">
+                    <div className="row">
+                        <hr id="reviews" />
+                        <div className="col-lg-8 offset-lg-2">
+                            <h3>Reviews</h3>
+                            <div className="review-form">
+                                {userInfo && (userInfo.role !== 'administrator' && userInfo.role !== 'resortOwner') && (
+                                    <>
+                                        <form onSubmit={submitHandler}>
+                                            <div className="start">
+                                            <span>Rate this resort: </span>
+                                            <ReactStars
+                                                count={5}
+                                                onChange={setRatingInput}
+                                                size={34}
+                                                activeColor="#ffd700"
+                                            />
+                                            </div>
+                                            <textarea style={{'height':'100px'}} type="text" id="review" placeholder="Write your review here" value={comment} onChange={(e) => setComment(e.target.value)} id="comment" rows="5"></textarea>
+                                            <div className="function">
+                                                <p>Comment as <Link className="fweight-500" to='/'>{userInfo.name}</Link></p>
+                                                <button type="submit" className="btn btn-primary btn-block">Post Review</button>
+                                            </div>
+                                        </form>
+                                    </>
+                                )}
+                            </div>
+                        </div>
+                        <div className="col-lg-12">
+                            <div className="review-list">
+                                <div className="row">
+                                    { reviews.length === 0 && <Message>No Reviews</Message>}
+                                    {reviews.map(review => (
+                                        <div className="col-lg-6">
+                                            <div className="card" key={review._id}>
+                                                <p className="name fweight-600">h{review.name}</p>
+                                                <p className="date">{review.createdAt.substring(0, 10)}</p>
+                                                <p className="review">
+                                                    {review.comment}
+                                                </p>
+                                                <div className="ratings">
+                                                    <Rating rating={review.rating} />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-            </form>
-            </>
-            ) 
-            
-            }
-            
-            {!userInfo && <Message>Please <Link to='/login'>Login</Link> to write a review</Message>}
-            
-        </li>
-</ul>
-</div>
-
-</>
+        </>
 
 )
 }

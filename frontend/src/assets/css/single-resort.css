@@ -80,17 +80,25 @@
     line-height: 1.88;
   }
   
-  .resort-content .side-ad a {
+  .resort-content .side-ad a.btn {
     background: transparent;
     color: #ffffff;
     border: 1px solid #ffffff;
     margin-top: 20px;
   }
+
+  .resort-content .side-ad a.links:hover {
+    color: #f1d5dc !important;
+  }
   
   .resort-content .list-group-item {
     background: transparent;
-    border: 1px solid rgb(255 255 255 / 0.5);
     padding: 12px;
+    border-bottom: 1px solid #ffffff70;
+  }
+
+  .resort-content .list-group-item svg {
+    margin-right: 10px;
   }
   
   .resort-content .list-group-item.item {
@@ -126,6 +134,10 @@
     margin-bottom: 30px;
   }
   
+  .resort-reviews h3 {
+    text-align: center;
+  }
+
   .amenities ul {
     list-style: none;
   }
@@ -136,14 +148,23 @@
     padding: 15px 0;
   }
   
-  .amenities ul li img {
-    height: 30px;
-    padding-right: 15px;
+  .amenities ul li svg {
+    font-size: 25px;
+    margin-right: 15px;
   }
   
   .amenities ul li p {
     margin-bottom: 0;
     text-transform: uppercase;
+  }
+
+  .resort-reviews .start {
+    display: flex;
+    align-items: center;
+  }
+
+  .resort-reviews .start span {
+    margin-right: 15px;
   }
   
   .resort-content .map {
@@ -200,7 +221,7 @@
   }
   
   .resort-reviews .review-list {
-    margin-top: 40px;
+    margin: 40px 0;
   }
   
   .resort-reviews .card p.date {
@@ -213,6 +234,12 @@
     margin-top: 20px;
   }
   
+  .review-form {
+    border: 1px solid #DFE0E5;
+    border-radius: 3px;
+    padding: 25px;
+    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.2);
+  }
   
   
   
