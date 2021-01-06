@@ -24,7 +24,7 @@ const Resort = ({ resort }) => {
                             <div className="card-bottom">
                                 <div className="rating">
                                     <img src={StarOutlineIcon} alt="Star Outline" />
-                                    <p className="fweight-500">{rating}</p>
+                                    <p className="fweight-500">{(Math.ceil( rating * 10 ) / 10).toFixed(1)}</p>
                                 </div>
                                 <div className="reviews">
                                     <img src={BubbleIcon} alt="Star Outline" />
