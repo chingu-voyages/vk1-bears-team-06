@@ -51,7 +51,7 @@
     color: #000000;
     font-size: 14px;
     height: 45px;
-    padding: 10px 15px;
+    padding: 6px 15px !important;
     width: 100%;
 }
 
