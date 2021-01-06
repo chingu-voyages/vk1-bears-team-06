@@ -17,7 +17,7 @@ const getResorts = expressAsyncHandler(async (req, res) => {
 
     const count = await Resort.countDocuments({ ...keyword })
     const resorts = await Resort.find({ ...keyword }).sort({ 'createdAt': -1 }).limit(pageSize).skip(pageSize * (page - 1))
-    res.json({ resorts, page, count, pages: Math.ceil(count / pageSize) })
+    res.json({ resorts, page, pages: Math.ceil(count / pageSize) })
 })
 
 // @description   Fetch all resorts created by the resort owner
@@ -36,7 +36,7 @@ const getOwnerResorts = expressAsyncHandler(async (req, res) => {
 // @route         GET /api/resorts/:id
 // @access        Public
 const getResortById = expressAsyncHandler(async (req, res) => {
-    const resort = await Resort.findById(req.params.id)
+    const resort = await Resort.findById(req.params.id).populate({ path: 'reviews.user', select: 'name' })
     
     if(resort){ 
         res.json(resort) 
@@ -45,6 +45,8 @@ const getResortById = expressAsyncHandler(async (req, res) => {
         throw new Error('Resort not found')
     }
 })
+
+
 
 
 // @description   Fetch a single resort

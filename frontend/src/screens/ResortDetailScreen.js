@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { store } from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+import 'animate.css'
 import { Link } from 'react-router-dom'
 import { listResortDetails, createResortReview } from '../actions/resortActions'
 import { RESORT_CREATE_REVIEW_RESET } from '../constants/resortConstants'
@@ -13,7 +16,9 @@ import { BiCreditCard } from "react-icons/bi"
 import { AiFillSound } from "react-icons/ai"
 import { MdPets, MdEmail } from "react-icons/md"
 import { ImLink } from "react-icons/im"
-import ReactStars from "react-rating-stars-component";
+import ReactStars from "react-rating-stars-component"
+import moment from 'moment'
+
 
 
 const ResortDetailScreen = ({ match }) => {
@@ -32,10 +37,19 @@ const ResortDetailScreen = ({ match }) => {
    const userLogin = useSelector(state => state.userLogin)
    const { userInfo } = userLogin
 
-
    useEffect(() => {
        if(successResortReview){
-           alert('Review submitted')
+        store.addNotification({
+            title: 'Success!',
+            message: 'Review successfully posted.',
+            type: 'success',                       
+            container: 'top-right',               
+            animationIn: ["animate__animated", "animate__fadeInRight"],   
+            animationOut: ["animate__animated", "animate__fadeOutRight"],  
+            dismiss: {
+              duration: 4000
+            }
+          })
            setRatingInput(0)
            setComment('')
            dispatch({ type: RESORT_CREATE_REVIEW_RESET} )
@@ -57,6 +71,7 @@ const ResortDetailScreen = ({ match }) => {
 
     return (
         <>
+
             { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
                 <>
                     <div className="resort-hero-img">
@@ -168,6 +183,7 @@ const ResortDetailScreen = ({ match }) => {
                         <div className="col-lg-8 offset-lg-2">
                             <h3>Reviews</h3>
                             <div className="review-form">
+                              {errorResortReview && <Message variant='danger'>{errorResortReview}</Message>}
                                 {userInfo && (userInfo.role !== 'administrator' && userInfo.role !== 'resortOwner') && (
                                     <>
                                         <form onSubmit={submitHandler}>
@@ -180,7 +196,7 @@ const ResortDetailScreen = ({ match }) => {
                                                 activeColor="#ffd700"
                                             />
                                             </div>
-                                            <textarea style={{'height':'100px'}} type="text" id="review" placeholder="Write your review here" value={comment} onChange={(e) => setComment(e.target.value)} id="comment" rows="5"></textarea>
+                                            <textarea style={{'height':'100px'}} type="text" id="review" placeholder="Write your review here" value={comment} onChange={(e) => setComment(e.target.value)} rows="5"></textarea>
                                             <div className="function">
                                                 <p>Comment as <Link className="fweight-500" to='/'>{userInfo.name}</Link></p>
                                                 <button type="submit" className="btn btn-primary btn-block">Post Review</button>
@@ -197,8 +213,11 @@ const ResortDetailScreen = ({ match }) => {
                                     {reviews.map(review => (
                                         <div className="col-lg-6">
                                             <div className="card" key={review._id}>
-                                                <p className="name fweight-600">h{review.user.name}</p>
-                                                <p className="date">{review.createdAt.substring(0, 10)}</p>
+                                                <p className="name fweight-600">
+                                                    { 
+                                                      review.user.name
+                                                    }</p>
+                                                <p className="date">{moment(review.createdAt).format('LL')}</p>
                                                 <p className="review">
                                                     {review.comment}
                                                 </p>

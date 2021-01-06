@@ -11,7 +11,7 @@ import {
     getTopResorts,
     getOwnerResorts,
     createOwnerResort,
-    deleteResortOwner
+    deleteResortOwner,
 } from '../controllers/resortController.js'
 
 import { protect, admin, resortOwner } from '../middleware/authMiddleware.js'

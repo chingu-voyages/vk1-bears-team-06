@@ -232,4 +232,5 @@ const updateUser = expressAsyncHandler(async (req, res) => {
 
 
 
+
 export { authUser, getUserProfile, updateUserProfile, registerUser, getUsers, deleteUser, getUserById, updateUser, accountActivation }
