@@ -318,7 +318,9 @@ const createResortReview = expressAsyncHandler(async (req, res) => {
        resort.reviews.push(review)
        resort.totalReviews = resort.reviews.length
 
-       resort.rating = resort.reviews.reduce((acc, item) => item.rating + acc, 0) / resort.reviews.length
+       let average = resort.reviews.reduce((acc, item) => item.rating + acc, 0) / resort.reviews.length
+       let roundRate = Math.round(average * 2) / 2
+       resort.rating = roundRate.toFixed(1)
 
        await resort.save()
 
