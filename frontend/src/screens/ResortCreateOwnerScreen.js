@@ -113,7 +113,7 @@ const ResortCreateOwnerScreen = ({ history, match }) => {
                     <div className="row">
                         <div className="col-md-8 offset-md-2 col-sm-12">
                             <div className="sub-content">
-                                <h3 className="fweight-500">Admin</h3>
+                                <h3 className="fweight-500">Resort Owner</h3>
                                 <h2 className="fweight-700">Add Resort</h2>
                             </div>
                         </div>
@@ -297,7 +297,7 @@ const ResortCreateOwnerScreen = ({ history, match }) => {
                                             name="website" 
                                             className={`form-control ${errors.website ? 'is-invalid' : ''}`}
                                             id="website" 
-                                            ref={register({ required: true, pattern: /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/ })}
+                                            ref={register({ required: true, pattern: /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ })}
                                         />
                                         { errors.website && errors.website.type === 'required' && <p className="text-danger">Website is required.</p>}
                                         { errors.website && errors.website.type ==='pattern' && <p className="text-danger">Not a valid website url.</p> }
