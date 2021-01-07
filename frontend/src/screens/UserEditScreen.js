@@ -7,6 +7,8 @@ import 'react-notifications-component/dist/theme.css'
 import 'animate.css'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
+import SidebarSettings from '../components/SidebarSettings'
+import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
 import { getUserDetails, updateUser } from '../actions/userActions'
 import { USER_UPDATE_RESET } from '../constants/userConstants'
 import '../assets/css/admin.css'
@@ -56,19 +58,7 @@ const UserEditScreen = ({ match, history }) => {
 
     return ( 
         <>
-            <div className="sub-hero">
-                <div className="overlay-img"></div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-8 offset-md-2 col-sm-12">
-                            <div className="sub-content">
-                                <h3 className="fweight-500">Admin</h3>
-                                <h2 className="fweight-700">Edit User</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <HeaderBreadcrumb title="Edit User" subtitle="Administrator" />
             
             { loadingUpdate && <Loader /> }
             { errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
@@ -78,12 +68,7 @@ const UserEditScreen = ({ match, history }) => {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-lg-3 col-md-12 sidebar">
-                            <div className="list-group">
-                                <Link to="/" className="list-group-item list-group-item-action active" aria-current="true">
-                                    Resorts
-                                </Link>
-                                <Link to="/" className="list-group-item list-group-item-action">Users</Link>
-                            </div>
+                            <SidebarSettings />
                         </div>
                             
                 <div className="col-lg-9 col-md-12">

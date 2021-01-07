@@ -9,6 +9,8 @@ import ModalImg from '../assets/images/svg/trash-bin.svg'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import Paginate from '../components/Paginate'
+import SidebarSettings from '../components/SidebarSettings'
+import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
 import { 
     listOwnerResorts,
     deleteResortOwner
@@ -70,19 +72,7 @@ const ResortListOwnerScreen = ({ history, match }) => {
 
     return (
             <>
-                <div className="sub-hero">
-                    <div className="overlay-img"></div>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-8 offset-md-2 col-sm-12">
-                                <div className="sub-content">
-                                    <h3 className="fweight-500">Admin</h3>
-                                    <h2 className="fweight-700">Resorts</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <HeaderBreadcrumb title="Resort List" subtitle="Resort Owner" />
         
                 { loadingDelete && <Loader />}      
                 { errorDelete && <Message variant='danger'>{errorDelete}</Message>}     
@@ -91,13 +81,7 @@ const ResortListOwnerScreen = ({ history, match }) => {
                         <div className="container-fluid">
                             <div className="row">
                                 <div className="col-lg-3 col-md-12 sidebar">
-                                    <div className="list-group">
-                                        <Link to="/" className="list-group-item list-group-item-action active" aria-current="true">
-                                            Resorts
-                                        </Link>
-                                        <Link to="/" className="list-group-item list-group-item-action" disabled>My Reviews <span
-                                                className="fweight-500">(Coming Soon)</span></Link>
-                                    </div>
+                                    <SidebarSettings />
                                 </div>
                                 <div className="col-lg-9 col-md-12">
                                     <div className="new-resort">

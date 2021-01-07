@@ -12,7 +12,7 @@ const SearchResultScreen = ({ match }) => {
 
     return (
         <>
-            <HeaderBreadcrumb />
+            <HeaderBreadcrumb title="Search Results" />
             <Route render={({ history }) => <SearchBox keywordInput={keywordInput} history={history} pageNumber={pageNumber} count={count}/>} />
             <main className="body pt-80">
                     <div className="container">

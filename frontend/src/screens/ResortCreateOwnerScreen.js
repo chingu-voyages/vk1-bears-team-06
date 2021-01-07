@@ -8,6 +8,8 @@ import 'react-notifications-component/dist/theme.css'
 import 'animate.css'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
+import SidebarSettings from '../components/SidebarSettings'
+import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
 import { createResortOwner } from '../actions/resortActions'
 import { RESORT_OWNER_CREATE_RESET } from '../constants/resortConstants'
 
@@ -107,30 +109,13 @@ const ResortCreateOwnerScreen = ({ history, match }) => {
         { loading && <Loader /> } 
         { error && <Message variant='danger'>{error}</Message> }
         
-        <div className="sub-hero">
-            <div className="overlay-img"></div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-8 offset-md-2 col-sm-12">
-                            <div className="sub-content">
-                                <h3 className="fweight-500">Resort Owner</h3>
-                                <h2 className="fweight-700">Add Resort</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </div>
+        <HeaderBreadcrumb title="Add Resort" subtitle="Resort Owner" />
         
         <div className="admin account-body">
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-lg-3 col-md-12 sidebar">
-                        <div className="list-group">
-                            <Link to="/" className="list-group-item list-group-item-action active" aria-current="true">
-                                Resorts
-                            </Link>
-                            <Link to="/" className="list-group-item list-group-item-action">Users</Link>
-                        </div>
+                        <SidebarSettings />
                     </div>
                     
                     <div className="col-lg-9 col-md-12">

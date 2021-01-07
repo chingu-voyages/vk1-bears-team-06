@@ -11,6 +11,7 @@ import  Loader from '../components/Loader'
 import { createResort } from '../actions/resortActions'
 import { RESORT_CREATE_RESET } from '../constants/resortConstants'
 import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
+import SidebarSettings from '../components/SidebarSettings'
 
 const ResortCreateAdminScreen = ({ history }) => {
 
@@ -105,12 +106,7 @@ const ResortCreateAdminScreen = ({ history }) => {
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-3 col-md-12 sidebar">
-                        <div class="list-group">
-                            <Link to="/admin/resortslist" class="list-group-item list-group-item-action active" aria-current="true">
-                                Resorts
-                            </Link>
-                            <Link to="/users" class="list-group-item list-group-item-action">Users</Link>
-                        </div>
+                        <SidebarSettings />
                     </div>
                     <div class="col-lg-9 col-md-12">
                         <div class="content">
