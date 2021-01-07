@@ -11,7 +11,7 @@ const Subscription = () => {
                     <div class="col-lg-6 offset-lg-3 col-sm-12 title-card-container">
                         <div class="title">
                             <h3 class="fweight-700">Get The Latest Picks</h3>
-                            <p class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa pariatur aliquid corrupti cupiditate rem reprehenderit, alias deleniti.</p>
+                            <p class="desc">If you wish to receive information about the recently added resorts in the Philippines, subscribe and be one of the first.</p>
                             <div class="search-bar-container">
                                 <form action="#">
                                     <input type="text" class="search-resort"

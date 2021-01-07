@@ -48,7 +48,7 @@ const logoutHandler = () => {
                     </div>
                 </div>
                 <div className="divider-line"></div>
-                <Link to='/'>
+                <Link className="navlinks" to='/'>
                     <div className="nav-item write-review-link hvr-sweep-to-top">
                         Write Review
                     </div>
@@ -110,27 +110,27 @@ const logoutHandler = () => {
         </div>
 
         <div id="mega-menu" className="mega-menu hidden">
-            <div className="overlay-menu">
+            <div className="overlay-menu" id="overlay-menu">
                 <nav>
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-6">
-                                <Link to='/'>Write Review</Link>
-                                <Link to='/'>About Us</Link>
-                                <Link to='/'>Explore</Link>
+                                <Link  className="navlinks" to='/'>Write Review</Link>
+                                <Link  className="navlinks" to='/'>About Us</Link>
+                                <Link  className="navlinks" to='/'>Explore</Link>
                             </div>
                             <div className="col-sm-6">
-                                <Link to='/'>Help Center</Link>
-                                <Link to='/'>Contact</Link>
+                                <Link  className="navlinks" to='/'>Help Center</Link>
+                                <Link  className="navlinks" to='/'>Contact</Link>
                                 
                                 { userInfo ? 
                                     (
-                                        <Link to='/profile'>My Account</Link>
+                                        <Link  className="navlinks" to='/profile'>My Account</Link>
                                     ) :
                                     (
                                         <>
-                                        <Link to='/'>Login</Link>
-                                        <Link to='/'>Register</Link>
+                                        <Link  className="navlinks" to='/login'>Login</Link>
+                                        <Link  className="navlinks" to='/register'>Register</Link>
                                         </>
                                     )
                                 }
