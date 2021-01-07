@@ -68,7 +68,7 @@ const UserListScreen = ({ history }) => {
             <div className="row">
                 <div className="col-md-8 offset-md-2 col-sm-12">
                     <div className="sub-content">
-                        <h3 className="fweight-500">Admin</h3>
+                        <h3 className="fweight-500">Administrator</h3>
                         <h2 className="fweight-700">Users</h2>
                     </div>
                 </div>
