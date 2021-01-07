@@ -15,7 +15,7 @@ const Resort = ({ resort }) => {
             <div className="col-lg-4 col-md-6 col-sm-12">
                 <Link to={`/resorts/${_id}`}>
                     <div className="popular-item card">
-                        <img src={image}  />
+                        <img src={image ? image : 'https://i.imgur.com/8kJUzl7.jpg'}  />
                         <div className="info">
                             <h3 className="title fweight-700">{name}</h3>
                             <p className="location"><FaMapMarkerAlt /> {`${city}, ${province}`}</p>
