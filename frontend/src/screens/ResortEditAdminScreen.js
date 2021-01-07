@@ -142,7 +142,7 @@ const ResortEditAdminScreen = ({ match, history }) => {
 
         { errorUpdate && <Message variant='danger'>{errorUpdate}</Message> }
         
-        { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
+        {  error ? <Message variant='danger'>{error}</Message> : (
         <div class="admin account-body">
             <div class="container-fluid">
                 <div class="row">
@@ -203,6 +203,7 @@ const ResortEditAdminScreen = ({ match, history }) => {
                                             className = {`form-control ${errors.description ? 'is-invalid' : ''}`}
                                             id="description"
                                             rows="5"
+                                            style={{ height: '100px' }}
                                             ref={register({ required: true, minLength: 100, maxLength: 500})}
                                             />
                                             {errors.description && errors.description.type === 'required' && <p className="text-danger">Description is required.</p>}
@@ -318,7 +319,7 @@ const ResortEditAdminScreen = ({ match, history }) => {
                                             defaultValue={resort.website} 
                                             className={`form-control ${errors.website ? 'is-invalid' : ''}`}
                                             id="website" 
-                                            ref={register({ required: true, pattern: /^((ftp|http|https):\/\/)?(www.)?(?!.*(ftp|http|https|www.))[a-zA-Z0-9_-]+(\.[a-zA-Z]+)+((\/)[\w#]+)*(\/\w+\?[a-zA-Z0-9_]+=\w+(&[a-zA-Z0-9_]+=\w+)*)?$/ })}
+                                            ref={register({ required: true,  pattern: /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ })}
                                         />
                                         { errors.website && errors.website.type === 'required' && <p className="text-danger">Website is required.</p>}
                                         { errors.website && errors.website.type ==='pattern' && <p className="text-danger">Not a valid website url.</p> }
@@ -328,17 +329,12 @@ const ResortEditAdminScreen = ({ match, history }) => {
                                         <label for="image"
                                             class="col-lg-2 col-md-12 col-form-label fweight-600">Image</label>
                                         <div class="col-lg-10 col-sm-12">
-                                            {/* <label for="formFile" class="form-label">Default file input example</label>
-                                            <input class="form-control" type="file" id="formFile" /> */}
-                                            {/* <input type="file" 
-                                            className="form-control-file" 
-                                            id="uploadImage" 
-                                            onChange={uploadFileHandler}
-                                            /> */}
-                                            <input class="form-control form-control-lg" type="file"
+                                            <input 
+                                            class="form-control form-control-lg" 
+                                            type="file"
                                             id="uploadImage" 
                                             onChange={uploadFileHandler}></input>
-                                            <small>Recommended image size: 1920 x 1306</small>
+                                            <small>Recommended image size: 1920 x 1280</small>
                                         </div>
                                         
                                     </div>

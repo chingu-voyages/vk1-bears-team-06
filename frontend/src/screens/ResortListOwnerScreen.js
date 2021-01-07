@@ -95,7 +95,7 @@ const ResortListOwnerScreen = ({ history, match }) => {
                                             <div className="row">
                                                 <div className="col-lg-3 col-md-5 col-sm-12">
                                                     <div className="img-resort">
-                                                        <img src={resort.image} alt=""/>
+                                                        <img src={resort.image ? resort.image : 'https://i.imgur.com/8kJUzl7.jpg'} alt=""/>
                                                     </div>
                                                 </div>
                                                 <div className="col-lg-9 col-md-7 col-sm-12">

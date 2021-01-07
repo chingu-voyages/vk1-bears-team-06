@@ -66,7 +66,7 @@ const ResortCreateAdminScreen = ({ history }) => {
 
     const submitHandler = (data, e) => {
         e.preventDefault()
-        const { name, pricePerNight, description, address, city, province, zipCode, phone, email, website, image, tv, reservation, moderateNoise, freeWifi, trendy, creditCard, bar, animals, kids } = data
+        const { name, pricePerNight, description, address, city, province, zipCode, phone, email, website, tv, reservation, moderateNoise, freeWifi, trendy, creditCard, bar, animals, kids } = data
 
         dispatch(createResort({ 
             name,
@@ -159,6 +159,7 @@ const ResortCreateAdminScreen = ({ history }) => {
                                             className = {`form-control ${errors.description ? 'is-invalid' : ''}`}
                                             id="description"
                                             rows="5"
+                                            style={{ height: '100px' }}
                                             ref={register({ required: true, minLength: 100, maxLength: 500})}
                                             />
                                             {errors.description && errors.description.type === 'required' && <p className="text-danger">Description is required.</p>}
@@ -284,10 +285,12 @@ const ResortCreateAdminScreen = ({ history }) => {
                                             ref={register} 
                                             /> */}
                                             
-                                            <input class="form-control form-control-lg" type="file"
+                                            <input 
+                                            class="form-control form-control-lg" 
+                                            type="file"
                                             id="uploadImage" 
-                                            onChange={uploadFileHandler} ref={register} />
-                                                <small>Recommended image size: 1920 x 1306</small>
+                                            onChange={uploadFileHandler}  />
+                                                <small>Recommended image size: 1920 x 1280</small>
                                         </div>
                                         
                                     </div>
