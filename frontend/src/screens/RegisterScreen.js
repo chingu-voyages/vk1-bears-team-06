@@ -92,7 +92,7 @@ const RegisterScreen = ({ location, history }) => {
                             id="phone" 
                             name="phone"
                             placeholder="Enter phone" 
-                            ref={register({ required: true, minLength: 10, maxLength: 13, pattern: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/})}
+                            ref={register({ required: true, minLength: 10, maxLength: 13, pattern: /(^0|[89]\d{2}-\d{3}\-?\d{4}$)|(^0|[89]\d{2}\d{3}\d{4}$)|(^63[89]\d{2}-\d{3}-\d{4}$)|(^63[89]\d{2}\d{3}\d{4}$)|(^[+]63[89]\d{2}\d{3}\d{4}$)|(^[+]63[89]\d{2}-\d{3}-\d{4}$)|(^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$)/ })}
                             />
                             { errors.phone && errors.phone.type ==='required' && <p className="text-danger">Phone is required.</p> }
                             { errors.phone && errors.phone.type ==='minLength' && <p className="text-danger">Phone length is too small.</p> }
