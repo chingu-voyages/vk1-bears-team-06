@@ -76,7 +76,7 @@ const ResortCreateOwnerScreen = ({ history, match }) => {
 
     const submitHandler = (data, e) => {
         e.preventDefault()
-        const { name, pricePerNight, description, address, city, province, zipCode, phone, email, website, image, tv, reservation, moderateNoise, freeWifi, trendy, creditCard, bar, animals, kids } = data
+        const { name, pricePerNight, description, address, city, province, zipCode, phone, email, website, tv, reservation, moderateNoise, freeWifi, trendy, creditCard, bar, animals, kids } = data
 
         dispatch(createResortOwner({ 
             name,
@@ -151,11 +151,11 @@ const ResortCreateOwnerScreen = ({ history, match }) => {
                                                             id="pricePerNight"
                                                             ref={register({ required: true, minLength: 2, maxLength: 5, pattern: /^-?(0|[1-9]\d*)?$/ })}
                                                         />
+                                            </div>
                                                         { errors.pricePerNight && errors.pricePerNight.type ==='required' && <p className="text-danger">Price is required.</p> }
                                                         { errors.pricePerNight && errors.pricePerNight.type ==='minLength' && <p className="text-danger">Price is too small.</p> }
                                                         { errors.pricePerNight && errors.pricePerNight.type ==='maxLength' && <p className="text-danger">Price exceeds maximum length.</p> }
                                                         { errors.pricePerNight && errors.pricePerNight.type ==='pattern' && <p className="text-danger">That is not a valid price.</p> }
-                                            </div>
                                         </div>
                                     </div>
                                     
@@ -297,8 +297,8 @@ const ResortCreateOwnerScreen = ({ history, match }) => {
                                                 class="form-control form-control-lg" type="file"
                                                 id="uploadImage" 
                                                 onChange={uploadFileHandler}
-                                                ref={register}  />
-                                            <small>Recommended image size: 1920 x 1306</small>
+                                                 />
+                                            <small>Recommended image size: 1920 x 1280</small>
                                         </div>
                                     </div>
                                     
