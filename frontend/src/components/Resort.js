@@ -15,7 +15,7 @@ const Resort = ({ resort }) => {
             <div className="col-lg-4 col-md-6 col-sm-12">
                 <Link to={`/resorts/${_id}`}>
                     <div className="popular-item card">
-                        <img src={image} alt="image 3" />
+                        <img src={image}  />
                         <div className="info">
                             <h3 className="title fweight-700">{name}</h3>
                             <p className="location"><FaMapMarkerAlt /> {`${city}, ${province}`}</p>
@@ -24,11 +24,11 @@ const Resort = ({ resort }) => {
                             <div className="card-bottom">
                                 <div className="rating">
                                     <img src={StarOutlineIcon} alt="Star Outline" />
-                                    <p className="fweight-500">{(Math.ceil( rating * 10 ) / 10).toFixed(1)}</p>
+                                    <p className="fweight-500">{rating.toFixed(1)}</p>
                                 </div>
                                 <div className="reviews">
                                     <img src={BubbleIcon} alt="Star Outline" />
-                                    <p className="fweight-500">{totalReviews} {totalReviews == 1 ? "Review":"Reviews"}</p>
+                                    <p className="fweight-500">{totalReviews} {totalReviews === 1 ? "Review":"Reviews"}</p>
                                 </div>
                             </div>
                         </div>
