@@ -194,6 +194,7 @@ const ResortDetailScreen = ({ match }) => {
                                                 onChange={setRatingInput}
                                                 size={34}
                                                 activeColor="#ffd700"
+                                                border='none'
                                             />
                                             </div>
                                             <textarea style={{'height':'100px'}} type="text" id="review" placeholder="Write your review here" value={comment} onChange={(e) => setComment(e.target.value)} rows="5"></textarea>
