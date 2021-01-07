@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Alert } from 'react-bootstrap'
 import { store } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import 'animate.css'
@@ -18,7 +19,7 @@ import { MdPets, MdEmail } from "react-icons/md"
 import { ImLink } from "react-icons/im"
 import ReactStars from "react-rating-stars-component"
 import moment from 'moment'
-
+ 
 
 
 const ResortDetailScreen = ({ match }) => {
@@ -210,7 +211,11 @@ const ResortDetailScreen = ({ match }) => {
                         <div className="col-lg-12">
                             <div className="review-list">
                                 <div className="row">
-                                    { reviews.length === 0 && <Message>No Reviews</Message>}
+                                    { reviews.length === 0 && 
+                                        <Alert className="alert" variant="success" role="alert">
+                                            <p>There are currently no reviews.</p>
+                                        </Alert>
+                                    }
                                     {reviews.map(review => (
                                         <div className="col-lg-6">
                                             <div className="card" key={review._id}>
