@@ -9,6 +9,8 @@ import ModalImg from '../assets/images/svg/trash-bin.svg'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import { listUsers, deleteUser } from '../actions/userActions'
+import SidebarSettings from '../components/SidebarSettings'
+import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
 import '../assets/css/admin.css'
 
 const UserListScreen = ({ history }) => {
@@ -62,30 +64,14 @@ const UserListScreen = ({ history }) => {
 
     return (
       <>
-        <div className="sub-hero">
-        <div className="overlay-img"></div>
-        <div className="container">
-            <div className="row">
-                <div className="col-md-8 offset-md-2 col-sm-12">
-                    <div className="sub-content">
-                        <h3 className="fweight-500">Administrator</h3>
-                        <h2 className="fweight-700">Users</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <HeaderBreadcrumb title="User List" subtitle="Administrator" />
+
     { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
         <div className="admin account-body">
         <div className="container-fluid">
             <div className="row">
                 <div className="col-lg-3 col-md-12 sidebar">
-                    <div className="list-group">
-                        <Link to="/admin/resortslist" className="list-group-item list-group-item-action" aria-current="true">
-                            Resorts
-                        </Link>
-                        <Link to="/admin/userslist" className="list-group-item list-group-item-action active" aria-current="true">Users</Link>
-                    </div>
+                    <SidebarSettings />
                 </div>
                 <div className="col-lg-9 col-md-12">
                     

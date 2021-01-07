@@ -8,6 +8,8 @@ import 'react-notifications-component/dist/theme.css'
 import 'animate.css'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
+import SidebarSettings from '../components/SidebarSettings'
+import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
 import { listResortOwnerDetails, updateResortOwner } from '../actions/resortActions'
 import { RESORT_OWNER_UPDATE_RESET } from '../constants/resortConstants'
 
@@ -140,19 +142,8 @@ const ResortEditOwnerScreen = ({ match, history }) => {
 
     return ( 
         <>
-            <div className="sub-hero">
-            <div className="overlay-img"></div>
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-8 offset-md-2 col-sm-12">
-                        <div className="sub-content">
-                            <h3 className="fweight-500">Admin</h3>
-                            <h2 className="fweight-700">Edit Resort</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <HeaderBreadcrumb title="Edit Resort" subtitle="Resort Owner" />
+
         
         { loadingUpdate && <Loader /> }    
         { errorUpdate && <Message variant='danger'>{errorUpdate}</Message> }   
@@ -162,11 +153,7 @@ const ResortEditOwnerScreen = ({ match, history }) => {
         <div className="container-fluid">
             <div className="row">
                 <div className="col-lg-3 col-md-12 sidebar">
-                    <div className="list-group">
-                        <span className="list-group-item list-group-item-action active" aria-current="true">
-                            Resorts
-                        </span>
-                    </div>
+                    <SidebarSettings />
                 </div>
                 <div className="col-lg-9 col-md-12">
                     <div className="content">

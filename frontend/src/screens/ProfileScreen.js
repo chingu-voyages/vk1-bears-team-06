@@ -7,6 +7,8 @@ import 'react-notifications-component/dist/theme.css'
 import 'animate.css'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
+import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
+import SidebarSettings from '../components/SidebarSettings'
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
 
 const ProfileScreen = ({ history }) => {
@@ -64,31 +66,13 @@ const ProfileScreen = ({ history }) => {
             { message && <Message variant='danger'>{message} </Message>}
             { error && <Message variant='danger'>{error} </Message>}
             { loading && <Loader /> }
-            <div className="sub-hero">
-                <div className="overlay-img"></div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-8 offset-md-2 col-sm-12">
-                            <div className="sub-content">
-                                <h3 className="fweight-500">Account / Settings</h3>
-                                <h2 className="fweight-700">My Account</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <HeaderBreadcrumb subtitle ="Account Settings" title="My Account" />
 
             <div className="account-body">
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-lg-3 col-md-12 sidebar">
-                            <div className="list-group">
-                                <Link to="/" className="list-group-item list-group-item-action active" aria-current="true">
-                                    Account Settings
-                                </Link>
-                                <Link to="/" className="list-group-item list-group-item-action" disabled>My Reviews <span
-                                        className="fweight-500">(Coming Soon)</span></Link>
-                            </div>
+                            <SidebarSettings />
                         </div>
                         <div className="col-lg-6 col-md-12">
                             <div className="content">
@@ -118,16 +102,15 @@ const ProfileScreen = ({ history }) => {
                                                 <input
                                                     type="email"
                                                     name="email"
-                                                    className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                                                    className="form-control non-editable"
                                                     id="email"
                                                     defaultValue={user.email}
-                                                    placeholder="Enter email"
-                                                    ref={register({ required: true, minLength: 8, maxLength: 30, pattern: /^\S+@\S+\.\S+$/ })}
+                                                    readOnly
                                                 />
-                                                { errors.email && errors.email.type ==='required' && <p className="text-danger">Email is required.</p> }
+                                                {/* { errors.email && errors.email.type ==='required' && <p className="text-danger">Email is required.</p> }
                                                 { errors.email && errors.email.type ==='minLength' && <p className="text-danger">Email length is too small.</p> }
                                                 { errors.email && errors.email.type ==='maxLength' && <p className="text-danger">Email exceeds maximum length.</p> }
-                                                {errors.email && errors.email.type === 'pattern' && <p className="text-danger">That is not a valid email.</p>}
+                                                {errors.email && errors.email.type === 'pattern' && <p className="text-danger">That is not a valid email.</p>} */}
                                             </div>
                                     </div>
                                     
@@ -153,7 +136,7 @@ const ProfileScreen = ({ history }) => {
                                     <div className="mb-3 row form-group"> 
                                         <label for="role" className="col-lg-3 col-md-12 col-form-label fweight-600">Account Type</label>
                                             <div className="col-lg-9 col-sm-12">
-                                                <input type="text" id="role" defaultValue={user.role} className="form-control-plaintext"/>
+                                                <input type="text" id="role" defaultValue={user.role} className="form-control-plaintext" readOnly />
                                             </div>
                                     </div>
                                     

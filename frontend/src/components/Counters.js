@@ -26,8 +26,8 @@ const Counters = () => {
                             title = "Reviews" 
                         />
                         <Numbers 
-                            numbers = "250" 
-                            title = "Something" 
+                            numbers = "∞" 
+                            title = "Memories" 
                         />
                     </div>
                 </div>
