@@ -52,7 +52,7 @@ const LoginScreen = ({ location, history }) => {
                 <div className="overlay-img"></div>
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-xs-12 join">
+                        <div className="col-lg-6 offset-lg-3 col-md-10 offset-md-1 col-xs-12 join d-flex justify-content-center">
                         
                             <div className="join-form-container">
                                 <div className="title">
