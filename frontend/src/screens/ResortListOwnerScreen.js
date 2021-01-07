@@ -85,7 +85,7 @@ const ResortListOwnerScreen = ({ history, match }) => {
                                 </div>
                                 <div className="col-lg-9 col-md-12">
                                     <div className="new-resort">
-                                        <Link to={`/resort-owner/${userInfo._id}/resorts/create`} className="btn">Create New Resort</Link>
+                                        <Link to={`/resort-owner/${userInfo._id}/resorts/create`} className="btn">Add New Resort</Link>
                                     </div>
                                     <div className="content">
         

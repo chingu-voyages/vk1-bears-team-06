@@ -341,12 +341,9 @@ const ResortEditOwnerScreen = ({ match, history }) => {
                                     <label for="image"
                                         className="col-lg-2 col-md-12 col-form-label fweight-600">Image</label>
                                     <div className="col-lg-10 col-sm-12">
-                                        <input 
-                                        type="file" 
-                                        className="pt-1 form-control-file"
-                                        id="uploadImage" 
-                                        onChange={uploadFileHandler}
-                                        />
+                                        <input class="form-control form-control-lg" type="file"
+                                            id="uploadImage" 
+                                            onChange={uploadFileHandler}></input>
                                         <small>Recommended image size: 1920 x 1306</small>
                                     </div>
                                 </div>

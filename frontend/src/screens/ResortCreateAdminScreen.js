@@ -98,7 +98,7 @@ const ResortCreateAdminScreen = ({ history }) => {
         <>
         { loading && <Loader /> } 
 
-        <HeaderBreadcrumb title="Add Resort" subtitle="Admin" />
+        <HeaderBreadcrumb title="Add Resort" subtitle="Administrator" />
 
         { error && <Message variant='danger'>{error}</Message> }
         
@@ -277,12 +277,16 @@ const ResortCreateAdminScreen = ({ history }) => {
                                         <label for="image"
                                             class="col-lg-2 col-md-12 col-form-label fweight-600">Image</label>
                                         <div class="col-lg-10 col-sm-12">
-                                            <input type="file" 
+                                            {/* <input type="file" 
                                             className="form-control-file" 
                                             id="uploadImage" 
                                             onChange={uploadFileHandler}
                                             ref={register} 
-                                            />
+                                            /> */}
+                                            
+                                            <input class="form-control form-control-lg" type="file"
+                                            id="uploadImage" 
+                                            onChange={uploadFileHandler} ref={register} />
                                                 <small>Recommended image size: 1920 x 1306</small>
                                         </div>
                                         
