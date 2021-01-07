@@ -1,277 +1,266 @@
 .resort-hero-img img {
-    width: 100%;
-    object-fit: cover;
-    height: 80vh;
-  }
-  
-  .resort-info {
-    height: 20vh;
-  }
-  
-  .resort-info .container {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 35px 0;
-  }
-  
-  .resort-info .container .row {
-    width: 100%;
-    display: flex;
-    align-items: center;
-  }
-  
-  .resort-info .title h1 {
-    font-size: 30px;
-    letter-spacing: -1px;
-  }
-  
-  .resort-info .title h2 {
-    font-size: 16px;
-    color: #a7a19f;
-  }
-  
-  .resort-info .price {
-    text-align: right;
-  }
-  
-  .resort-info .price h4 {
-    color: #fe4e37;
-    font-size: 35px;
-    margin-bottom: 0;
-  }
-  
-  .resort-info .price h4 span {
-    color: #a7a19f;
-    font-size: 14px;
-    padding-left: 8px;
-  }
-  
-  .resort-details {
-    background: #f4f7f6;
-    padding: 50px;
-    text-align: center;
-  }
-  
-  .resort-details p {
-    margin-bottom: 0;
-    font-weight: 600;
-  }
-  
-  .resort-content {
-    border-top: 1px solid #e8e8e8;
-    text-align: justify;
-    padding: 50px;
-  }
-  
-  .resort-content .side-ad {
-    background-color: transparent;
-    background-image: linear-gradient(220deg, #ea406f 19%, #fd5d47 85%);
-    padding: 25px;
-    border-radius: 3px;
-    color: #ffffff;
-    position: sticky;
-    top: 80px;
-  }
-  
-  .resort-content .side-ad p {
-    font-size: 14px;
-    line-height: 1.88;
-  }
-  
-  .resort-content .side-ad a.btn {
-    background: transparent;
-    color: #ffffff;
-    border: 1px solid #ffffff;
-    margin-top: 20px;
+  width: 100%;
+  object-fit: cover;
+  height: 80vh;
+}
+
+.resort-info {
+  height: 20vh;
+}
+
+.resort-info .container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 35px 0;
+}
+
+.resort-info .container .row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.resort-info .title h1 {
+  font-size: 30px;
+  letter-spacing: -1px;
+}
+
+.resort-info .title h2 {
+  font-size: 16px;
+  color: #a7a19f;
+}
+
+.resort-info .price {
+  text-align: right;
+}
+
+.resort-info .price h4 {
+  color: #fe4e37;
+  font-size: 35px;
+  margin-bottom: 0;
+}
+
+.resort-info .price h4 span {
+  color: #a7a19f;
+  font-size: 14px;
+  padding-left: 8px;
+}
+
+.resort-details {
+  background: #f4f7f6;
+  padding: 50px;
+  text-align: center;
+}
+
+.resort-details p {
+  margin-bottom: 0;
+  font-weight: 600;
+}
+
+.resort-content {
+  border-top: 1px solid #e8e8e8;
+  text-align: justify;
+  padding: 50px;
+}
+
+.resort-content .side-ad {
+  background-color: transparent;
+  background-image: linear-gradient(220deg, #ea406f 19%, #fd5d47 85%);
+  padding: 25px;
+  border-radius: 3px;
+  color: #ffffff;
+  position: sticky;
+  top: 80px;
+}
+
+.resort-content .side-ad p {
+  font-size: 14px;
+  line-height: 1.88;
+}
+
+.resort-content .side-ad a.btn {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  margin-top: 20px;
+}
+
+.resort-content .side-ad a.links:hover {
+  color: #f1d5dc !important;
+}
+
+.resort-content .list-group-item {
+  background: transparent;
+  padding: 12px;
+  border-bottom: 1px solid #ffffff70;
+}
+
+.resort-content .list-group-item svg {
+  margin-right: 10px;
+}
+
+.resort-content .list-group-item.item {
+  display: flex;
+  align-items: center;
+}
+
+.resort-content .list-group-item p {
+  margin-bottom: 0;
+  font-size: 15px;
+}
+
+.resort-content .list-group-item.one {
+  justify-content: space-between;
+}
+
+.resort-content .list-group-item img {
+  height: 18px;
+  margin-right: 15px;
+}
+
+.resort-content .left-content {
+  padding-right: 40px;
+}
+
+.resort-content hr {
+  margin: 3rem 0 !important;
+}
+
+.resort-content h3,
+.resort-reviews h3 {
+  font-size: 23px;
+  margin-bottom: 30px;
+}
+
+.resort-reviews h3 {
+  text-align: center;
+}
+
+.amenities ul {
+  list-style: none;
+}
+
+.amenities ul li {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.amenities ul li svg {
+  font-size: 25px;
+  margin-right: 15px;
+}
+
+.amenities ul li p {
+  margin-bottom: 0;
+  text-transform: uppercase;
+}
+
+.resort-reviews .start {
+  display: flex;
+  align-items: center;
+}
+
+.resort-reviews .start span {
+  margin-right: 15px;
+}
+
+.resort-content .map {
+  height: 60vh;
+  width: 100%;
+  background: #e7e7e7;
+}
+
+.resort-reviews hr {
+  margin: 0 0 3rem 0 !important;
+}
+
+.resort-reviews textarea {
+  background: #ffffff;
+  border: 1px solid #cacaca;
+  border-radius: 3px;
+  color: #000000;
+  font-size: 14px;
+  height: 45px;
+  padding: 10px 15px;
+  width: 100%;
+}
+
+.resort-reviews form p {
+  font-size: 14px;
+}
+
+.resort-reviews textarea:focus {
+  outline: none;
+}
+
+.resort-reviews form .function {
+  display: flex;
+  justify-content: space-between;
+}
+
+.resort-reviews form .function button {
+  background: #fe4e37;
+  color: #ffffff;
+  border: 1px solid #fe4e37;
+}
+
+.resort-reviews .card {
+  padding: 25px;
+  border: none;
+}
+
+.resort-reviews .card p {
+  margin-bottom: 0;
+}
+
+.resort-reviews .card p.name {
+  font-size: 17px;
+}
+
+.react-stars:focus {
+  outline: none;
+}
+
+.resort-reviews .review-list {
+  margin: 40px 0;
+}
+
+.resort-reviews .card p.date {
+  font-size: 14px;
+  color: #a7a19f;
+  margin-bottom: 15px;
+}
+
+.resort-reviews .card .ratings {
+  margin-top: 20px;
+}
+
+.review-form {
+  border: 1px solid #dfe0e5;
+  border-radius: 3px;
+  padding: 25px;
+  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 1300px) {
+}
+
+@media screen and (max-width: 768px) {
+}
+
+@media screen and (max-width: 480px) {
+  .title h1 {
+    margin-top: 5rem;
   }
 
-  .resort-content .side-ad a.links:hover {
-    color: #f1d5dc !important;
-  }
-  
-  .resort-content .list-group-item {
-    background: transparent;
-    padding: 12px;
-    border-bottom: 1px solid #ffffff70;
+  .price h4 {
+    margin-top: 1rem;
   }
 
-  .resort-content .list-group-item svg {
-    margin-right: 10px;
+  .left-content p {
+    margin-top: 1rem;
   }
-  
-  .resort-content .list-group-item.item {
-    display: flex;
-    align-items: center;
-  }
-  
-  .resort-content .list-group-item p {
-    margin-bottom: 0;
-    font-size: 15px;
-  }
-  
-  .resort-content .list-group-item.one {
-    justify-content: space-between;
-  }
-  
-  .resort-content .list-group-item img {
-    height: 18px;
-    margin-right: 15px;
-  }
-  
-  .resort-content .left-content {
-    padding-right: 40px;
-  }
-  
-  .resort-content hr {
-    margin: 3rem 0 !important;
-  }
-  
-  .resort-content h3,
-  .resort-reviews h3 {
-    font-size: 23px;
-    margin-bottom: 30px;
-  }
-  
-  .resort-reviews h3 {
-    text-align: center;
-  }
-
-  .amenities ul {
-    list-style: none;
-  }
-  
-  .amenities ul li {
-    display: flex;
-    align-items: center;
-    padding: 15px 0;
-  }
-  
-  .amenities ul li svg {
-    font-size: 25px;
-    margin-right: 15px;
-  }
-  
-  .amenities ul li p {
-    margin-bottom: 0;
-    text-transform: uppercase;
-  }
-
-  .resort-reviews .start {
-    display: flex;
-    align-items: center;
-  }
-
-  .resort-reviews .start span {
-    margin-right: 15px;
-  }
-  
-  .resort-content .map {
-    height: 60vh;
-    width: 100%;
-    background: #e7e7e7;
-  }
-  
-  .resort-reviews hr {
-    margin: 0 0 3rem 0 !important;
-  }
-  
-  .resort-reviews textarea {
-    background: #ffffff;
-    border: 1px solid #cacaca;
-    border-radius: 3px;
-    color: #000000;
-    font-size: 14px;
-    height: 45px;
-    padding: 10px 15px;
-    width: 100%;
-  }
-  
-  .resort-reviews form p {
-    font-size: 14px;
-  }
-  
-  .resort-reviews textarea:focus {
-    outline: none;
-  }
-  
-  .resort-reviews form .function {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .resort-reviews form .function button {
-    background: #fe4e37;
-    color: #ffffff;
-    border: 1px solid #fe4e37;
-  }
-  
-  .resort-reviews .card {
-    padding: 25px;
-    border: none;
-  }
-  
-  .resort-reviews .card p {
-    margin-bottom: 0;
-  }
-  
-  .resort-reviews .card p.name {
-    font-size: 17px;
-  }
-  
-  .resort-reviews .review-list {
-    margin: 40px 0;
-  }
-  
-  .resort-reviews .card p.date {
-    font-size: 14px;
-    color: #a7a19f;
-    margin-bottom: 15px;
-  }
-  
-  .resort-reviews .card .ratings {
-    margin-top: 20px;
-  }
-  
-  .review-form {
-    border: 1px solid #DFE0E5;
-    border-radius: 3px;
-    padding: 25px;
-    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.2);
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  @media screen and (max-width: 1300px) {
-  }
-  
-  @media screen and (max-width: 768px) {
-  }
-  
-  @media screen and (max-width: 480px) {
-    .title h1 {
-      margin-top: 5rem;
-    }
-  
-    .price h4 {
-      margin-top: 1rem;
-    }
-  
-    .left-content p {
-      margin-top: 1rem;
-    }
-  }
-  
+}
