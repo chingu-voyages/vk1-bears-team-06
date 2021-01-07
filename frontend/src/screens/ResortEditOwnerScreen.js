@@ -2,7 +2,6 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
 import { store } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import 'animate.css'
@@ -10,8 +9,10 @@ import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import SidebarSettings from '../components/SidebarSettings'
 import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
+import MetaDecorator from '../components/MetaDecorator' 
 import { listResortOwnerDetails, updateResortOwner } from '../actions/resortActions'
 import { RESORT_OWNER_UPDATE_RESET } from '../constants/resortConstants'
+import editResortMeta from '../data/editResort'
 
 const ResortEditOwnerScreen = ({ match, history }) => {
 
@@ -142,6 +143,11 @@ const ResortEditOwnerScreen = ({ match, history }) => {
 
     return ( 
         <>
+           <MetaDecorator 
+              title={`${editResortMeta.pageTitle} | ${resort.name}`} 
+              description={editResortMeta.pageDescription} 
+              keywords={editResortMeta.pageKeyword}
+         />   
         { loadingUpdate && <Loader /> }  
         <HeaderBreadcrumb title="Edit Resort" subtitle="Resort Owner" />
         { errorUpdate && <Message variant='danger'>{errorUpdate}</Message> }   

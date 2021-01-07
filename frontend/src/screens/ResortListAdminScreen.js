@@ -11,6 +11,9 @@ import Paginate from '../components/Paginate'
 import SidebarSettings from '../components/SidebarSettings'
 import ModalImg from '../assets/images/svg/trash-bin.svg'
 import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
+import MetaDecorator from '../components/MetaDecorator' 
+import resortListMeta from '../data/resortList'
+
 import { 
     listResorts, 
     deleteResort
@@ -75,8 +78,12 @@ const ResortListAdminScreen = ({ history, match }) => {
       
 return (
     <>
+       <MetaDecorator 
+          title={resortListMeta.pageTitle} 
+          description={resortListMeta.pageDescription} 
+          keywords={resortListMeta.pageKeyword}
+        />         
         <HeaderBreadcrumb title="Resort List" subtitle="Administrator" />
-
         { loadingDelete && <Loader />}      
         { errorDelete && <Message variant='danger'>{errorDelete}</Message>}     
         { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (

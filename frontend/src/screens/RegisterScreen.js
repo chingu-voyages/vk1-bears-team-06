@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
+import MetaDecorator from '../components/MetaDecorator' 
 import { registerUser } from '../actions/userActions'
 import '../assets/css/register.css'
+import registerMeta from '../data/register'
 
 const RegisterScreen = ({ location, history }) => {
 
@@ -37,6 +39,11 @@ const RegisterScreen = ({ location, history }) => {
 
     return ( 
         <>
+          <MetaDecorator 
+             title={registerMeta.pageTitle} 
+             description={registerMeta.pageDescription} 
+             keywords={registerMeta.pageKeyword}
+        />    
         { loading && <Loader /> }
         <div className="register">
         <div className="overlay-img"></div>

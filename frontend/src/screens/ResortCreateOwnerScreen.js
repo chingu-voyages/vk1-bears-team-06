@@ -1,6 +1,5 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { store } from 'react-notifications-component'
@@ -10,8 +9,10 @@ import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import SidebarSettings from '../components/SidebarSettings'
 import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
+import MetaDecorator from '../components/MetaDecorator' 
 import { createResortOwner } from '../actions/resortActions'
 import { RESORT_OWNER_CREATE_RESET } from '../constants/resortConstants'
+import createResortMeta from '../data/createResort'
 
 const ResortCreateOwnerScreen = ({ history, match }) => {
 
@@ -106,6 +107,11 @@ const ResortCreateOwnerScreen = ({ history, match }) => {
 
     return ( 
         <>
+         <MetaDecorator 
+            title={createResortMeta.pageTitle} 
+            description={createResortMeta.pageDescription} 
+            keywords={createResortMeta.pageKeyword}
+        />   
         { loading && <Loader /> } 
         { error && <Message variant='danger'>{error}</Message> }
         

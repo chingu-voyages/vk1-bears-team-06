@@ -11,6 +11,8 @@ import  Loader from '../components/Loader'
 import Paginate from '../components/Paginate'
 import SidebarSettings from '../components/SidebarSettings'
 import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
+import MetaDecorator from '../components/MetaDecorator' 
+import resortListMeta from '../data/resortList'
 import { 
     listOwnerResorts,
     deleteResortOwner
@@ -71,7 +73,12 @@ const ResortListOwnerScreen = ({ history, match }) => {
     }
 
     return (
-            <>
+            <>           
+            <MetaDecorator 
+               title={resortListMeta.pageTitle} 
+               description={resortListMeta.pageDescription} 
+               keywords={resortListMeta.pageKeyword}
+           />  
                 <HeaderBreadcrumb title="Resort List" subtitle="Resort Owner" />
         
                 { loadingDelete && <Loader />}      

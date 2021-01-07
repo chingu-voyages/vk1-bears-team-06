@@ -11,7 +11,9 @@ import  Loader from '../components/Loader'
 import { listUsers, deleteUser } from '../actions/userActions'
 import SidebarSettings from '../components/SidebarSettings'
 import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
+import MetaDecorator from '../components/MetaDecorator' 
 import '../assets/css/admin.css'
+import usersListMeta from '../data/usersList'
 
 const UserListScreen = ({ history }) => {
 
@@ -64,8 +66,12 @@ const UserListScreen = ({ history }) => {
 
     return (
       <>
-        <HeaderBreadcrumb title="User List" subtitle="Administrator" />
-
+        <MetaDecorator 
+            title={usersListMeta.pageTitle} 
+            description={usersListMeta.pageDescription} 
+            keywords={usersListMeta.pageKeyword}
+      />   
+    <HeaderBreadcrumb title="User List" subtitle="Administrator" />
     { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
         <div className="admin account-body">
         <div className="container-fluid">
