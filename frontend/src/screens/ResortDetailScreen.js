@@ -189,7 +189,7 @@ const ResortDetailScreen = ({ match }) => {
                                         <form onSubmit={submitHandler}>
                                             <div className="start">
                                             <span>Rate this resort: </span>
-                                            <ReactStars
+                                                <ReactStars
                                                 count={5}
                                                 onChange={setRatingInput}
                                                 size={34}
