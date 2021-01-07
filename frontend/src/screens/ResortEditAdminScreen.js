@@ -328,12 +328,17 @@ const ResortEditAdminScreen = ({ match, history }) => {
                                         <label for="image"
                                             class="col-lg-2 col-md-12 col-form-label fweight-600">Image</label>
                                         <div class="col-lg-10 col-sm-12">
-                                            <input type="file" 
+                                            {/* <label for="formFile" class="form-label">Default file input example</label>
+                                            <input class="form-control" type="file" id="formFile" /> */}
+                                            {/* <input type="file" 
                                             className="form-control-file" 
                                             id="uploadImage" 
                                             onChange={uploadFileHandler}
-                                            />
-                                                <small>Recommended image size: 1920 x 1306</small>
+                                            /> */}
+                                            <input class="form-control form-control-lg" type="file"
+                                            id="uploadImage" 
+                                            onChange={uploadFileHandler}></input>
+                                            <small>Recommended image size: 1920 x 1306</small>
                                         </div>
                                         
                                     </div>

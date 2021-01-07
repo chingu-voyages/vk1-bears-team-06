@@ -88,7 +88,7 @@ return (
                         </div>
                         <div className="col-lg-9 col-md-12">
                             <div className="new-resort">
-                                <Link to='/admin/resorts/create' className="btn">Create New Resort</Link>
+                                <Link to='/admin/resorts/create' className="btn">Add New Resort</Link>
                             </div>
                             <div className="content">
 
