@@ -3,6 +3,8 @@ import { Route } from 'react-router-dom'
 import ResultResortsList from '../components/ResultResortsList'
 import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
 import SearchBox from '../components/SearchBox'
+import MetaDecorator from '../components/MetaDecorator' 
+import searchMeta from '../data/search'
 
 const SearchResultScreen = ({ match }) => {
     
@@ -12,6 +14,11 @@ const SearchResultScreen = ({ match }) => {
 
     return (
         <>
+          <MetaDecorator 
+              title={searchMeta.pageTitle} 
+              description={searchMeta.pageDescription} 
+              keywords={searchMeta.pageKeyword}
+          />   
             <HeaderBreadcrumb title="Search Results" />
             <Route render={({ history }) => <SearchBox keywordInput={keywordInput} history={history} pageNumber={pageNumber} count={count}/>} />
             <main className="body pt-80">

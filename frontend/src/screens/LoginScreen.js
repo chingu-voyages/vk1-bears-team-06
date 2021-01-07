@@ -7,7 +7,9 @@ import 'react-notifications-component/dist/theme.css'
 import 'animate.css'
 import  Message from '../components/Message'
 import  Loader from '../components/Loader'
+import MetaDecorator from '../components/MetaDecorator' 
 import { login } from '../actions/userActions'
+import loginMeta from '../data/login'
 
 const LoginScreen = ({ location, history }) => {
 
@@ -47,6 +49,11 @@ const LoginScreen = ({ location, history }) => {
 
     return ( 
         <>
+           <MetaDecorator 
+                title={loginMeta.pageTitle} 
+                description={loginMeta.pageDescription} 
+                keywords={loginMeta.pageKeyword}
+            />    
             { loading && <Loader /> }
             <div className="login">
                 <div className="overlay-img"></div>

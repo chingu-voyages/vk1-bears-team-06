@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { store } from 'react-notifications-component'
-import { Link } from 'react-router-dom'
 import 'react-notifications-component/dist/theme.css'
 import 'animate.css'
 import  Message from '../components/Message'
@@ -12,6 +11,8 @@ import { listResortDetails, updateResort } from '../actions/resortActions'
 import { RESORT_UPDATE_RESET } from '../constants/resortConstants'
 import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
 import SidebarSettings from '../components/SidebarSettings'
+import MetaDecorator from '../components/MetaDecorator' 
+import editResortMeta from '../data/editResort'
 
 const ResortEditAdminScreen = ({ match, history }) => {
  
@@ -136,12 +137,15 @@ const ResortEditAdminScreen = ({ match, history }) => {
 
     return ( 
         <>
+           <MetaDecorator 
+                title={`${editResortMeta.pageTitle} | ${resort.name}`} 
+                description={editResortMeta.pageDescription} 
+                keywords={editResortMeta.pageKeyword}
+            /> 
+
         { loading && <Loader /> } 
-
         <HeaderBreadcrumb title="Edit Resort" subtitle="Administrator" />
-
         { errorUpdate && <Message variant='danger'>{errorUpdate}</Message> }
-        
         {  error ? <Message variant='danger'>{error}</Message> : (
         <div class="admin account-body">
             <div class="container-fluid">

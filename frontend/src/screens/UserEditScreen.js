@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { store } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
@@ -9,9 +8,12 @@ import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import SidebarSettings from '../components/SidebarSettings'
 import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
+import MetaDecorator from '../components/MetaDecorator' 
 import { getUserDetails, updateUser } from '../actions/userActions'
 import { USER_UPDATE_RESET } from '../constants/userConstants'
 import '../assets/css/admin.css'
+import userEditMeta from '../data/userEdit'
+
 
 const UserEditScreen = ({ match, history }) => {
 
@@ -58,8 +60,12 @@ const UserEditScreen = ({ match, history }) => {
 
     return ( 
         <>
+           <MetaDecorator 
+              title={`Edit User | ${user.name}`} 
+              description={userEditMeta.pageDescription} 
+              keywords={user.name}
+         />   
             <HeaderBreadcrumb title="Edit User" subtitle="Administrator" />
-            
             { loadingUpdate && <Loader /> }
             { errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
             { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (

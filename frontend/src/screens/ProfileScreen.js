@@ -9,7 +9,9 @@ import  Message from '../components/Message'
 import  Loader from '../components/Loader'
 import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
 import SidebarSettings from '../components/SidebarSettings'
+import MetaDecorator from '../components/MetaDecorator' 
 import { getUserDetails, updateUserProfile } from '../actions/userActions'
+import profileMeta from '../data/profile'
 
 const ProfileScreen = ({ history }) => {
 
@@ -61,7 +63,13 @@ const ProfileScreen = ({ history }) => {
         }
     }
 
-    return ( 
+    return (
+    <>
+        <MetaDecorator 
+            title={`${profileMeta.pageTitle} | ${user.name}`} 
+            description={profileMeta.pageDescription} 
+            keywords={profileMeta.pageKeyword}
+      />     
         <div className="row">
             { message && <Message variant='danger'>{message} </Message>}
             { error && <Message variant='danger'>{error} </Message>}
@@ -107,10 +115,7 @@ const ProfileScreen = ({ history }) => {
                                                     defaultValue={user.email}
                                                     readOnly
                                                 />
-                                                {/* { errors.email && errors.email.type ==='required' && <p className="text-danger">Email is required.</p> }
-                                                { errors.email && errors.email.type ==='minLength' && <p className="text-danger">Email length is too small.</p> }
-                                                { errors.email && errors.email.type ==='maxLength' && <p className="text-danger">Email exceeds maximum length.</p> }
-                                                {errors.email && errors.email.type === 'pattern' && <p className="text-danger">That is not a valid email.</p>} */}
+                                        
                                             </div>
                                     </div>
                                     
@@ -198,6 +203,7 @@ const ProfileScreen = ({ history }) => {
                 </div>
             </div>
         </div>
+        </>
    )
 }
 

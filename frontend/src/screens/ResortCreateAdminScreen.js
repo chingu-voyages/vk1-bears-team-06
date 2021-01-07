@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { store } from 'react-notifications-component'
-import { Link } from 'react-router-dom'
 import 'react-notifications-component/dist/theme.css'
 import 'animate.css'
 import  Message from '../components/Message'
@@ -12,6 +11,8 @@ import { createResort } from '../actions/resortActions'
 import { RESORT_CREATE_RESET } from '../constants/resortConstants'
 import HeaderBreadcrumb from '../components/HeaderBreadcrumb'
 import SidebarSettings from '../components/SidebarSettings'
+import MetaDecorator from '../components/MetaDecorator' 
+import createResortMeta from '../data/createResort'
 
 const ResortCreateAdminScreen = ({ history }) => {
 
@@ -96,10 +97,13 @@ const ResortCreateAdminScreen = ({ history }) => {
 
     return ( 
         <>
+        <MetaDecorator 
+            title={createResortMeta.pageTitle} 
+            description={createResortMeta.pageDescription} 
+            keywords={createResortMeta.pageKeyword}
+        />    
         { loading && <Loader /> } 
-
         <HeaderBreadcrumb title="Add Resort" subtitle="Administrator" />
-
         { error && <Message variant='danger'>{error}</Message> }
         
         <div class="admin account-body">

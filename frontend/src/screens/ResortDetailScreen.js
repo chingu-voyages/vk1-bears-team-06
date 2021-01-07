@@ -10,6 +10,7 @@ import { RESORT_CREATE_REVIEW_RESET } from '../constants/resortConstants'
 import Rating from '../components/Rating'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
+import MetaDecorator from '../components/MetaDecorator' 
 import { FaWifi, FaRegImages, FaCocktail, FaBabyCarriage, FaMapMarkerAlt, FaPhone } from 'react-icons/fa'
 import { HiHome } from "react-icons/hi"
 import { FiMonitor } from "react-icons/fi"
@@ -19,8 +20,6 @@ import { MdPets, MdEmail } from "react-icons/md"
 import { ImLink } from "react-icons/im"
 import ReactStars from "react-rating-stars-component"
 import moment from 'moment'
- 
-
 
 const ResortDetailScreen = ({ match }) => {
      
@@ -72,7 +71,11 @@ const ResortDetailScreen = ({ match }) => {
 
     return (
         <>
-
+           <MetaDecorator 
+                title={`${name}`} 
+                description={`${description}`} 
+                keywords={`${name}`}
+            />    
             { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
                 <>
                     <div className="resort-hero-img">

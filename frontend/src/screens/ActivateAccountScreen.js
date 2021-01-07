@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import  Message from '../components/Message'
-import  Loader from '../components/Loader'
-import { Link } from 'react-router-dom'
+import MetaDecorator from '../components/MetaDecorator' 
 import  activateAccount from '../assets/images/svg/activate_account.svg'
 import { activateUser } from '../actions/userActions'
 import jwt from 'jsonwebtoken';
 import { store } from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import 'animate.css'
+import activateAcctMeta from '../data/activateAccount'
 
 const ActivateAccountScreen = ({ match, history, location }) => {
     const [values, setValues] = useState({ name: '', token: '' })
@@ -16,10 +15,9 @@ const ActivateAccountScreen = ({ match, history, location }) => {
 
     const dispatch = useDispatch()
     const userActivate = useSelector(state => state.userActivate)
-    const { loading, error, userInfo, success } = userActivate 
+    const { userInfo, success } = userActivate 
 
     const redirect = location.search ? location.search.split('=')[1] : '/'
-
 
     useEffect(() => {
         if(userInfo){
@@ -60,6 +58,11 @@ const ActivateAccountScreen = ({ match, history, location }) => {
     };
     return (
         <>
+            <MetaDecorator 
+                title={activateAcctMeta.pageTitle} 
+                description={activateAcctMeta.pageDescription} 
+                keywords={activateAcctMeta.pageKeyword}
+            />     
             <div className="confirmation activate">
             <div className="overlay-img"></div>
             <div className="container">
