@@ -34,5 +34,3 @@ function myFunction() {
       document.getElementById("user-icon").style.fill = "#000";
   }
 }
-
-console.log("working");
