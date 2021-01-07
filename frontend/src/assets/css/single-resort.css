@@ -245,6 +245,20 @@
   box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.2);
 }
 
+.resort-reviews .alert {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.resort-reviews .alert button .sr-only{
+  display: none;
+}
+
+.resort-reviews .review-list .alert {
+  justify-content: center;
+}
+
 @media screen and (max-width: 1300px) {
 }
 
