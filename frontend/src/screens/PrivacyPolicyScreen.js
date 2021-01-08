@@ -16,8 +16,7 @@ const PrivacyPolicyScreen = () => {
             <div className="container template">
                 <div className="row">
                     <div className="col-lg-10 offset-lg-1 col-md-12">
-                        <div className="temp-heading py-4">
-                        </div>
+                        
                     </div>
                     <div className="col-lg-10 offset-lg-1 col-md-12">
                         <div className="temp-body">
