@@ -23,6 +23,7 @@ import ReactNotifications from 'react-notifications-component'
 import AboutUsScreen from './screens/AboutUsScreen'
 import TermsAndConditionsScreen from './screens/TermsAndConditionsScreen'
 import PrivacyPolicyScreen from './screens/PrivacyPolicyScreen'
+import TempScreen from './screens/TempScreen'
 
 const App = () => {
   return (
@@ -31,6 +32,8 @@ const App = () => {
        <Header />
           <>
              <Switch>
+             <Route path='/temp' component={TempScreen} exact/>
+
              <Route path='/login' component={LoginScreen} exact />
              <Route path='/register' component={RegisterScreen} exact />
              <Route path='/profile' component={ProfileScreen} exact />

@@ -18,6 +18,7 @@ import '../src/assets/css/register.css'
 import '../src/assets/css/single-resort.css'
 import '../src/assets/css/style.css'
 import '../src/assets/css/utilities.css'
+import '../src/assets/css/temp.css'
 
 ReactDOM.render(
   <Provider store={store}>

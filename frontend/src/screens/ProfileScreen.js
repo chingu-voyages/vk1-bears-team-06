@@ -74,7 +74,21 @@ const ProfileScreen = ({ history }) => {
             { message && <Message variant='danger'>{message} </Message>}
             { error && <Message variant='danger'>{error} </Message>}
             { loading && <Loader /> }
-            <HeaderBreadcrumb subtitle ="Account Settings" title="My Account" />
+                        
+            { userInfo && userInfo.role === 'administrator' && (
+                <HeaderBreadcrumb subtitle ="Administrator" title="My Account" />
+                )
+            }
+
+            { userInfo && userInfo.role === 'resortOwner' && (
+                <HeaderBreadcrumb subtitle ="Resort Owner" title="My Account" />
+                )
+            }
+
+            { userInfo && userInfo.role === 'reviewer' && (
+                <HeaderBreadcrumb subtitle ="Reviewer" title="My Account" />
+                )
+            }
 
             <div className="account-body">
                 <div className="container-fluid">
