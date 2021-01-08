@@ -153,11 +153,10 @@ const ProfileScreen = ({ history }) => {
                                                     name="password"
                                                     className={`form-control ${errors.password ? 'is-invalid' : ''}`}
                                                     id="password"
-                                                    placeholder="Enter Password"
-                                                    defaultValue={user.password} 
-                                                    ref={register({ required: true, minLength: 6 })}
+                                                    placeholder="Enter New Password"
+                                                    ref={register({  minLength: 6 })}
                                                 />
-                                                { errors.password && errors.password.type ==='required' && <p className="text-danger">Password is required.</p> }
+                                             
                                                 {errors.password && errors.password.type === 'minLength' && <p className="text-danger">Password is too short.</p>}
                                             </div>
                                     </div>
@@ -170,11 +169,10 @@ const ProfileScreen = ({ history }) => {
                                                     name="confirmPassword"
                                                     className={`form-control ${errors.password ? 'is-invalid' : ''}`}
                                                     id="confirmPassword"
-                                                    placeholder="Confirm Password"
-                                                    defaultValue={user.password} 
-                                                    ref={register({ required: true, minLength: 6 })}
+                                                    placeholder="Confirm New Password"
+                                                    ref={register({ minLength: 6 })}
                                                 />
-                                                { errors.confirmPassword && errors.confirmPassword.type ==='required' && <p className="text-danger">Password is required.</p> }
+                                            
                                                 {errors.confirmPassword && errors.confirmPassword.type === 'minLength' && <p className="text-danger">Password is too short.</p>}
                                             </div>
                                     </div>
