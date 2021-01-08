@@ -19,7 +19,10 @@ import SearchResultScreen from './screens/SearchResultScreen'
 import ActivateAccountScreen from './screens/ActivateAccountScreen'
 import SentEmailScreen from './screens/SentEmailScreen'
 import NotFoundScreen from './screens/NotFoundScreen'
-import ReactNotifications from 'react-notifications-component';
+import ReactNotifications from 'react-notifications-component'
+import AboutUsScreen from './screens/AboutUsScreen'
+import TermsAndConditionsScreen from './screens/TermsAndConditionsScreen'
+import PrivacyPolicyScreen from './screens/PrivacyPolicyScreen'
 
 const App = () => {
   return (
@@ -46,7 +49,11 @@ const App = () => {
              <Route path='/resort-owner/:userid/resort/:id/edit' component={ResortEditOwnerScreen} exact />
 
              <Route path='/admin/user/:id/edit' component={UserEditScreen} exact />
+             
              <Route path='/' component={HomeScreen} exact />
+             <Route path='/about' component={AboutUsScreen} exact />
+             <Route path='/terms-and-conditions' component={TermsAndConditionsScreen} exact />
+             <Route path='/privacy-policy' component={PrivacyPolicyScreen} exact />
 
              <Route path='/search/:keyword' component={SearchResultScreen} exact />
              <Route path='/search/:keyword/page/:pageNumber/count/:count' component={SearchResultScreen} exact />
@@ -63,3 +70,4 @@ const App = () => {
 }
 
 export default App
+
