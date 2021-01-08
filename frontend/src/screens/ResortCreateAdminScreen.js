@@ -272,7 +272,7 @@ const ResortCreateAdminScreen = ({ history }) => {
                                             name="website" 
                                             className={`form-control ${errors.website ? 'is-invalid' : ''}`}
                                             id="website" 
-                                            ref={register({ required: true, pattern: /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ })}
+                                            ref={register({ required: true, pattern: /(https?:\/\/)?(www\.)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)|(https?:\/\/)?(www\.)?(?!ww)[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ })}
                                         />
                                         { errors.website && errors.website.type === 'required' && <p className="text-danger">Website is required.</p>}
                                         { errors.website && errors.website.type ==='pattern' && <p className="text-danger">Not a valid website url.</p> }
