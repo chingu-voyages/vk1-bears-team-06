@@ -153,7 +153,8 @@ const ProfileScreen = ({ history }) => {
                                                     name="password"
                                                     className={`form-control ${errors.password ? 'is-invalid' : ''}`}
                                                     id="password"
-                                                    placeholder="Enter New Password"
+                                                    placeholder="Enter Password"
+                                                    defaultValue={user.password} 
                                                     ref={register({ required: true, minLength: 6 })}
                                                 />
                                                 { errors.password && errors.password.type ==='required' && <p className="text-danger">Password is required.</p> }
@@ -169,7 +170,8 @@ const ProfileScreen = ({ history }) => {
                                                     name="confirmPassword"
                                                     className={`form-control ${errors.password ? 'is-invalid' : ''}`}
                                                     id="confirmPassword"
-                                                    placeholder="Confirm New Password"
+                                                    placeholder="Confirm Password"
+                                                    defaultValue={user.password} 
                                                     ref={register({ required: true, minLength: 6 })}
                                                 />
                                                 { errors.confirmPassword && errors.confirmPassword.type ==='required' && <p className="text-danger">Password is required.</p> }
