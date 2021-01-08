@@ -163,7 +163,7 @@ const RegisterScreen = ({ location, history }) => {
                             { errors.confirmPassword && errors.confirmPassword.type ==='minLength' && <p className="text-danger">Password is too short.</p> }
                         </div>
             
-                        <p className="condition">By clicking the button below, you agree to our <Link to="/register">Terms and Conditions</Link></p>
+                        <p className="condition">By clicking the button below, you agree to our <Link to="/privacy-policy">Privacy Policy</Link> including <Link to="/terms-and-conditions">Terms and Conditions</Link></p>
                         
                         <div className="d-grid submit">
                             <button type="submit" className="btn btn-primary btn-block">REGISTER</button>
