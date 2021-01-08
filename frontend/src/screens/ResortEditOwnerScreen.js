@@ -173,7 +173,7 @@ const ResortEditOwnerScreen = ({ match, history }) => {
                                             defaultValue={resort.name}
                                             className={`form-control ${errors.name ? 'is-invalid' : ''}`}
                                             id="name"
-                                            ref={register({ required: true, minLength: 2, maxLength: 30 })}
+                                            ref={register({ required: true, minLength: 2, maxLength: 60 })}
                                         />
                                         { errors.name && errors.name.type ==='required' && <p className="text-danger">Name is required.</p> }
                                         { errors.name && errors.name.type ==='minLength' && <p className="text-danger">Name is too short.</p> }
