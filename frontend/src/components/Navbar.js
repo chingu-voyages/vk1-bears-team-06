@@ -116,7 +116,7 @@ const logoutHandler = () => {
                         <div className="row">
                             <div className="col-sm-6">
                                 <Link  className="navlinks" to='/'>Write Review</Link>
-                                <Link  className="navlinks" to='/'>About Us</Link>
+                                <Link  className="navlinks" to='/about'>About Us</Link>
                                 <Link  className="navlinks" to='/'>Explore</Link>
                             </div>
                             <div className="col-sm-6">
