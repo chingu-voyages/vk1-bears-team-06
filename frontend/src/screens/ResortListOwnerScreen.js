@@ -156,6 +156,9 @@ const ResortListOwnerScreen = ({ history, match }) => {
                                         ))}
         
                                     </div>
+
+                                    <Paginate pages={pages} page={page} />
+
                                 </div>
                             </div>
                         </div>
@@ -163,7 +166,7 @@ const ResortListOwnerScreen = ({ history, match }) => {
                 )}
         
         
-        <Paginate pages={pages} page={page} />
+    
         
         <Modal className="d-flex justify-content-center align-items-center" show={show} onHide={handleClose}>
             <Modal.Header className="d-flex justify-content-center">
