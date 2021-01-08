@@ -79,7 +79,7 @@ const ResortDetailScreen = ({ match }) => {
             { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
                 <>
                     <div className="resort-hero-img">
-                        <img src={image ? image : 'https://i.imgur.com/8kJUzl7.jpg'} alt={name} />
+                        <img src={image ? image : 'https://i.imgur.com/qOiH5hB.jpg'} alt={name} />
                         <div className="img-overlay"></div>
                         <div className="resort-info">
                             <div className="container">

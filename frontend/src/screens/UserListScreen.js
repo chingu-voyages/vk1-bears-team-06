@@ -95,7 +95,7 @@ const UserListScreen = ({ history }) => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                {users.map(user => (
+                                {users.filter(user => user.email !== userInfo.email).map(user =>  (
                                     <tr key={user._id}>
                                         <td>{user._id}</td>
                                         <td>{user.name}</td>
@@ -103,11 +103,11 @@ const UserListScreen = ({ history }) => {
                                         <td>{user.phone}</td>
                                         <td>{user.role}</td>
                                         <td>
-                                          
+                                        
                                         <Link className="edit" to={`/admin/user/${user._id}/edit`}>Edit</Link>
                                         <Link className="delete" onClick={() => handleShow(user._id)} data-bs-toggle="modal"
                                         data-bs-target="#delete-user">Delete</Link>
-                                      
+                                    
                                         </td>
                                     </tr>
                                 ))}
