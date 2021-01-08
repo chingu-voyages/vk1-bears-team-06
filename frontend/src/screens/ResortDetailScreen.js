@@ -166,11 +166,21 @@ const ResortDetailScreen = ({ match }) => {
                                                 <MdEmail />
                                                 <p>{ email ? <a className="links" href={`mailto:${email}`}>{email}</a> : 'No email provided' }</p>
                                             </li>
-                                            <div className="list-group-item">
-                                                <div className="submit d-grid">
-                                                    <a href="#reviews" className="btn btn-block">WRITE A REVIEW</a>
+                                            {userInfo && (userInfo.role !== 'administrator' && userInfo.role !== 'resortOwner') && (
+                                                <div className="list-group-item">
+                                                    <div className="submit d-grid">
+                                                        <a href="#reviews" className="btn btn-block">WRITE A REVIEW</a>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            )}
+
+                                            {!userInfo && (
+                                                <div className="list-group-item">
+                                                    <div className="submit d-grid">
+                                                        <Link to="/login" className="btn btn-block">WRITE A REVIEW</Link>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </ul>
                                     </div>
                                 </div>
@@ -203,7 +213,7 @@ const ResortDetailScreen = ({ match }) => {
                                             </div>
                                             <textarea style={{'height':'100px'}} type="text" id="review" placeholder="Write your review here" value={comment} onChange={(e) => setComment(e.target.value)} rows="5"></textarea>
                                             <div className="function">
-                                                <p>Comment as <Link className="fweight-500" to='/'>{userInfo.name}</Link></p>
+                                                <p>Comment as <Link className="fweight-500" to='/profile'>{userInfo.name}</Link></p>
                                                 <button type="submit" className="btn btn-primary btn-block">Post Review</button>
                                             </div>
                                         </form>
