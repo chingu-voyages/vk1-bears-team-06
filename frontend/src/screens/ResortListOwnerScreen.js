@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Alert } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { store } from 'react-notifications-component'
@@ -93,8 +94,16 @@ const ResortListOwnerScreen = ({ history, match }) => {
                                     <div className="new-resort">
                                         <Link to={`/resort-owner/${userInfo._id}/resorts/create`} className="btn">Add New Resort</Link>
                                     </div>
+
+                                    { resorts.length === 0 && 
+                                       <div className="content">
+                                        <Alert className="alert" variant="success" role="alert">
+                                            <p>There are currently no resorts.</p>
+                                        </Alert>
+                                        </div>
+                                    }
+
                                     <div className="content">
-        
                                         {resorts.map(resort => (
         
                                         <div className="card">
