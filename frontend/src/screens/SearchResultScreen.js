@@ -26,17 +26,10 @@ const SearchResultScreen = ({ match }) => {
                         <div className="row">
                             <div className="search-results">
                                 <h4 className="fweight-600">Search Results: <span>{keywordInput}</span></h4>
-                                <h5>{count} Results</h5>
+                              
                             </div>
                         <ResultResortsList keywordInput={keywordInput} pageNumber={pageNumber}/>
                             
-                        <nav aria-label="Page navigation example">
-                            <ul className="pagination justify-content-center">
-                            <li className="page-item"><a className="page-link" href="#">1</a></li>
-                            <li className="page-item"><a className="page-link" href="#">2</a></li>
-                            <li className="page-item"><a className="page-link" href="#">3</a></li>
-                            </ul>
-                        </nav>
                     </div>
                     </div>
                 </main>

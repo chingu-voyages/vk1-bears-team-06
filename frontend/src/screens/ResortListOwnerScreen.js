@@ -61,7 +61,6 @@ const ResortListOwnerScreen = ({ history, match }) => {
               })
               setShow(false)
         }
-
          dispatch(listOwnerResorts(userInfo._id, pageNumber))
 
         
@@ -157,7 +156,7 @@ const ResortListOwnerScreen = ({ history, match }) => {
         
                                     </div>
 
-                                    <Paginate pages={pages} page={page} />
+                                    <Paginate pages={pages} page={page} resortOwnerId={userInfo._id}/>
 
                                 </div>
                             </div>

@@ -23,7 +23,7 @@ const ResultResortsList = ({ keywordInput, pageNumber }) => {
       { loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : 
         resorts.map(resort => <Resort key={resort._id} resort={resort} />)
         }
-        <Paginate pages={pages} page={page} keywordInput={keywordInput ? keywordInput : ''} />
+        {/* <Paginate pages={pages} page={page} keywordInput={keywordInput ? keywordInput : ''} /> */}
      </div>
         </>    
     )
