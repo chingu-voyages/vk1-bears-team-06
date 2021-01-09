@@ -115,14 +115,14 @@ const logoutHandler = () => {
                     <div className="container">
                         <div className="row">
                             <div className="col-sm-6">
-                                <Link  className="navlinks" to='/'>Write Review</Link>
+                                <Link  className="navlinks" to='/'>Write A Review</Link>
                                 <Link  className="navlinks" to='/about'>About Us</Link>
-                                <Link  className="navlinks" to='/'>Explore</Link>
+                                <Link  className="navlinks" to='/privacy-policy'>Privacy Policy</Link>
+                                <Link  className="navlinks" to='/terms-and-conditions'>Terms and Conditions</Link>
                             </div>
                             <div className="col-sm-6">
-                                <Link  className="navlinks" to='/'>Help Center</Link>
-                                <Link  className="navlinks" to='/'>Contact</Link>
-                                
+                                <a className="navlinks" href="mailto: samuelnick.norton@gmail.com">Contact</a>
+                                <Link className="navlinks" to='/'>Explore</Link>
                                 { userInfo ? 
                                     (
                                         <Link  className="navlinks" to='/profile'>My Account</Link>
